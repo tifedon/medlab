@@ -7,7 +7,7 @@ import StatusBadge from '@/components/StatusBadge';
 import Notice from '@/components/Notice';
 import ResearchListing from '@/components/ResearchListing';
 import { param } from '@/components/FilterBar';
-import { completedStatuses, currentStatuses, getResearchByStatuses, researchRecords, researchStatusModel, upcomingStatuses } from '@/lib/research';
+import { completedStatuses, currentStatuses, getResearchByStatuses, researchRecords, upcomingStatuses } from '@/lib/research';
 import ui from '@/components/ui.module.css';
 
 export const metadata: Metadata = {
@@ -45,23 +45,7 @@ export default async function ResearchPage({ searchParams }: { searchParams: Pro
           <strong>Research watch.</strong> The studies below are registered on ClinicalTrials.gov and tracked because they matter to our divisions. They are run by the sponsors and investigators named on each record, not by Sterling IMRES. Statuses come from the registry and may lag behind the study itself; each record shows when the registry was last updated.
         </Notice>
       </Section>
-      <Section>
-        <SectionHeader kicker="Lifecycle" title="Research status model" />
-        <div className={ui.tableWrap}>
-          <table className={ui.table}>
-            <thead><tr><th scope="col">Status</th><th scope="col">Meaning</th><th scope="col">Records</th></tr></thead>
-            <tbody>
-              {researchStatusModel.map(s => (
-                <tr key={s.status}>
-                  <td><StatusBadge status={s.status} label={s.label} /></td>
-                  <td>{s.meaning}</td>
-                  <td>{researchRecords.filter(r => r.status === s.status).length}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </Section>
+
       <Section last>
         <SectionHeader kicker="All research" title="Registered studies" />
         <ResearchListing records={researchRecords} basePath="/research" current={current} />
