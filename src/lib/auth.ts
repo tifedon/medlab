@@ -28,16 +28,16 @@ export const getCurrentIdentity = cache(async (): Promise<AppIdentity | null> =>
   }
 
   const supabase = await createClient();
-  const { data: claimsData, error: claimsError } = await supabase.auth.getClaims();
+  const { data: userData, error: userError } = await supabase.auth.getUser();
 
-  if (claimsError || !claimsData?.claims?.sub) {
+  if (userError || !userData?.user?.id) {
     return null;
   }
 
   const { data, error: profileError } = await supabase
     .from('profiles')
     .select('id, full_name, role, can_upload')
-    .eq('id', claimsData.claims.sub)
+    .eq('id', userData.user.id)
     .maybeSingle();
 
   if (profileError || !data) {
@@ -48,7 +48,7 @@ export const getCurrentIdentity = cache(async (): Promise<AppIdentity | null> =>
 
   return {
     id: profile.id,
-    email: typeof claimsData.claims.email === 'string' ? claimsData.claims.email : '',
+    email: typeof userData.user.email === 'string' ? userData.user.email : '',
     fullName: profile.full_name,
     role: profile.role,
     canUpload: profile.role === 'admin' || profile.can_upload,
