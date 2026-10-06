@@ -14,13 +14,22 @@ export default function SignUpForm({ configured }: { configured: boolean }) {
   const [showRetypePassword, setShowRetypePassword] = useState(false);
 
   const handleGoogleSignIn = async () => {
-    const supabase = createClient();
-    await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
-      },
-    });
+    try {
+      const supabase = createClient();
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: `${window.location.origin}/auth/callback`,
+        },
+      });
+      if (error) {
+        alert(`Google Sign-In Error: ${error.message}`);
+        console.error('Google Sign-In Error:', error);
+      }
+    } catch (e: any) {
+      alert(`Unexpected Error: ${e.message}`);
+      console.error(e);
+    }
   };
 
   return (
