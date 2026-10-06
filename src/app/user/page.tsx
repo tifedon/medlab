@@ -72,7 +72,7 @@ export default async function UserPage() {
               <strong>{identity.canUpload ? 'Upload enabled' : 'Approval required'}</strong>
               <p>
                 {identity.canUpload
-                  ? 'Your login ID is approved to submit research records.'
+                  ? 'Your account is approved to submit research records.'
                   : 'Only administrators and approved contributors can upload papers.'}
               </p>
               <Link href={identity.canUpload ? '/publications' : '/contact'}>

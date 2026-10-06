@@ -34,13 +34,8 @@ export default async function AdminPage() {
     <div className={styles.page}>
       <div className={styles.shell}>
         <h1>Welcome, Administrator</h1>
-        <p className={styles.lead}>Your login ID has administrator access. Contact enquiries arrive below. Paper uploads, publication review and contributor approval will be added here next.</p>
+        <p className={styles.lead}>Your account has administrator access. Contact enquiries arrive below. Paper uploads, publication review and contributor approval will be added here next.</p>
 
-        <div className={styles.identity}>
-          <div><UserIcon size={20} /><span><small>Signed in as</small><strong>{identity.email}</strong></span></div>
-          <div><ShieldCheckIcon size={20} /><span><small>Role</small><strong>Administrator</strong></span></div>
-          <div><FileTextIcon size={20} /><span><small>Login ID</small><strong title={identity.id}>{identity.id}</strong></span></div>
-        </div>
 
         <div className={styles.actions}>
           <Link href="/publications">Review the reference library</Link>

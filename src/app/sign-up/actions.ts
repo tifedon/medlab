@@ -60,7 +60,7 @@ export async function signUp(
   if (!data.session) {
     return {
       error: null,
-      success: 'Account created. Check your email to confirm the login ID, then return here to sign in.',
+      success: 'Account created. Check your email to confirm your account, then return here to sign in.',
     };
   }
 

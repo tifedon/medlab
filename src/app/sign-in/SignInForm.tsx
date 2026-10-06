@@ -34,7 +34,7 @@ export default function SignInForm({ configured }: { configured: boolean }) {
   return (
     <form action={formAction} className={styles.form}>
       <div className={styles.field}>
-        <label htmlFor="email">Login ID (email)</label>
+        <label htmlFor="email">Email</label>
         <input
           id="email"
           name="email"
@@ -80,7 +80,7 @@ export default function SignInForm({ configured }: { configured: boolean }) {
       )}
 
       <button className={styles.submitButton} type="submit" disabled={pending || !configured}>
-        {!configured ? 'Supabase connection required' : pending ? 'Verifying login ID…' : 'Sign in'}
+        {!configured ? 'Supabase connection required' : pending ? 'Verifying account…' : 'Sign in'}
       </button>
 
       <div className={styles.divider}>

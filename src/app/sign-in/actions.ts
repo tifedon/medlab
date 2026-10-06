@@ -37,7 +37,7 @@ export async function signIn(
   });
 
   if (authError || !authData.user) {
-    return { error: 'The login ID or password is incorrect.' };
+    return { error: 'The email or password is incorrect.' };
   }
 
   const { data, error: profileError } = await supabase
@@ -49,7 +49,7 @@ export async function signIn(
   if (profileError || !data) {
     await supabase.auth.signOut();
     return {
-      error: 'This login ID has not been assigned a Sterling IMRES account role. Contact an administrator.',
+      error: 'This account has not been assigned a Sterling IMRES account role. Contact an administrator.',
     };
   }
 

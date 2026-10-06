@@ -48,7 +48,7 @@ export default function SignUpForm({ configured }: { configured: boolean }) {
       </div>
 
       <div className={styles.field}>
-        <label htmlFor="email">Login ID (email)</label>
+        <label htmlFor="email">Email</label>
         <input
           id="email"
           name="email"
