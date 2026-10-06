@@ -1,0 +1,770 @@
+AUREVIA IMRES
+Aurevia Institute for Medical Research, Education and Sciences
+APPLICATION, WEBSITE & INSTITUTIONAL BLUEPRINT
+A partner-facing document covering the institutional idea, website structure, publishing model, content system, technical architecture, governance and delivery roadmap.
+Primary digital identityPublic brand: Aurevia IMRES  |  Domain: aimres.site  |  Proposed publishing imprint: Aurevia IMRES Press
+
+Working Concept • October 2026
+
+01  Document Purpose
+This document is designed so that a partner, collaborator, developer, editor or future team member can understand the complete Aurevia IMRES concept without needing the original chat history. It explains what the institution is intended to be, how the website should function, how the major content areas connect, how the publishing arm fits into the model, and how the current technical build can evolve into a scalable platform.
+Important status noteAurevia IMRES is being developed as an institutional concept and digital platform. Any leadership names, credentials, affiliations, research outcomes, accreditations, partnerships, addresses, medical services, or other claims must be verified before publication. Demo records should never be presented as real institutional facts.
+
+Contents at a Glance
+Executive concept and strategic identity
+Institutional divisions and target audiences
+Digital ecosystem and website information architecture
+Detailed page families and route structure
+Research, projects, publications and books
+People profiles and contributor model
+Publishing arm and PublishDrive workflow
+Content data model and editorial governance
+Technical architecture and repository structure
+Search, SEO, accessibility, privacy and security
+Deployment, domain and current build status
+Roadmap, risks, decisions and next actions
+
+02  Executive Summary
+Aurevia IMRES is intended to be a multidisciplinary medical research and education institute with a strong digital publishing, evidence review, visualization and scientific communication capability. The website is not meant to be a brochure site. It is intended to function as the public-facing knowledge infrastructure of the institute.
+The central idea is to bring research, people, scientific divisions, publications, books, education, evidence review and medical visualization into one coherent institutional ecosystem. A researcher should be able to have a professional profile connected to current and completed research, publications and books. A research project should link to its investigators, division, reports and resulting publications. A book should link to its editors and contributors, the relevant division, related research and purchase or distribution channels.
+The first technical implementation is a multi-page Next.js application using TypeScript, Tailwind CSS, the App Router and structured local data files. The architecture has been deliberately designed so that local content can later be replaced by a content management system or database without rebuilding the entire front end.
+Institution
+Aurevia Institute for Medical Research, Education and Sciences
+Public brand
+Aurevia IMRES
+Domain
+aimres.site
+Publishing imprint
+Aurevia IMRES Press, proposed
+Website role
+Public institutional portal, research directory, publishing catalog, educational hub and collaboration gateway
+Primary audiences
+Researchers, clinicians, students, educators, reviewers, authors, institutions, readers and collaborators
+Current build approach
+Next.js + TypeScript + Tailwind CSS + App Router + typed local content
+Deployment target
+Vercel with aimres.site as the custom domain
+
+What Makes the Concept Different
+It combines medical research, education, publishing, evidence integrity and scientific visualization under one institutional identity.
+It treats books and scholarly publications as first-class institutional outputs, not as an afterthought.
+It creates durable public profiles for experts and connects those profiles to the work they actually contribute to.
+It distinguishes current, upcoming, in-progress, completed and published work so the website can show institutional activity over time.
+It is designed to scale from static demonstration content to a real editorial and research content system.
+
+03  Institutional Identity and Brand Logic
+Aurevia
+The distinctive brand word. It gives the institute a unique public identity rather than relying only on a generic medical-institute name.
+IMRES
+Institute for Medical Research, Education and Sciences.
+Aurevia IMRES
+Recommended short public brand used on the website, covers, social profiles and institutional communications.
+AIMRES
+Useful web shorthand formed from Aurevia + IMRES. It supports the concise domain aimres.site, but it should not replace Aurevia IMRES as the main public-facing brand.
+Aurevia IMRES Press
+Recommended publishing imprint for books, monographs, handbooks, evidence reviews and other formal publications.
+
+Recommended Brand Hierarchy
+Level 1: Aurevia IMRES, the master institutional brand.
+Level 2: The nine divisions and units, each presented as part of Aurevia IMRES.
+Level 3: Programs, research initiatives, publications, books, courses and projects.
+Publishing identity: Aurevia IMRES Press as the imprint, while named experts remain authors or editors where appropriate.
+Positioning Statement
+Draft positioningAurevia IMRES is a multidisciplinary institute dedicated to advancing medical knowledge through rigorous research, evidence-based education, scientific integrity, scholarly publishing and clear scientific communication.
+
+
+04  Mission, Vision and Institutional Principles
+Mission
+To advance medical and health sciences through rigorous multidisciplinary research, evidence-based education, scientific integrity, scholarly communication and accessible knowledge.
+Vision
+To become a trusted multidisciplinary institution connecting scientific discovery, clinical knowledge, education, evidence synthesis, publishing and medical communication.
+Core Values
+Principle
+How it should appear in practice
+Scientific Integrity
+Methods, claims and publications should be transparent, evidence-based and reviewable.
+Evidence-Based Practice
+Research and educational content should distinguish established evidence from interpretation and opinion.
+Collaboration
+The institute should make it easy for different professions and disciplines to contribute to shared work.
+Education
+Knowledge should be structured so that learners and professionals can use it efficiently.
+Innovation
+Digital publishing, visualization and modern research workflows should be actively developed.
+Transparency
+Authorship, review, conflicts of interest, corrections and publication status should be clear.
+Public Benefit
+Institutional work should ultimately improve understanding, training, scientific quality and responsible health communication.
+
+
+05  Organizational Structure
+The institute is designed around nine complementary divisions and units. The structure is broad enough to support clinical, academic, educational and publishing work without presenting the organization as a hospital or university unless those capabilities are formally established later.
+Division / Unit
+Primary role
+Research Division
+Research design, methodology, multidisciplinary programs and research coordination.
+Clinical Medicine Division
+Clinical science, disease-focused scholarship, clinical education and medically reviewed content.
+Dentistry and Oral Sciences Division
+Oral health, dental science, dental education and related research.
+Nursing and Allied Health Division
+Nursing, respiratory therapy, rehabilitation, laboratory and allied health perspectives.
+Pharmacology and Natural Products Division
+Pharmacology, therapeutics, natural products and medication-related research.
+Biomedical Sciences Division
+Physiology, pathology, molecular mechanisms, anatomy and laboratory sciences.
+Evidence Review and Scientific Integrity Unit
+Systematic review, critical appraisal, reproducibility, standards and research integrity.
+Medical Illustration and Visualization Unit
+Anatomical illustration, scientific figures, visual abstracts and educational diagrams.
+Editorial and Publications Division
+Books, journals, reports, editorial standards, peer review and publishing operations.
+
+
+06  Audience and Stakeholder Model
+Audience
+What they need from aimres.site
+Researchers
+Discover programs, collaborators, methods, completed work and publication pathways.
+Clinicians
+Access research, educational resources, evidence reviews and specialty content.
+Students and trainees
+Use structured reference material, courses, books, visual resources and educational articles.
+Authors and editors
+Contribute to books, reviews, monographs, reports and other publications.
+Institutions
+Evaluate expertise, discover collaboration opportunities and review institutional outputs.
+Reviewers and methodologists
+Participate in evidence review, peer review and scientific integrity workflows.
+Medical illustrators
+Develop publication figures, educational diagrams and visual communication projects.
+General readers
+Access appropriately written public-facing educational material without presenting the website as personalized medical advice.
+
+What the Website Is Not
+Not a patient portal.
+Not a telemedicine service.
+Not a substitute for professional diagnosis or treatment.
+Not an accredited university portal unless accreditation is formally obtained.
+Not a place to publish invented staff, affiliations, grants, trial registrations, research findings or credentials.
+
+07  Institutional Ecosystem
+The application should be understood as an interconnected content system. The public website is the visible layer, but the value comes from linking people, divisions, research, publishing and education together.
+
+Figure 1. The website is the public interface to a wider institutional knowledge and publishing ecosystem.
+
+08  Website Information Architecture
+The website uses content hubs rather than a single long page. Each major area has an index page, relevant category or status pages, and dynamic detail pages where appropriate.
+Area
+Route
+Purpose
+Home
+/
+Institutional overview and entry point.
+About
+/about
+Mission, vision, leadership, governance and values.
+People
+/people
+Searchable expert and contributor directory.
+Divisions
+/divisions
+Nine institutional divisions and units.
+Research
+/research
+Research programs, statuses, themes and individual studies.
+Projects
+/projects
+Broader institutional work beyond research studies.
+Publications
+/publications
+Articles, reviews, reports, evidence reviews and monographs.
+Books
+/books
+Reference books, textbooks, handbooks and monographs.
+Education
+/education
+Courses, workshops and learning resources.
+Scientific Integrity
+/scientific-integrity
+Evidence review, standards and research integrity.
+Medical Illustration
+/medical-illustration
+Gallery, projects and visualization work.
+Insights
+/insights
+Research updates, commentary, educational and institute content.
+Collaborate
+/collaborate
+Collaboration pathways.
+Contact
+/contact
+Structured inquiry forms.
+Search
+/search
+Cross-site discovery.
+
+
+09  Home, About and People
+Home Page
+Hero with institutional identity and clear calls to action.
+Featured research and current activity.
+Featured researchers and experts.
+Latest publications and books.
+Upcoming projects and recent insights.
+Division overview and scientific integrity summary.
+Education, visualization and collaboration entry points.
+About Section
+The About area should establish institutional credibility through mission, values, governance and transparent scope. It should never rely on vague claims such as “world leading” unless there is evidence to support them.
+/about
+/about/mission
+/about/leadership
+/about/governance
+/about/values
+People Directory
+The people system is central. It should support doctors, dentists, nurses, pharmacologists, biomedical scientists, researchers, evidence reviewers, medical illustrators, editors, educators and allied health professionals.
+Profile fields
+Name, professional title, degrees, specialty, division, biography, expertise, research interests, education, experience, selected publications, current and completed research, books, memberships, ORCID, Google Scholar, ResearchGate and contact placeholders.
+Filters
+Division, profession, specialty and research area.
+Dynamic route
+/people/[slug]
+Credibility rule
+Only publish real names, qualifications and memberships after verification.
+
+
+10  Divisions and Unit Pages
+Every division should have a dedicated page, rather than being represented only by a card on the homepage. Each page should become a mini-hub connecting staff, research, publications, education and collaboration opportunities.
+Research Division
+Clinical Medicine Division
+Dentistry and Oral Sciences Division
+Nursing and Allied Health Division
+Pharmacology and Natural Products Division
+Biomedical Sciences Division
+Evidence Review and Scientific Integrity Unit
+Medical Illustration and Visualization Unit
+Editorial and Publications Division
+Standard Division Page Template
+Overview and scope
+Key subject areas
+Staff and contributors
+Active research
+Completed projects
+Publications and books
+Educational activities
+Collaboration opportunities
+Related resources
+
+11  Research Hub
+Research is one of the core institutional pillars. The website should show not only published results, but the research lifecycle, so visitors can see what is proposed, underway, being analyzed, completed and published.
+Research Status Model
+Status
+Meaning
+Proposed
+Concept under development.
+Upcoming
+Approved for future work but not yet active.
+Recruiting
+Participant or collaborator recruitment is active, where applicable.
+In Progress
+Active study or research activity.
+Data Analysis
+Data collection complete, analysis underway.
+Manuscript Preparation
+Research completed, publication being prepared.
+Completed
+Research activity completed.
+Published
+Output formally published.
+Archived
+Retained for record but no longer active.
+
+Research Routes
+/research
+/research/current
+/research/completed
+/research/upcoming
+/research/themes
+/research/methodology
+/research/[slug]
+Individual Research Record
+A research detail page is designed to support title, status, abstract, background, objectives, research questions, methodology, study design, population, sample size, team, principal investigator, collaborators, division, research area, dates, funding, ethics information, trial registration, findings, resulting publications, data availability, references and downloadable reports. Fields can remain blank or hidden until verified.
+
+12  Projects Hub
+Projects are broader than formal research studies. This area allows Aurevia IMRES to show editorial, educational, visualization and digital initiatives without forcing everything into the research taxonomy.
+Research projects
+Educational projects
+Publishing projects
+Evidence review projects
+Medical illustration projects
+Reference works
+Digital learning projects
+Routes
+/projects, /projects/upcoming, /projects/in-progress, /projects/completed, /projects/[slug]
+Record fields
+Title, project type, status, overview, objectives, team, timeline, deliverables, updates, related publications and resources.
+Use case
+A new medical atlas can be tracked as a project while it is being illustrated and edited, then appear as a book when formally published.
+
+
+13  Publications Hub
+The publications system is intended for scholarly and institutional outputs other than full-length books. It should support discovery by author, division, type, year and research area.
+Research articles
+Review articles
+Systematic reviews
+Meta-analyses
+Evidence summaries
+Clinical reviews
+Research reports
+Technical reports
+Educational articles
+Position papers
+Editorials
+Monographs
+Routes
+/publications, /publications/articles, /publications/reviews, /publications/reports, /publications/evidence-reviews, /publications/[slug]
+Detail fields
+Title, authors, type, abstract, keywords, publication date, division, related research, citation information, DOI, PDF, references and related publications.
+DOI policy
+Use DOI fields only when a real DOI exists. Do not fabricate identifiers.
+PDF policy
+Only distribute files when the institute holds the necessary rights and the publication allows distribution.
+
+
+14  Books and the Publishing Program
+Books are a major part of the Aurevia IMRES idea, not a side section. The institute can develop reference works, textbooks, handbooks, monographs, medical atlases and visual learning books under a consistent publishing identity.
+Reference books
+Medical textbooks
+Clinical handbooks
+Research methodology books
+Evidence-based medicine books
+Biomedical science books
+Dentistry books
+Nursing books
+Pharmacology books
+Public health books
+Medical atlases
+Visual learning books
+Monographs
+Book Status Model
+Status
+Use
+Upcoming
+Announced or approved for development.
+In Development
+Writing, research or content creation underway.
+In Editing
+Editorial, review, illustration or production stage.
+Published
+Available through approved distribution channels.
+Archived
+Retained in catalog but no longer actively promoted.
+
+Recommended Authorship and Imprint Model
+Recommended modelUse the real doctors, researchers, editors or qualified subject experts as authors or editors. Use Aurevia IMRES as the institutional affiliation and Aurevia IMRES Press as the publisher/imprint. Use Aurevia IMRES as a corporate author mainly for official institutional reports, standards, consensus documents, evidence summaries and similar works.
+
+Not every contributor must be a physician. Contributors should be qualified for the material they handle. Depending on the title, contributors can include respiratory therapists, nurses, pharmacists, biomedical scientists, physiologists, statisticians, medical illustrators, methodologists and medical editors. Clinically sensitive material should receive appropriate clinical review.
+
+15  PublishDrive and External Distribution
+PublishDrive can be used as the distribution layer for books produced by the institute. The website remains the institutional catalog and authority layer, while PublishDrive handles distribution to supported retail and library channels.
+Recommended Metadata Structure
+Author / Editor
+Named individual contributors whose role matches the book and who are shown consistently on the cover and metadata.
+Institutional affiliation
+Aurevia Institute for Medical Research, Education and Sciences.
+Publisher / imprint
+Aurevia IMRES Press.
+Website
+aimres.site.
+Corporate author use
+Official institutional publications, policies, consensus statements and similar works when appropriate.
+Contributor consistency
+Names, roles and spelling should match across cover, copyright page, metadata and website.
+
+Example Publishing Workflow
+1.  Project approved by Editorial and Publications Division.
+2.  Authors/editors and contributors formally assigned.
+3.  Scope, audience and evidence standards defined.
+4.  Writing and technical review completed.
+5.  Medical/scientific review completed where required.
+6.  Copyediting, illustration and production completed.
+7.  Metadata, ISBN and rights information finalized.
+8.  Book published under Aurevia IMRES Press.
+9.  Distribution uploaded through PublishDrive.
+10.  Book record published on aimres.site and linked to contributors and related research.
+11.  Corrections and new editions governed through a documented update process.
+
+16  Education, Integrity, Illustration and Insights
+Area
+Role in the platform
+Education
+Courses, workshops and resources covering research methodology, evidence-based medicine, scientific writing, clinical education, biomedical sciences, dentistry, nursing, pharmacology and medical illustration. The site must not imply accredited degrees or certification unless this becomes true.
+Scientific Integrity
+Evidence review, critical appraisal, transparency, reproducibility, reporting standards, conflict of interest, responsible research, corrections, retractions and editorial standards.
+Medical Illustration
+Anatomical illustration, scientific diagrams, research figures, visual abstracts, biomedical visualization, infographics and publication illustration. The site can evolve into a portfolio and service showcase.
+Insights
+Research updates, evidence reviews, medical education, scientific integrity, publications, institute news, commentary and research methods.
+
+
+17  Collaboration, Contact and Search
+Collaboration
+The collaboration area should make the institute approachable to researchers, clinicians, dentists, nurses, biomedical scientists, pharmacologists, editors, illustrators, educators and institutions. Collaboration types can include research, academic, clinical, editorial, evidence review, illustration and education.
+Contact
+The planned contact page separates inquiries into General Inquiry, Research Collaboration, Education, Editorial and Publications, Scientific Review and Medical Illustration. In the current static architecture, the forms will need a real submission service or API before going live.
+Global Search
+Search should cover People, Research, Projects, Publications, Books, Insights and Divisions. The initial implementation can search structured local data. A future CMS or database can provide server-side search, indexing and more advanced filtering.
+
+18  Content and Data Architecture
+A key design decision is that content should not be hardcoded throughout JSX files. The current project uses structured TypeScript data files. This makes the front end reusable and prepares the application for a later CMS or database migration.
+Entity
+Purpose
+Person
+Expert identity, credentials, affiliations within the institute, expertise and linked work.
+Division
+Institutional home for people, research, education and publications.
+Research
+Formal research records with status, methods, team and outputs.
+Project
+Broader institutional initiatives.
+Publication
+Articles, reports, evidence reviews and similar outputs.
+Book
+Long-form published works and reference titles.
+Insight
+Editorial, educational, commentary and institute news content.
+Education item
+Course, workshop or learning resource.
+Illustration project
+Scientific visual work and portfolio entries.
+
+Key Relationships
+A Person can belong to one or more Divisions.
+A Person can contribute to many Research records, Projects, Publications and Books.
+A Research record can produce multiple Publications and connect to multiple People.
+A Book can have authors, editors, contributors, related research and related resources.
+A Division can aggregate its staff, research, projects, publications, books and educational activity.
+Insights can reference any other content type to create discovery pathways.
+
+19  Editorial and Content Governance
+The platform should eventually distinguish between creating content, scientifically reviewing it, approving it and publishing it. This matters especially because medical and scientific material can become outdated or misleading if ownership is unclear.
+Role
+Responsibility
+Content owner
+Responsible for the factual source material and ongoing accuracy.
+Author / contributor
+Creates or materially contributes to the work.
+Scientific reviewer
+Checks technical and clinical accuracy within their expertise.
+Evidence reviewer
+Checks evidence quality, sourcing and interpretation.
+Editor
+Improves structure, clarity, consistency, citations and publication readiness.
+Illustrator / visual editor
+Creates and reviews scientific figures and educational visuals.
+Publisher / administrator
+Controls final publication status and metadata on the platform.
+
+Suggested Content States
+Draft
+Under review
+Changes requested
+Approved
+Scheduled
+Published
+Corrected
+Archived
+
+20  Technical Architecture
+The first build uses a modern web stack that is easy to deploy and can later support a CMS, database, analytics and richer workflows.
+
+Figure 2. The current front end can remain while the content layer becomes more sophisticated over time.
+Current Stack
+Technology
+Role
+Next.js
+Application framework and routing.
+TypeScript
+Typed content models and safer development.
+Tailwind CSS
+Responsive styling and reusable visual system.
+App Router
+Page, layout and dynamic route architecture.
+Structured local data
+Current content source for demo and early development.
+Vercel
+Planned hosting and deployment platform.
+Playwright
+Browser-level testing capability.
+axe-core integration
+Accessibility testing capability.
+ESLint / TypeScript checks
+Code quality and type validation.
+
+
+21  Repository and Component Structure
+The current project is organized around route folders, shared components and typed data. This separation is important because the same card, filter, metadata panel or profile element should be reused across many pages.
+app/
+All routes, layouts, metadata, sitemap, robots and custom 404.
+components/
+Reusable UI and navigation components.
+data/
+Typed local records and data exports.
+public/
+Favicon, hero imagery and other public assets.
+scripts/verify-site.mjs
+Automated route and dynamic-route checks.
+README.md
+Setup, local development and deployment instructions.
+package.json
+Runtime and development dependencies and scripts.
+
+Core Reusable Components
+Header • MegaMenu • MobileNav
+Footer • Breadcrumbs • PageHero
+SectionHeader • ProfileCard • ResearchCard
+ProjectCard • PublicationCard • BookCard
+ArticleCard • DivisionCard • StatusBadge
+FilterBar • SearchBox • Pagination
+RelatedContent • AuthorList • ResearchMeta
+PublicationMeta • BookMeta • CTASection
+EmptyState
+
+22  Design System and User Experience
+The visual direction should communicate academic credibility and scientific seriousness. It should not look like a generic SaaS landing page or a generic hospital template.
+Design Principles
+Professional academic typography and strong information hierarchy.
+Generous whitespace and restrained use of color.
+Subtle biomedical or scientific visual language rather than decorative technology gradients.
+Cards and grids used for information structure, not as the entire visual identity.
+Clear status badges for research, projects and books.
+Consistent detail-page templates so users know where to find abstracts, contributors, dates, methods and related content.
+Responsive mega-menu on desktop and usable mobile navigation on smaller screens.
+Visual Content Policy
+Prefer authentic institutional photography, original illustrations, scientific diagrams and carefully licensed imagery. Avoid implying specific hospitals, patient relationships or facilities through unrelated stock photos. Medical illustration should be treated as an institutional capability, not merely decoration.
+
+23  Search, SEO and Discoverability
+The application should be discoverable both by human visitors and search engines. Because the platform contains structured scholarly material, metadata quality is especially important.
+Capability
+Purpose
+Page metadata
+Unique titles and descriptions for major pages and dynamic records.
+Open Graph
+Shareable previews for research, books, publications and insights.
+Sitemap
+Generated route discovery for search engines.
+robots.txt
+Crawler instructions.
+Structured data
+Future use for Organization, Person, Book, Article and other schema types where accurate.
+Internal linking
+People ↔ research ↔ publications ↔ books ↔ divisions.
+Canonical URLs
+Useful when content has print, retailer or alternate versions.
+Search filters
+Author, division, type, year, specialty, research area and status.
+
+
+24  Accessibility, Privacy and Security
+Accessibility Target
+The site should aim for WCAG 2.2 AA level practices: semantic headings, keyboard navigation, visible focus states, adequate contrast, form labels, useful link text, alt text for informative images and accessible tables. Automated tests are useful, but manual keyboard and screen-reader checks are still needed.
+Privacy and Data Handling
+Do not collect patient medical data through ordinary contact forms.
+Collect only the minimum personal information needed for inquiries, applications or collaboration.
+Publish a privacy policy before forms and analytics are enabled.
+Define data retention and access rules for contact submissions.
+If newsletters or email marketing are added, use consent-based subscription practices and appropriate unsubscribe controls.
+Security Basics
+HTTPS through the hosting platform.
+Environment variables for secret keys, never hardcoded credentials.
+Spam and abuse protection on public forms.
+Dependency updates and security scanning.
+Role-based access if a CMS or admin area is later introduced.
+Backups and export procedures for production content.
+
+25  Clinical and Scientific Risk Controls
+Because the platform is medical and scientific, credibility depends as much on governance as on design. The site should consistently separate education from personalized medical advice and distinguish verified institutional facts from placeholders.
+Control
+Expected practice
+Medical disclaimer
+Educational content is not individualized diagnosis or treatment.
+Currency review
+Clinical material should carry review or update dates when appropriate.
+Authorship
+Real contributors and reviewers should be named accurately.
+Conflicts of interest
+Relevant disclosures should be recorded where required.
+Corrections
+Published corrections should be visible rather than silently replacing important errors.
+Research integrity
+Methods, status and findings should not be overstated.
+Credentials
+Degrees, titles and professional memberships should be verified before publication.
+Affiliations
+Do not imply hospitals, universities, regulators or partners without permission and evidence.
+
+
+26  Deployment and Domain
+The planned deployment path is a Git-based workflow to Vercel, with aimres.site configured as the custom domain. The current project is configured for static export, which is suitable for an early content-driven version.
+Phase 1 Deployment Flow
+1.  Install dependencies on a network-enabled development machine.
+2.  Run type checking, linting, route tests and a production build.
+3.  Push the repository to GitHub, GitLab or Bitbucket.
+4.  Import the repository into Vercel.
+5.  Deploy and test representative routes, including dynamic records.
+6.  Add aimres.site under Vercel domain settings.
+7.  Copy the required DNS records into the domain registrar.
+8.  Wait for DNS and TLS verification.
+9.  Set the preferred canonical domain and retest the site.
+Static export caveatA fully static export cannot itself process contact forms or authenticated administration. Those features require an external form service, serverless/API functions, or a future backend/CMS. If the application moves beyond static hosting, the deployment configuration should be updated accordingly.
+
+
+27  Current Build Status
+Codex has already created the multi-page architecture and audited the route structure. The project was repaired so it includes the requested dynamic medical illustration route, reusable component filenames, route verification script, README, typed local data, SEO files, favicon, sitemap, robots, custom 404, responsive styles and static export configuration.
+Route audit
+Passed, with 15 top-level routes and 8 dynamic route templates reported by the project audit.
+Data files
+people.ts, research.ts, projects.ts, publications.ts, books.ts, insights.ts and divisions.ts.
+Pending verification
+Full npm install, TypeScript checks, lint and production build still need to run successfully on a network-enabled machine.
+Current content state
+Demo/sample records should be replaced with verified institutional information before public launch.
+Forms
+Need a real submission service or backend.
+Final QA
+Browser, keyboard, screen-reader and mobile testing remain necessary before launch.
+
+Why this mattersThe project should not be rebuilt from scratch simply because a restricted Codex environment could not reach the npm registry. The correct next step is to install dependencies and run the validation commands in a normal development environment.
+
+
+28  Development and Launch Roadmap
+Phase
+Outcome
+Phase 1: Foundation
+Finalize brand language, legal entity naming, domain ownership, route structure and design system.
+Phase 2: Verified content
+Replace demo profiles, research records, projects, publications and books with real approved content.
+Phase 3: Technical validation
+Install packages, typecheck, lint, test, build, responsive QA and accessibility QA.
+Phase 4: Launch infrastructure
+Deploy, connect aimres.site, configure analytics, forms, email and legal policies.
+Phase 5: Editorial operations
+Create internal content approval, review dates, corrections and publishing workflows.
+Phase 6: CMS / database
+Move high-volume structured content from local TypeScript files into an editorial CMS or database.
+Phase 7: Publishing integration
+Formalize Aurevia IMRES Press, book metadata, ISBN workflow, PublishDrive distribution and catalog pages.
+Phase 8: Advanced platform
+Add richer search, author dashboards, institutional reporting, APIs or member workflows only when there is a validated need.
+
+
+29  Key Decisions for the Partners
+The website can be developed further immediately, but several institutional decisions should be made deliberately because they affect credibility, law, publishing and long-term operations.
+Decision
+Question to resolve
+Legal identity
+What entity will own and operate Aurevia IMRES?
+Brand protection
+Will Aurevia, Aurevia IMRES and Aurevia IMRES Press be searched and protected as names or trademarks where appropriate?
+Governance
+Who approves research, publishing, scientific review and public communications?
+Leadership
+Which verified people can be publicly listed, and in what roles?
+Publishing imprint
+Will Aurevia IMRES Press be the formal imprint used across PublishDrive and book metadata?
+Authorship policy
+How will authors, editors, contributors and reviewers be credited?
+Content review
+What minimum review standard applies to clinical, scientific and educational material?
+Contact infrastructure
+Which official email addresses and form destinations will be used?
+CMS choice
+At what content volume should the project move from local data to a CMS/database?
+Research records
+What can be publicly shown about funding, ethics, collaborators and results?
+Book rights
+Who owns manuscripts, illustrations and derivative editions?
+Privacy
+What data will forms collect, where will it be stored and who can access it?
+
+
+30  Risk Register
+Risk
+What can go wrong
+Control
+Credibility risk
+Publishing demo names, credentials or affiliations as if they are real.
+Require verification before publication.
+Medical risk
+Readers interpreting educational material as personal medical advice.
+Clear disclaimers, responsible wording and clinical review.
+Currency risk
+Guidelines and medical evidence becoming outdated.
+Review dates, update cycles and correction policy.
+Publishing risk
+Metadata mismatch between cover, website and distributor.
+Central metadata sheet and pre-publication checklist.
+Technical risk
+Static architecture limiting forms or editorial workflows.
+Use external services now, migrate to dynamic backend/CMS when needed.
+Security risk
+Collecting sensitive information without controls.
+Minimize data collection, secure forms and document retention rules.
+Governance risk
+No clear final approver for scientific or editorial content.
+Define roles and approval authority.
+Scope risk
+Trying to launch every advanced feature at once.
+Prioritize verified content, core routes and publishing operations first.
+
+
+31  Recommended Next Actions
+1.  Run npm install, npm run typecheck, npm run lint, npm run test:site and npm run build on a normal network-enabled machine.
+2.  Preview the site and review each major page family visually, not only the homepage.
+3.  Replace demo people with a small verified founding team rather than populating many fictional profiles.
+4.  Choose the first real research, project, publication and book records to demonstrate the connected content model.
+5.  Confirm Aurevia IMRES Press as the intended publishing imprint before using it in retail metadata.
+6.  Define a written authorship, contributor and medical review policy.
+7.  Create official domain email addresses and connect the contact forms.
+8.  Prepare privacy policy, terms, medical disclaimer and editorial corrections policy.
+9.  Launch a controlled first version, then migrate to a CMS when the volume of real content justifies it.
+Recommended launch principleLaunch with fewer verified profiles, projects and publications rather than a large volume of invented or weakly supported content. Institutional trust is more valuable than apparent size.
+
+
+Appendix A: Complete Route Map
+/   /about
+/about/mission   /about/leadership
+/about/governance   /about/values
+/people   /people/[slug]
+/divisions   /divisions/[slug]
+/research   /research/current
+/research/completed   /research/upcoming
+/research/themes   /research/methodology
+/research/[slug]   /projects
+/projects/upcoming   /projects/in-progress
+/projects/completed   /projects/[slug]
+/publications   /publications/articles
+/publications/reviews   /publications/reports
+/publications/evidence-reviews   /publications/[slug]
+/books   /books/reference
+/books/textbooks   /books/handbooks
+/books/monographs   /books/[slug]
+/education   /education/courses
+/education/workshops   /education/resources
+/scientific-integrity   /scientific-integrity/evidence-review
+/scientific-integrity/research-standards   /scientific-integrity/editorial-standards
+/medical-illustration   /medical-illustration/gallery
+/medical-illustration/projects   /medical-illustration/[slug]
+/insights   /insights/[slug]
+/collaborate   /contact
+/search
+
+Appendix B: Partner Summary
+In practical terms, Aurevia IMRES is being built as three things at once: an institution, a digital knowledge platform and a publishing ecosystem. The website should make those three layers reinforce each other.
+InstitutionA multidisciplinary structure for research, clinical science, dentistry, nursing and allied health, pharmacology, biomedical science, evidence integrity, medical illustration and publishing.
+
+PlatformA searchable multi-page application where people, research, projects, publications, books, education and insights are connected through reusable structured data.
+
+Publishing ecosystemAurevia IMRES Press can publish books and institutional works, while named qualified authors, editors and contributors receive appropriate credit and PublishDrive can distribute approved titles externally.
+
+The strongest long-term version of the project is not one that appears large immediately. It is one that becomes increasingly authoritative because every profile, research record, publication, book and claim is structured, verified, linked and governed consistently.

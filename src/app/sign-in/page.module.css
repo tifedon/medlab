@@ -1,0 +1,240 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  padding: 2rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+}
+
+.formCard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.logoImage {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
+.formHeader {
+  text-align: center;
+}
+
+.formHeader h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--navy-900);
+  margin-bottom: 0.5rem;
+}
+
+.formHeader p {
+  color: var(--gray-500);
+  font-size: 0.95rem;
+}
+
+.setupNotice {
+  background: var(--amber-50);
+  border: 1px solid var(--amber-200);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  color: var(--amber-600);
+  font-size: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.helpRow {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--gray-500);
+  margin-top: 1.5rem;
+}
+
+.helpRow a {
+  color: var(--teal-600);
+  font-weight: 500;
+}
+
+.helpRow a:hover {
+  text-decoration: underline;
+}
+
+.form { display: flex; flex-direction: column; gap: 1.2rem; }
+
+.field { display: flex; flex-direction: column; gap: 0.5rem; }
+.field label { color: var(--navy-900); font-weight: 500; font-size: 0.85rem; }
+.fieldHint { color: var(--gray-500); font-size: 0.75rem; }
+.labelRow { display: flex; justify-content: space-between; align-items: center; }
+.labelRow span { color: var(--gray-400); font-size: 0.75rem; }
+
+.field input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  color: var(--navy-900);
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  outline: none;
+  font: inherit;
+  transition: all var(--transition-fast);
+}
+
+.field input:focus {
+  border-color: var(--teal-500);
+  box-shadow: 0 0 0 3px rgba(15, 150, 144, 0.1);
+}
+
+.submitButton {
+  min-height: 48px;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--teal-600), var(--teal-500));
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.submitButton:hover:not(:disabled) { 
+  background: linear-gradient(135deg, var(--teal-700), var(--teal-600));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(13, 115, 119, 0.3);
+}
+
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.formError {
+  color: var(--red-600);
+  background: var(--red-50);
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  border: 1px solid var(--red-100);
+}
+
+.formNote { 
+  color: var(--gray-500); 
+  font-size: 0.85rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--gray-400);
+  font-size: 0.85rem;
+  margin: 0.5rem 0;
+}
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--gray-200);
+}
+.divider span {
+  padding: 0 10px;
+}
+
+.googleButton {
+  min-height: 48px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--navy-900);
+  background: var(--white);
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.googleButton:hover:not(:disabled) {
+  background: var(--gray-50);
+  border-color: var(--gray-400);
+}
+
+.googleButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.signupRow {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--gray-500);
+  margin-top: 1rem;
+}
+
+.signupRow a {
+  color: var(--teal-600);
+  font-weight: 500;
+}
+
+.signupRow a:hover {
+  text-decoration: underline;
+}
+
+.passwordWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.passwordWrapper input {
+  padding-right: 2.5rem;
+}
+
+.passwordToggle {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray-400);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.passwordToggle:hover {
+  color: var(--navy-600);
+}
