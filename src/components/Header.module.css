@@ -322,10 +322,26 @@
   }
 
   .logoTagline,
-  .iconLink,
-  .accountButton,
   .aboutButton {
     display: none;
+  }
+
+  .accountButton span {
+    display: none;
+  }
+
+  .accountButton {
+    padding: 0;
+    width: 36px;
+    min-height: 36px;
+    justify-content: center;
+  }
+
+  .searchButton,
+  .iconLink,
+  .mobileMenuBtn {
+    width: 36px;
+    height: 36px;
   }
 }
 

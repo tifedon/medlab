@@ -105,8 +105,8 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
       <Section last>
         {!q && <EmptyState title="Start with a search term">Search covers every record in the library and every page of the institute.</EmptyState>}
         {rawResults && (
-          <div style={{ display: 'flex', gap: '3rem', alignItems: 'flex-start', flexWrap: 'wrap' }}>
-            <aside style={{ width: '220px', flexShrink: 0, display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+          <div className={ui.searchLayout}>
+            <aside className={ui.searchSidebar}>
               <div>
                 <h3 style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--navy-900)', marginBottom: '0.75rem', paddingBottom: '0.5rem', borderBottom: '1px solid var(--gray-200)' }}>Time</h3>
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.95rem' }}>
@@ -139,7 +139,7 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
               </div>
             </aside>
 
-            <div style={{ flex: 1, minWidth: 0 }}>
+            <div className={ui.searchMain}>
               <p style={{ fontSize: '0.9rem', color: 'var(--gray-500)', marginBottom: '1.5rem' }}>About {unified.length} results</p>
               
               {unified.length === 0 && <EmptyState title="No results">Try a broader term or clear your filters.</EmptyState>}
