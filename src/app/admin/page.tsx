@@ -52,7 +52,6 @@ export default async function AdminPage() {
                 <input type="hidden" name="memberId" value={member.id} />
                 <div className={styles.inquiryHead}>
                   <span><strong>{member.full_name || 'Unnamed member'}</strong></span>
-                  <span title={member.id}>{member.id.slice(0, 8)}…</span>
                 </div>
                 <div className={styles.memberControls}>
                   <label>
