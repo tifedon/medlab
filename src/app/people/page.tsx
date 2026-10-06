@@ -73,7 +73,7 @@ export default async function PeoplePage({ searchParams }: { searchParams: Promi
         />
         <p className={ui.resultCount} aria-live="polite">{filtered.length} people</p>
         {filtered.length ? (
-          <div className={ui.grid3}>{filtered.map(person => <ProfileCard key={person.slug} person={person} />)}</div>
+          <div className={ui.flatList}>{filtered.map(person => <ProfileCard key={person.slug} person={person} />)}</div>
         ) : (
           <EmptyState title="No people match these filters">Try another division, role or letter.</EmptyState>
         )}

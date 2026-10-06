@@ -6,21 +6,19 @@ import styles from './ui.module.css';
 
 export default function PublicationCard({ publication: p }: { publication: Publication }) {
   return (
-    <article className={styles.card}>
-      <div className={styles.cardTop}>
-        <span className={styles.label}>{publicationTypeLabels[p.type]}</span>
-        {p.openAccess && <span className="access-badge access-badge--open">Open access</span>}
+    <article className={styles.listItem}>
+      <div className={styles.listItemMain}>
+        <h3 className={styles.listItemTitle}>
+          <Link href={`/publications/${p.slug}`}>{p.title}</Link>
+          {p.openAccess && <span className={styles.listItemBadge}>OPEN ACCESS</span>}
+        </h3>
+        <p className={styles.listItemByline}>{byline(p.authors, 3, p.authorsTruncated) || p.corporateAuthor}</p>
+        <p className={styles.listItemText}>
+          <em>{p.journal}</em> {p.doi && <span> · DOI: {p.doi}</span>}
+        </p>
       </div>
-      <h3 className={styles.cardTitle}>
-        <Link href={`/publications/${p.slug}`}>{p.title}</Link>
-      </h3>
-      <p className={styles.cardByline}>{byline(p.authors, 3, p.authorsTruncated) || p.corporateAuthor}</p>
-      <p className={styles.cardText}>{p.summary}</p>
-      <DivisionTags ids={p.divisions} />
-      <div className={styles.cardMeta}>
-        <span><em>{p.journal}</em></span>
-        <span>{publicationYear(p)}</span>
-        {p.doi && <span>DOI {p.doi}</span>}
+      <div className={styles.listItemRight}>
+        {publicationYear(p)}
       </div>
     </article>
   );

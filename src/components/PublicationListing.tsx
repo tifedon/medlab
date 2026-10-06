@@ -34,7 +34,7 @@ export default function PublicationListing({ records, basePath, current }: { rec
       />
       <p className={ui.resultCount} aria-live="polite">{filtered.length} publications</p>
       {filtered.length ? (
-        <div className={ui.grid2}>{filtered.map(p => <PublicationCard key={p.slug} publication={p} />)}</div>
+        <div className={ui.flatList}>{filtered.map(p => <PublicationCard key={p.slug} publication={p} />)}</div>
       ) : (
         <EmptyState title="No publications match these filters">Clear a filter to see more.</EmptyState>
       )}

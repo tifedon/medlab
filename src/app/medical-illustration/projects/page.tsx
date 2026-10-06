@@ -21,7 +21,7 @@ export default function IllustrationProjectsPage() {
     <div>
       <PageHero kicker="Medical illustration" title="Illustration projects" lead="Visual work tracked from brief to publication, including atlases and figure series that later appear as books or publications." breadcrumbs={[{ label: 'Medical illustration', href: '/medical-illustration' }, { label: 'Projects' }]} />
       <Section>
-        {records.length ? <div className={ui.grid3}>{records.map(p => <ProjectCard key={p.slug} project={p} />)}</div> : <EmptyState title="No illustration projects yet">Projects will appear here once approved.</EmptyState>}
+        {records.length ? <div className={ui.flatList}>{records.map(p => <ProjectCard key={p.slug} project={p} />)}</div> : <EmptyState title="No illustration projects yet">Projects will appear here once approved.</EmptyState>}
       </Section>
       <Section last>
         <SectionHeader kicker="Process" title="How an illustration project runs" />

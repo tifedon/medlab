@@ -29,7 +29,7 @@ export default function ResearchListing({ records, basePath, current }: { record
       />
       <p className={ui.resultCount} aria-live="polite">{filtered.length} {filtered.length === 1 ? 'study' : 'studies'}</p>
       {filtered.length ? (
-        <div className={ui.grid3}>{filtered.map(r => <ResearchCard key={r.slug} study={r} />)}</div>
+        <div className={ui.flatList}>{filtered.map(r => <ResearchCard key={r.slug} study={r} />)}</div>
       ) : (
         <EmptyState title="No studies match these filters">Clear a filter to see more research.</EmptyState>
       )}

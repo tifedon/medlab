@@ -122,14 +122,14 @@ export default async function DivisionPage({ params }: { params: Promise<{ slug:
       <Section id="research">
         <SectionHeader kicker="Active research" title="Registered studies" link={{ href: '/research', label: 'Research hub' }} />
         {active.length ? (
-          <div className={ui.grid3}>{active.map(s => <ResearchCard key={s.slug} study={s} />)}</div>
+          <div className={ui.flatList}>{active.map(s => <ResearchCard key={s.slug} study={s} />)}</div>
         ) : (
           <EmptyState title="No active studies tracked">This division’s scope is mainly methodological or editorial, so no registered clinical studies are tracked yet.</EmptyState>
         )}
         {completed.length > 0 && (
           <>
             <h3 className={ui.sectionTitle} style={{ fontSize: '1.5rem', margin: '2.5rem 0 1rem' }}>Completed and published</h3>
-            <div className={ui.grid3}>{completed.map(s => <ResearchCard key={s.slug} study={s} />)}</div>
+            <div className={ui.flatList}>{completed.map(s => <ResearchCard key={s.slug} study={s} />)}</div>
           </>
         )}
       </Section>
@@ -137,7 +137,7 @@ export default async function DivisionPage({ params }: { params: Promise<{ slug:
       {projects.length > 0 && (
         <Section>
           <SectionHeader kicker="Projects" title="Institutional projects" link={{ href: '/projects', label: 'All projects' }} />
-          <div className={ui.grid3}>{projects.slice(0, 3).map(p => <ProjectCard key={p.slug} project={p} />)}</div>
+          <div className={ui.flatList}>{projects.slice(0, 3).map(p => <ProjectCard key={p.slug} project={p} />)}</div>
         </Section>
       )}
 

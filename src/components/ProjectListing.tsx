@@ -11,7 +11,7 @@ export default function ProjectListing({ records, basePath, current }: { records
     <>
       <FilterBar basePath={basePath} current={current} groups={[{ param: 'type', label: 'Project type', options: types.map(t => ({ value: t, label: projectTypeLabels[t] })) }]} />
       {filtered.length ? (
-        <div className={ui.grid3}>{filtered.map(p => <ProjectCard key={p.slug} project={p} />)}</div>
+        <div className={ui.flatList}>{filtered.map(p => <ProjectCard key={p.slug} project={p} />)}</div>
       ) : (
         <EmptyState title="No projects here yet">Projects appear as they are approved.</EmptyState>
       )}

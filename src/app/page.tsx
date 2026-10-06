@@ -76,7 +76,7 @@ export default function HomePage() {
             lead={`Registered studies that are recruiting or in progress, with ${upcomingResearch} more due to start.`}
             link={{ href: '/research/current', label: 'All current research' }}
           />
-          <div className={ui.grid3}>
+          <div className={ui.flatList}>
             {featuredResearch.map(study => <ResearchCard key={study.slug} study={study} />)}
           </div>
         </div>

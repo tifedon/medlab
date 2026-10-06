@@ -23,7 +23,7 @@ export default async function InsightsPage({ searchParams }: { searchParams: Pro
       <PageHero kicker="Insights" title="Insights" lead="Editorial articles from Sterling IMRES. Each one discusses works in the reference library and links to them, so every claim can be checked." breadcrumbs={[{ label: 'Insights' }]} />
       <Section last>
         <FilterBar basePath="/insights" current={current} groups={[{ param: 'category', label: 'Category', options: categories.map(c => ({ value: c, label: insightCategoryLabels[c] })) }]} />
-        {filtered.length ? <div className={ui.grid3}>{filtered.map(i => <ArticleCard key={i.slug} insight={i} />)}</div> : <EmptyState title="No insights in this category">Choose another category.</EmptyState>}
+        {filtered.length ? <div className={ui.flatList}>{filtered.map(i => <ArticleCard key={i.slug} insight={i} />)}</div> : <EmptyState title="No insights in this category">Choose another category.</EmptyState>}
       </Section>
     </div>
   );

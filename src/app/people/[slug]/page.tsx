@@ -86,11 +86,18 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
                   <h4 style={{ fontSize: '1rem', color: 'var(--gray-500)', marginBottom: 'var(--space-3)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                     {kindLabels[group.kind]}
                   </h4>
-                  <ul className={ui.list}>
+                  <ul className={ui.flatList}>
                     {group.works.map(work => (
-                      <li key={work.href} className={ui.card}>
-                        <h3 className={ui.cardTitle} style={{ fontSize: '1.05rem' }}><Link href={work.href}>{work.title}</Link></h3>
-                        <p className={ui.cardByline} style={{ margin: 0 }}>{work.role}{work.year ? ` · ${work.year}` : ''}</p>
+                      <li key={work.href} className={ui.listItem}>
+                        <div className={ui.listItemMain}>
+                          <h3 className={ui.listItemTitle} style={{ fontSize: '1.05rem' }}>
+                            <Link href={work.href}>{work.title}</Link>
+                          </h3>
+                          <p className={ui.listItemByline} style={{ margin: 0 }}>{work.role}</p>
+                        </div>
+                        <div className={ui.listItemRight}>
+                          {work.year && <span>{work.year}</span>}
+                        </div>
                       </li>
                     ))}
                   </ul>

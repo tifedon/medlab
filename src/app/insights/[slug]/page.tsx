@@ -78,7 +78,7 @@ export default async function InsightPage({ params }: { params: Promise<{ slug: 
         {more.length > 0 && (
           <section className={ui.section}>
             <h2 className={ui.sectionTitle} style={{ marginBottom: '1.5rem' }}>More insights</h2>
-            <div className={ui.grid3}>{more.map(i => <ArticleCard key={i.slug} insight={i} />)}</div>
+            <div className={ui.flatList}>{more.map(i => <ArticleCard key={i.slug} insight={i} />)}</div>
           </section>
         )}
       </div>

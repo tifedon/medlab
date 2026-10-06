@@ -122,7 +122,7 @@ export default async function ResearchRecordPage({ params }: { params: Promise<{
             {related.length > 0 && (
               <section>
                 <h2>Related research</h2>
-                <div className={ui.grid3} style={{ gridTemplateColumns: '1fr' }}>{related.map(r => <ResearchCard key={r.slug} study={r} />)}</div>
+                <div className={ui.flatList}>{related.map(r => <ResearchCard key={r.slug} study={r} />)}</div>
               </section>
             )}
           </div>

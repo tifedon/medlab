@@ -5,18 +5,19 @@ import styles from './ui.module.css';
 
 export default function ArticleCard({ insight }: { insight: Insight }) {
   return (
-    <article className={styles.card}>
-      <div className={styles.cardTop}>
-        <span className={styles.label}>{insightCategoryLabels[insight.category]}</span>
+    <article className={styles.listItem}>
+      <div className={styles.listItemMain}>
+        <div className={styles.listItemTop}>
+          <span className={styles.label}>{insightCategoryLabels[insight.category]}</span>
+        </div>
+        <h3 className={styles.listItemTitle}>
+          <Link href={`/insights/${insight.slug}`}>{insight.title}</Link>
+        </h3>
+        <p className={styles.listItemByline}>{insight.author}</p>
+        <p className={styles.listItemText}>{insight.excerpt}</p>
       </div>
-      <h3 className={styles.cardTitle}>
-        <Link href={`/insights/${insight.slug}`}>{insight.title}</Link>
-      </h3>
-      <p className={styles.cardText}>{insight.excerpt}</p>
-      <div className={styles.cardMeta}>
-        <span>{insight.author}</span>
-        <span>{formatDate(insight.publishedDate)}</span>
-        <span>{insight.readTime} min read</span>
+      <div className={styles.listItemRight}>
+        {formatDate(insight.publishedDate)}
       </div>
     </article>
   );

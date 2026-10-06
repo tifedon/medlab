@@ -78,12 +78,12 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
             </nav>
             <p className={ui.resultCount} aria-live="polite">{total} results for “{q}”</p>
             {total === 0 && <EmptyState title="No results">Try a broader term, a division name, or an author’s surname.</EmptyState>}
-            {show('people') && <ResultGroup title="People" n={count('people')}><div className={ui.grid3}>{results.people.slice(0, type === 'all' ? 6 : undefined).map(p => <ProfileCard key={p.slug} person={p} />)}</div></ResultGroup>}
-            {show('research') && <ResultGroup title="Research" n={count('research')}><div className={ui.grid3}>{results.research.map(r => <ResearchCard key={r.slug} study={r} />)}</div></ResultGroup>}
-            {show('projects') && <ResultGroup title="Projects" n={count('projects')}><div className={ui.grid3}>{results.projects.map(p => <ProjectCard key={p.slug} project={p} />)}</div></ResultGroup>}
-            {show('publications') && <ResultGroup title="Publications" n={count('publications')}><div className={ui.grid2}>{results.publications.map(p => <PublicationCard key={p.slug} publication={p} />)}</div></ResultGroup>}
-            {show('books') && <ResultGroup title="Books" n={count('books')}><div className={ui.grid2}>{results.books.map(b => <BookCard key={b.slug} book={b} />)}</div></ResultGroup>}
-            {show('insights') && <ResultGroup title="Insights" n={count('insights')}><div className={ui.grid3}>{results.insights.map(i => <ArticleCard key={i.slug} insight={i} />)}</div></ResultGroup>}
+            {show('people') && <ResultGroup title="People" n={count('people')}><div className={ui.flatList}>{results.people.slice(0, type === 'all' ? 6 : undefined).map(p => <ProfileCard key={p.slug} person={p} />)}</div></ResultGroup>}
+            {show('research') && <ResultGroup title="Research" n={count('research')}><div className={ui.flatList}>{results.research.map(r => <ResearchCard key={r.slug} study={r} />)}</div></ResultGroup>}
+            {show('projects') && <ResultGroup title="Projects" n={count('projects')}><div className={ui.flatList}>{results.projects.map(p => <ProjectCard key={p.slug} project={p} />)}</div></ResultGroup>}
+            {show('publications') && <ResultGroup title="Publications" n={count('publications')}><div className={ui.flatList}>{results.publications.map(p => <PublicationCard key={p.slug} publication={p} />)}</div></ResultGroup>}
+            {show('books') && <ResultGroup title="Books" n={count('books')}><div className={ui.flatList}>{results.books.map(b => <BookCard key={b.slug} book={b} />)}</div></ResultGroup>}
+            {show('insights') && <ResultGroup title="Insights" n={count('insights')}><div className={ui.flatList}>{results.insights.map(i => <ArticleCard key={i.slug} insight={i} />)}</div></ResultGroup>}
             {show('divisions') && <ResultGroup title="Divisions" n={count('divisions')}><div className="division-grid">{results.divisions.map(d => <DivisionCard key={d.id} division={d} />)}</div></ResultGroup>}
           </>
         )}
