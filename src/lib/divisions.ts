@@ -110,9 +110,9 @@ export const divisions: Division[] = [
   },
   {
     id: 'evidence-review-integrity',
-    name: 'Evidence Review and Scientific Integrity Unit',
+    name: 'Evidence Review and Scientific Integrity Division',
     shortName: 'Evidence & Integrity',
-    kind: 'unit',
+    kind: 'division',
     color: '#3d5a80',
     colorLight: '#e9eef5',
     role: 'Systematic review, critical appraisal, reproducibility, standards and research integrity.',
@@ -124,9 +124,9 @@ export const divisions: Division[] = [
   },
   {
     id: 'medical-illustration-visualization',
-    name: 'Medical Illustration and Visualization Unit',
+    name: 'Medical Illustration and Visualization Division',
     shortName: 'Illustration',
-    kind: 'unit',
+    kind: 'division',
     color: '#c0577a',
     colorLight: '#fbeaf0',
     role: 'Anatomical illustration, scientific figures, visual abstracts and educational diagrams.',

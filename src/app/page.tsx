@@ -35,7 +35,7 @@ export default function HomePage() {
           <div className={styles.heroStats}>
             <div className={styles.heroStat}>
               <span className={styles.heroStatNum}>9</span>
-              <span className={styles.heroStatLabel}>Divisions and units</span>
+              <span className={styles.heroStatLabel}>Divisions</span>
             </div>
             <div className={styles.heroStatDivider} />
             <div className={styles.heroStat}>
@@ -53,12 +53,7 @@ export default function HomePage() {
 
       <section className={styles.divisionsSection}>
         <div className="container">
-          <SectionHeader
-            kicker="Structure"
-            title="Nine divisions and units"
-            lead="Clinical, academic, educational and publishing work organised into complementary divisions."
-            link={{ href: '/divisions', label: 'Explore all divisions' }}
-          />
+
           <div className="division-grid">
             {divisions.map(division => (
               <DivisionCard
