@@ -4,7 +4,6 @@ import { FileTextIcon, ShieldCheckIcon, UserIcon } from '@/components/Icons';
 import { requireRole } from '@/lib/auth';
 import { createClient } from '@/lib/supabase/server';
 import { inquiryTypes } from '@/lib/institute';
-import { signOut } from '@/app/auth/actions';
 import { updateMemberAccess } from './actions';
 import styles from './page.module.css';
 
@@ -39,7 +38,6 @@ export default async function AdminPage() {
 
         <div className={styles.actions}>
           <Link href="/publications">Review the reference library</Link>
-          <form action={signOut}><button type="submit">Sign out</button></form>
         </div>
         <section className={styles.inbox} aria-labelledby="members-heading">
           <h2 id="members-heading">Member access</h2>
