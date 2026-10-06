@@ -35,9 +35,6 @@ export default async function UserPage() {
               <h1>Welcome, {displayName}</h1>
               <p>Follow research, publications and books across the nine Sterling IMRES divisions in one place.</p>
             </div>
-            <form action={signOut}>
-              <button className={styles.signOutButton} type="submit">Sign out</button>
-            </form>
           </div>
         </div>
       </section>
