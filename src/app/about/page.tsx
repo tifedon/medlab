@@ -5,6 +5,7 @@ import Section from '@/components/Section';
 import CTASection from '@/components/CTASection';
 import { libraryContributors } from '@/lib/people';
 import { siteConfig } from '@/lib/site';
+import { mission, vision, values } from '@/lib/institute';
 import ui from '@/components/ui.module.css';
 import ProfileCard from '@/components/ProfileCard';
 import MeetTheTeam from '@/components/MeetTheTeam';
@@ -40,6 +41,42 @@ export default function AboutPage() {
             <p style={{ fontSize: '1.25rem', lineHeight: 1.6, color: 'var(--navy-900)' }}>
               Beyond research, we are deeply committed to education. We provide robust training programs, workshops, and reference materials that empower the next generation of healthcare professionals to lead with evidence-based practice.
             </p>
+          </div>
+
+          <div style={{ marginBottom: '3rem' }}>
+            <h2 style={{ fontSize: '1.875rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--teal-700)' }}>
+              Mission
+            </h2>
+            <p style={{ fontSize: '1.25rem', lineHeight: 1.6, color: 'var(--navy-900)' }}>
+              {mission}
+            </p>
+          </div>
+
+          <div style={{ marginBottom: '3rem' }}>
+            <h2 style={{ fontSize: '1.875rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--teal-700)' }}>
+              Vision
+            </h2>
+            <p style={{ fontSize: '1.25rem', lineHeight: 1.6, color: 'var(--navy-900)' }}>
+              {vision}
+            </p>
+          </div>
+
+          <div>
+            <h2 style={{ fontSize: '1.875rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--teal-700)' }}>
+              Values
+            </h2>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+              {values.map((v, i) => (
+                <li key={v.title} style={{ marginBottom: '1.5rem' }}>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--navy-900)', marginBottom: '0.25rem' }}>
+                    {i + 1}. {v.title}
+                  </h3>
+                  <p style={{ fontSize: '1.125rem', lineHeight: 1.5, color: 'var(--navy-700)', margin: 0 }}>
+                    {v.practice}
+                  </p>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </Section>
