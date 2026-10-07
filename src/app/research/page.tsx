@@ -27,20 +27,8 @@ export default async function ResearchPage({ searchParams }: { searchParams: Pro
         title="Research hub"
         lead="Not only published results: the full lifecycle, so visitors can see what is upcoming, underway, completed and published."
         breadcrumbs={[{ label: 'Research' }]}
-        stats={[
-          { value: getResearchByStatuses(currentStatuses).length, label: 'current' },
-          { value: getResearchByStatuses(upcomingStatuses).length, label: 'upcoming' },
-          { value: getResearchByStatuses(completedStatuses).length, label: 'completed or published' },
-        ]}
       />
-      <Section>
-        <Notice>
-          <strong>Research watch.</strong> The studies below are registered on ClinicalTrials.gov and tracked because they matter to our divisions. They are run by the sponsors and investigators named on each record, not by Sterling IMRES. Statuses come from the registry and may lag behind the study itself; each record shows when the registry was last updated.
-        </Notice>
-      </Section>
-
       <Section last>
-        <SectionHeader kicker="All research" title="Registered studies" />
         <ResearchListing records={researchRecords} basePath="/research" current={current} />
       </Section>
     </div>
