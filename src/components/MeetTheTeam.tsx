@@ -26,14 +26,15 @@ const team = [
 export default function MeetTheTeam() {
   return (
     <div style={{ textAlign: 'center', marginBottom: '4rem', width: '100%' }}>
-      <div style={{ width: '100%', overflow: 'hidden', display: 'flex', justifyContent: 'center' }}>
-        <Image 
-          src="/images/team_banner.png" 
-          alt="Team Banner" 
-          width={1200} 
-          height={400} 
-          style={{ width: '100%', maxWidth: '1200px', height: 'auto', display: 'block' }} 
-        />
+      <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+        <div style={{ width: '100%', maxWidth: '900px', aspectRatio: '16 / 9', position: 'relative', overflow: 'hidden', borderRadius: '12px' }}>
+          <Image 
+            src="/images/team_banner.png" 
+            alt="Team Banner" 
+            fill
+            style={{ objectFit: 'cover' }} 
+          />
+        </div>
       </div>
       
       <div style={{ maxWidth: '800px', margin: '3rem auto 4rem auto', padding: '0 1.5rem' }}>
