@@ -7,6 +7,7 @@ import { libraryContributors } from '@/lib/people';
 import { siteConfig } from '@/lib/site';
 import ui from '@/components/ui.module.css';
 import ProfileCard from '@/components/ProfileCard';
+import MeetTheTeam from '@/components/MeetTheTeam';
 
 export const metadata: Metadata = {
   title: 'About Sterling IMRES',
@@ -43,22 +44,7 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      <Section>
-        <div style={{ marginBottom: '3rem' }}>
-          <h2 style={{ fontSize: '1.875rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--teal-700)' }}>
-            Meet the team
-          </h2>
-          <p style={{ fontSize: '1.25rem', lineHeight: 1.6, color: 'var(--navy-900)', maxWidth: '800px' }}>
-            Our work is made possible by an incredible team of researchers, educators, clinicians, and academic leaders. Here are the people behind Sterling IMRES.
-          </p>
-        </div>
-        
-        <div className={ui.grid4}>
-          {libraryContributors.slice(0, 8).map(person => (
-            <ProfileCard key={person.slug} person={person} />
-          ))}
-        </div>
-      </Section>
+      <MeetTheTeam />
 
       <Section last>
         <CTASection
