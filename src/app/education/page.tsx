@@ -54,6 +54,19 @@ export default function EducationPage() {
         <SectionHeader kicker="Resources" title="Free learning resources" lead="Reputable, freely available resources from other organisations that support our teaching." link={{ href: '/education/resources', label: 'All resources' }} />
         <div className={ui.grid3}>{learningResources.slice(0, 6).map(r => <ResourceCard key={r.slug} resource={r} />)}</div>
       </Section>
+      <Section>
+        <SectionHeader kicker="More learning" title="Visual and editorial" />
+        <div className={ui.grid2} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+          <article className={ui.card}>
+            <h2 className={ui.cardTitle}><Link href="/medical-illustration">Medical illustration</Link></h2>
+            <p className={ui.cardText}>Explore our gallery of professional medical illustrations.</p>
+          </article>
+          <article className={ui.card}>
+            <h2 className={ui.cardTitle}><Link href="/insights">Insights</Link></h2>
+            <p className={ui.cardText}>Read articles, updates, and perspectives from our team.</p>
+          </article>
+        </div>
+      </Section>
       <Section last>
         <CTASection
           title="Teach with Sterling IMRES"

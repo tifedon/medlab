@@ -27,7 +27,7 @@ export default function MeetTheTeam() {
   return (
     <div style={{ textAlign: 'center', marginBottom: '4rem', width: '100%' }}>
       <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-        <div style={{ width: '100%', maxWidth: '900px', aspectRatio: '16 / 9', position: 'relative', overflow: 'hidden', borderRadius: '12px' }}>
+        <div style={{ width: '100%', aspectRatio: '16 / 9', position: 'relative', overflow: 'hidden' }}>
           <Image 
             src="/images/team_banner.png" 
             alt="Team Banner" 

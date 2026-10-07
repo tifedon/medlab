@@ -32,13 +32,6 @@ export default async function ResearchPage({ searchParams }: { searchParams: Pro
           { value: getResearchByStatuses(upcomingStatuses).length, label: 'upcoming' },
           { value: getResearchByStatuses(completedStatuses).length, label: 'completed or published' },
         ]}
-        actions={
-          <>
-            <Link href="/research/current" className="btn btn--primary">Current research</Link>
-            <Link href="/research/themes" className="btn btn--secondary">Themes</Link>
-            <Link href="/research/methodology" className="btn btn--secondary">Methodology</Link>
-          </>
-        }
       />
       <Section>
         <Notice>

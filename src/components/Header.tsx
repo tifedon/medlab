@@ -58,47 +58,18 @@ export default function Header({ isSignedIn = false, profileLink }: { isSignedIn
             <Link href="/" className={`${styles.navLink} ${pathname === '/' ? styles.navLinkActive : ''}`}>
               Home
             </Link>
-            {primaryNav.map(group => {
-              const open = openMenu === group.label;
-              return (
-                <div key={group.label} className={styles.navItem} onMouseLeave={() => setOpenMenu(null)}>
-                  <button
-                    type="button"
-                    className={`${styles.navLink} ${groupActive(group) ? styles.navLinkActive : ''}`}
-                    aria-expanded={open}
-                    aria-controls={`mega-${group.label}`}
-                    onClick={() => setOpenMenu(open ? null : group.label)}
-                    onMouseEnter={() => setOpenMenu(group.label)}
-                  >
-                    {group.label} <ChevronDownIcon size={14} />
-                  </button>
-                  <div id={`mega-${group.label}`} className={styles.megaMenu} hidden={!open}>
-                    <div className={styles.megaMenuInner}>
-                      <div className={styles.megaIntro}>
-                        <strong>{group.label}</strong>
-                        <p>{group.intro}</p>
-                        <Link href={group.href} className={styles.megaIntroLink}>Go to {group.label.toLowerCase()} →</Link>
-                      </div>
-                      {group.columns.map(col => (
-                        <div key={col.title} className={styles.megaColumn}>
-                          <span className={styles.megaTitle}>{col.title}</span>
-                          {col.links.map(link => (
-                            <Link
-                              key={link.href}
-                              href={link.href}
-                              className={`${styles.megaLink} ${pathname === link.href ? styles.megaLinkActive : ''}`}
-                              aria-current={pathname === link.href ? 'page' : undefined}
-                            >
-                              {link.label}
-                            </Link>
-                          ))}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+            <Link href="/about" className={`${styles.navLink} ${isActive('/about') ? styles.navLinkActive : ''}`}>
+              Institute
+            </Link>
+            <Link href="/research" className={`${styles.navLink} ${isActive('/research') ? styles.navLinkActive : ''}`}>
+              Research
+            </Link>
+            <Link href="/publications" className={`${styles.navLink} ${isActive('/publications') ? styles.navLinkActive : ''}`}>
+              Publishing
+            </Link>
+            <Link href="/education" className={`${styles.navLink} ${isActive('/education') ? styles.navLinkActive : ''}`}>
+              Learning
+            </Link>
             <Link href="/insights" className={`${styles.navLink} ${isActive('/insights') ? styles.navLinkActive : ''}`}>
               Insights
             </Link>
@@ -179,24 +150,14 @@ export default function Header({ isSignedIn = false, profileLink }: { isSignedIn
       {mobileMenuOpen && (
         <div className={styles.mobileMenu}>
           <nav className={styles.mobileNav} aria-label="Mobile navigation">
-            <Link href="/" className={styles.mobileNavLink}>Home</Link>
-            {primaryNav.map(group => (
-              <div key={group.label} className={styles.mobileGroup}>
-                <span className={styles.mobileGroupTitle}>{group.label}</span>
-                {group.columns.flatMap(col => col.links).map(link => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={`${styles.mobileNavLink} ${pathname === link.href ? styles.mobileNavLinkActive : ''}`}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            ))}
-            <Link href="/insights" className={styles.mobileNavLink}>Insights</Link>
-            <Link href="/search" className={styles.mobileNavLink}>Search</Link>
-            <Link href="/sign-in" className={styles.mobileNavLink}>Sign in</Link>
+            <Link href="/" className={`${styles.mobileNavLink} ${pathname === '/' ? styles.mobileNavLinkActive : ''}`}>Home</Link>
+            <Link href="/about" className={`${styles.mobileNavLink} ${isActive('/about') ? styles.mobileNavLinkActive : ''}`}>Institute</Link>
+            <Link href="/research" className={`${styles.mobileNavLink} ${isActive('/research') ? styles.mobileNavLinkActive : ''}`}>Research</Link>
+            <Link href="/publications" className={`${styles.mobileNavLink} ${isActive('/publications') ? styles.mobileNavLinkActive : ''}`}>Publishing</Link>
+            <Link href="/education" className={`${styles.mobileNavLink} ${isActive('/education') ? styles.mobileNavLinkActive : ''}`}>Learning</Link>
+            <Link href="/insights" className={`${styles.mobileNavLink} ${isActive('/insights') ? styles.mobileNavLinkActive : ''}`}>Insights</Link>
+            <Link href="/search" className={`${styles.mobileNavLink} ${isActive('/search') ? styles.mobileNavLinkActive : ''}`}>Search</Link>
+            <Link href="/sign-in" className={`${styles.mobileNavLink} ${isActive('/sign-in') ? styles.mobileNavLinkActive : ''}`}>Sign in</Link>
           </nav>
         </div>
       )}

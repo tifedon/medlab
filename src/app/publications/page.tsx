@@ -36,7 +36,7 @@ export default async function PublicationsPage({ searchParams }: { searchParams:
         <div className={ui.grid4}>
           {(Object.keys(publicationCategories) as PublicationCategory[]).map(key => (
             <article key={key} className={ui.card}>
-              <h2 className={ui.cardTitle}><Link href={`/publications/${key}`}>{publicationCategories[key].label}</Link></h2>
+              <h2 className={ui.cardTitle}><Link href={`/publications?type=${key}`}>{publicationCategories[key].label}</Link></h2>
               <p className={ui.cardText}>{publicationCategories[key].description}</p>
               <div className={ui.cardMeta}><span>{getPublicationsByCategory(key).length} records</span></div>
             </article>
