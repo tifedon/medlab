@@ -1,6 +1,5 @@
 import ResearchCard from './ResearchCard';
 import EmptyState from './EmptyState';
-import FilterBar from './FilterBar';
 import { divisions } from '@/lib/divisions';
 import { researchStatusLabel, type ResearchRecord } from '@/lib/research';
 import ui from './ui.module.css';
@@ -18,15 +17,6 @@ export default function ResearchListing({ records, basePath, current }: { record
 
   return (
     <>
-      <FilterBar
-        basePath={basePath}
-        current={current}
-        groups={[
-          { param: 'status', label: 'Status', options: statuses.map(s => ({ value: s, label: researchStatusLabel(s) })) },
-          { param: 'division', label: 'Division', options: usedDivisions.map(d => ({ value: d.id, label: d.shortName })) },
-          { param: 'type', label: 'Design', options: [{ value: 'INTERVENTIONAL', label: 'Interventional' }, { value: 'OBSERVATIONAL', label: 'Observational' }] },
-        ]}
-      />
       <p className={ui.resultCount} aria-live="polite">{filtered.length} {filtered.length === 1 ? 'study' : 'studies'}</p>
       {filtered.length ? (
         <div className={ui.flatList}>{filtered.map(r => <ResearchCard key={r.slug} study={r} />)}</div>
