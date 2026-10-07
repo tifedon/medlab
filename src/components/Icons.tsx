@@ -284,45 +284,15 @@ export const SterlingLogoIcon: React.FC<IconProps> = ({ size = 40, className = '
   </svg>
 );
 
-export const BrandLogo: React.FC<{ className?: string, variant?: 'light' | 'dark', size?: 'sm' | 'md' | 'lg' }> = ({ className = '', variant = 'light', size = 'sm' }) => {
-  const textColor = variant === 'light' ? 'var(--navy-800)' : 'var(--white)';
-  const tagColor = variant === 'light' ? 'var(--navy-500)' : 'var(--gray-300)';
-  
-  const iconSize = size === 'lg' ? 64 : size === 'md' ? 48 : 34;
-  const titleSize = size === 'lg' ? '1.75rem' : size === 'md' ? '1.3rem' : '1rem';
-  const tagSize = size === 'lg' ? '0.75rem' : size === 'md' ? '0.6rem' : '0.48rem';
-  const gap = size === 'lg' ? '16px' : size === 'md' ? '12px' : '10px';
-  const marginTop = size === 'lg' ? '6px' : size === 'md' ? '5px' : '3px';
-  const paddingTop = size === 'lg' ? '5px' : size === 'md' ? '4px' : '3px';
+import Image from 'next/image';
+
+export const BrandLogo: React.FC<{ className?: string, variant?: 'light' | 'dark', size?: 'sm' | 'md' | 'lg' }> = ({ className = '', size = 'sm' }) => {
+  const width = size === 'lg' ? 300 : size === 'md' ? 240 : 180;
+  const height = size === 'lg' ? 80 : size === 'md' ? 64 : 48;
   
   return (
-    <div className={className} style={{ display: 'flex', alignItems: 'center', gap }}>
-      <SterlingLogoIcon size={iconSize} />
-      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-        <span style={{ 
-          fontFamily: 'var(--font-sans)', 
-          fontWeight: 800, 
-          fontSize: titleSize, 
-          lineHeight: '1.05', 
-          color: textColor,
-          letterSpacing: '-0.02em',
-          textTransform: 'uppercase'
-        }}>
-          Sterling<br />Institute
-        </span>
-        <span style={{ 
-          fontFamily: 'var(--font-sans)', 
-          fontWeight: 500, 
-          fontSize: tagSize, 
-          color: tagColor,
-          marginTop: marginTop,
-          borderTop: `1px solid ${variant === 'light' ? 'var(--gray-200)' : 'rgba(255,255,255,0.2)'}`,
-          paddingTop: paddingTop,
-          letterSpacing: '0.03em'
-        }}>
-          for Medical Research, Education and Sciences
-        </span>
-      </div>
+    <div className={className} style={{ position: 'relative', width: `${width}px`, height: `${height}px`, display: 'flex', alignItems: 'center' }}>
+      <Image src="/logo.jpg" alt="Sterling IMRES" fill style={{ objectFit: 'contain', objectPosition: 'left center' }} priority />
     </div>
   );
 };

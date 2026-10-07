@@ -1,23 +1,39 @@
 import type { Metadata } from 'next';
-import PolicyPage from '@/components/PolicyPage';
+import PageHero from '@/components/PageHero';
+import Section from '@/components/Section';
 
-export const metadata: Metadata = { title: 'Terms of use', description: 'Terms for using the Sterling IMRES website and its reference library.', alternates: { canonical: '/terms' } };
+export const metadata: Metadata = {
+  title: 'Terms of Service',
+  description: 'Terms of Service for Sterling IMRES.',
+};
 
 export default function TermsPage() {
   return (
-    <PolicyPage title="Terms of use" lead="The terms for using this website, its reference library and accounts." updated="October 2026">
-      <h2>Purpose of the website</h2>
-      <p>This website presents the work of Sterling IMRES and a curated reference library for education and research. It is not a patient portal, a telemedicine service or an accredited university portal.</p>
-      <h2>Third-party works</h2>
-      <p>Articles, books, studies and images in the reference library belong to their authors, publishers, sponsors and creators. We provide citations, summaries written by our editors and links to the original source. Read and reuse those works only on the terms set by their rights holders.</p>
-      <h2>Images</h2>
-      <p>Illustrations in the gallery are shown under the licence stated on each record. Reuse must follow that licence and credit the creator.</p>
-      <h2>Accounts</h2>
-      <p>Keep your sign-in details secure. Upload access is granted only to approved contributors, and administrators may withdraw access that is misused.</p>
-      <h2>Accuracy</h2>
-      <p>We verify records against authoritative sources, but registry statuses and publication details can change. Always check the original source before relying on a record. Report errors through the contact form.</p>
-      <h2>Changes</h2>
-      <p>These terms may be updated. The review date above shows the current version.</p>
-    </PolicyPage>
+    <div>
+      <PageHero
+        kicker="Legal"
+        title="Terms of Service"
+        lead="Rules and guidelines for using Sterling IMRES services."
+        breadcrumbs={[{ label: 'Terms of Service' }]}
+      />
+      <Section last>
+        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+          <h2>1. Acceptance of Terms</h2>
+          <p>By accessing or using our services, you agree to be bound by these Terms. If you disagree with any part of the terms, you may not access the service.</p>
+          
+          <h2>2. User Accounts</h2>
+          <p>You must provide accurate and complete information when creating an account. You are responsible for safeguarding the password that you use to access the service.</p>
+          
+          <h2>3. Intellectual Property</h2>
+          <p>The Service and its original content, features, and functionality are and will remain the exclusive property of Sterling IMRES and its licensors.</p>
+          
+          <h2>4. Termination</h2>
+          <p>We may terminate or suspend access to our service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.</p>
+          
+          <h2>5. Changes</h2>
+          <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time.</p>
+        </div>
+      </Section>
+    </div>
   );
 }
