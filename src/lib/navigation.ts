@@ -81,9 +81,10 @@ export const primaryNav: NavGroup[] = [
         ],
       },
       {
-        title: 'Books',
+        title: 'Books and Press',
         links: [
-          { href: '/books', label: 'Books and the Press' },
+          { href: '/press', label: 'Sterling IMRES Press' },
+          { href: '/books', label: 'All books' },
           { href: '/books/reference', label: 'Reference books' },
           { href: '/books/textbooks', label: 'Textbooks' },
           { href: '/books/handbooks', label: 'Handbooks' },
@@ -92,30 +93,7 @@ export const primaryNav: NavGroup[] = [
       },
     ],
   },
-  {
-    label: 'Learning',
-    href: '/education',
-    intro: 'Courses, workshops, learning resources, medical illustration and insights.',
-    columns: [
-      {
-        title: 'Education',
-        links: [
-          { href: '/education', label: 'Education' },
-          { href: '/education/courses', label: 'Courses' },
-          { href: '/education/workshops', label: 'Workshops' },
-          { href: '/education/resources', label: 'Learning resources' },
-        ],
-      },
-      {
-        title: 'Visual and editorial',
-        links: [
-          { href: '/medical-illustration', label: 'Medical illustration' },
-          { href: '/medical-illustration/gallery', label: 'Illustration gallery' },
-          { href: '/insights', label: 'Insights' },
-        ],
-      },
-    ],
-  },
+
 ];
 
 export const legalLinks: NavLink[] = [

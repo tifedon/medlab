@@ -86,11 +86,7 @@ export default function HomePage() {
         <div className="container">
           <SectionHeader kicker="Capabilities" title="Education, integrity and visualisation" />
           <div className={styles.resourceGrid}>
-            <Link href="/education" className={styles.resourceCard}>
-              <span className={styles.resourceLabel}>Education</span>
-              <h3>Courses, workshops and resources</h3>
-              <p>Research methods, evidence-based practice, scientific writing and illustration.</p>
-            </Link>
+
             <Link href="/scientific-integrity" className={styles.resourceCard}>
               <span className={styles.resourceLabel}>Scientific integrity</span>
               <h3>Standards for trustworthy records</h3>
@@ -106,6 +102,23 @@ export default function HomePage() {
               <h3>Work with the institute</h3>
               <p>Research, academic, clinical, editorial, review, illustration and education.</p>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className={ui.section}>
+        <div className="container">
+          <SectionHeader kicker="Account & Privacy" title="Why we ask you to sign in" />
+          <div style={{ maxWidth: '800px', fontSize: '1.125rem', lineHeight: 1.6, color: 'var(--navy-800)', marginBottom: '3rem' }}>
+            <p style={{ marginBottom: '1.25rem' }}>
+              Sterling IMRES provides open access to our research directory and publications. However, we offer verified accounts for researchers, clinicians, and institutional partners who need to collaborate on active studies, submit publications to Sterling IMRES Press, or access restricted educational resources.
+            </p>
+            <p style={{ marginBottom: '1.25rem' }}>
+              When you sign in using your Google account, we request access to your basic profile information (such as your name and email address). This data is strictly used to authenticate your identity, determine your upload access permissions within our workspaces, and ensure scientific integrity across all contributions to the institute.
+            </p>
+            <p>
+              We are committed to protecting your data. For full details on how we collect, use, and safeguard your information, please read our <Link href="/privacy" style={{ color: 'var(--teal-600)', fontWeight: 500, textDecoration: 'underline' }}>Privacy Policy</Link>.
+            </p>
           </div>
         </div>
       </section>

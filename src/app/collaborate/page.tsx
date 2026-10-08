@@ -15,12 +15,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/collaborate' },
 };
 
-const steps = [
-  'Describe the question, project or book you have in mind.',
-  'Name the division closest to the work, or ask us to suggest one.',
-  'Say what you can contribute and what you need.',
-  'We reply with the relevant division lead and next steps.',
-];
+
 
 export default function CollaboratePage() {
   return (
@@ -57,10 +52,7 @@ export default function CollaboratePage() {
           ))}
         </div>
       </Section>
-      <Section>
-        <SectionHeader kicker="Process" title="How to start" />
-        <ol className={ui.numbered}>{steps.map(s => <li key={s}>{s}</li>)}</ol>
-      </Section>
+
       <Section last>
         <CTASection
           title="Not a partnership announcement"

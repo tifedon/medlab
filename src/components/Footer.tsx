@@ -37,7 +37,6 @@ export default function Footer() {
               <Link href="/research" className={styles.footerLink}>Research</Link>
               <Link href="/publications" className={styles.footerLink}>Publications</Link>
               <Link href="/books" className={styles.footerLink}>Books</Link>
-              <Link href="/education" className={styles.footerLink}>Education</Link>
               <Link href="/insights" className={styles.footerLink}>Insights</Link>
             </div>
             <div className={styles.column}>
