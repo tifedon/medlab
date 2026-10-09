@@ -215,7 +215,7 @@ export const projects: Project[] = [
     type: 'digital-learning',
     status: 'upcoming',
     phase: 'Phase 8',
-    overview: 'Richer search, author dashboards, institutional reporting, APIs or member workflows — added only when there is a validated need.',
+    overview: 'Richer search, author dashboards, institutional reporting, APIs or member workflows - added only when there is a validated need.',
     objectives: ['Validate need before building', 'Extend search and author tools'],
     deliverables: ['Defined only after need is validated'],
     timeline: 'Phase 8 of the roadmap.',

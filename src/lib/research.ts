@@ -129,7 +129,7 @@ export const researchThemes = [
   {
     id: 'methods',
     title: 'Trial methods and research efficiency',
-    description: 'How studies are designed, recruited and run — including platform trials and studies within a trial.',
+    description: 'How studies are designed, recruited and run - including platform trials and studies within a trial.',
     divisions: ['research', 'evidence-review-integrity'],
   },
   {

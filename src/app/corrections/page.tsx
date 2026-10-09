@@ -8,7 +8,7 @@ export default function CorrectionsPage() {
   return (
     <PolicyPage title="Corrections policy" lead="Errors are corrected visibly. Important changes are never made silently." updated="October 2026">
       <h2>Reporting an error</h2>
-      <p>Use the <Link href="/contact?topic=scientific-review">contact form</Link> and choose “Scientific review”. Include the page, what is wrong and a source — a DOI, PubMed record, registry entry or publisher notice.</p>
+      <p>Use the <Link href="/contact?topic=scientific-review">contact form</Link> and choose “Scientific review”. Include the page, what is wrong and a source - a DOI, PubMed record, registry entry or publisher notice.</p>
       <h2>What we correct</h2>
       <ul>
         <li><strong>Metadata errors</strong> in a library record, such as an author name, date or identifier.</li>

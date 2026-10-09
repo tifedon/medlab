@@ -292,7 +292,7 @@ export const BrandLogo: React.FC<{ className?: string, variant?: 'light' | 'dark
   
   return (
     <div className={className} style={{ position: 'relative', width: `${width}px`, height: `${height}px`, display: 'flex', alignItems: 'center' }}>
-      <Image src="/logo.jpg" alt="Sterling IMRES" fill style={{ objectFit: 'contain', objectPosition: 'left center' }} priority />
+      <Image src="/main-logo.png" alt="Sterling IMRES" fill style={{ objectFit: 'contain', objectPosition: 'left center' }} unoptimized priority />
     </div>
   );
 };

@@ -37,7 +37,7 @@ export default async function PeoplePage({ searchParams }: { searchParams: Promi
       <PageHero
         kicker="People"
         title="People directory"
-        lead="Doctors, dentists, nurses, pharmacologists, biomedical scientists, methodologists, illustrators and editors — linked to the work they actually contributed to."
+        lead="Doctors, dentists, nurses, pharmacologists, biomedical scientists, methodologists, illustrators and editors - linked to the work they actually contributed to."
         breadcrumbs={[{ label: 'People' }]}
         stats={[
           { value: teamMembers.length, label: 'verified team profiles' },
@@ -49,7 +49,7 @@ export default async function PeoplePage({ searchParams }: { searchParams: Promi
         <SectionHeader kicker="Sterling IMRES team" title="Founding team and contributors" />
         {teamMembers.length === 0 && (
           <EmptyState title="Team profiles are being verified" actions={<Link href="/collaborate" className="btn btn--secondary">Become a contributor</Link>}>
-            Profiles of Sterling IMRES staff and contributors — with degrees, specialties, memberships, ORCID and linked research — are published only after the details are verified.
+            Profiles of Sterling IMRES staff and contributors - with degrees, specialties, memberships, ORCID and linked research - are published only after the details are verified.
           </EmptyState>
         )}
       </Section>

@@ -923,7 +923,7 @@ export const publicationRecords: Publication[] = [
   },
   {
     "slug": "efp-s3-guideline-stage-i-iii-periodontitis-2020",
-    "title": "Treatment of stage I–III periodontitis—The EFP S3 level clinical practice guideline",
+    "title": "Treatment of stage I–III periodontitis - The EFP S3 level clinical practice guideline",
     "type": "guideline",
     "authors": [
       {
@@ -2290,7 +2290,7 @@ export const publicationRecords: Publication[] = [
   },
   {
     "slug": "grade-guidelines-1-evidence-profiles-summary-of-findings",
-    "title": "GRADE guidelines: 1. Introduction—GRADE evidence profiles and summary of findings tables",
+    "title": "GRADE guidelines: 1. Introduction - GRADE evidence profiles and summary of findings tables",
     "type": "guideline",
     "authors": [
       {

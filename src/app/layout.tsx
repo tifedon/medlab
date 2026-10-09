@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { Inter, Source_Serif_4 } from "next/font/google";
+import { IBM_Plex_Sans, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import { siteConfig } from "@/lib/site";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+const ibmPlexSans = IBM_Plex_Sans({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700"], variable: "--font-ibm", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — ${siteConfig.fullName}`,
+    default: `${siteConfig.name} - ${siteConfig.fullName}`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: siteConfig.name,
-    title: `${siteConfig.name} — ${siteConfig.fullName}`,
+    title: `${siteConfig.name} - ${siteConfig.fullName}`,
     description: siteConfig.description,
     locale: "en_GB",
   },
@@ -37,7 +37,7 @@ export default async function RootLayout({
   const identity = await getCurrentIdentity();
 
   return (
-    <html lang="en" className={`${inter.variable}`}>
+    <html lang="en" className={`${ibmPlexSans.variable}`}>
       <body style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <a href="#main-content" className="skip-link">Skip to content</a>
         <JsonLd

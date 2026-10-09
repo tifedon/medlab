@@ -26,11 +26,6 @@ export default async function PublicationsPage({ searchParams }: { searchParams:
         title="Publications hub"
         lead="Scholarly outputs other than full-length books, discoverable by type, division, year and access."
         breadcrumbs={[{ label: 'Publications' }]}
-        stats={[
-          { value: publications.length, label: 'publications' },
-          { value: publications.filter(p => p.openAccess).length, label: 'open access' },
-          { value: publications.filter(p => p.doi).length, label: 'with verified DOIs' },
-        ]}
       />
       <Section>
         <div className={ui.grid4}>

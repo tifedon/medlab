@@ -32,22 +32,7 @@ export default function HomePage() {
             Sterling IMRES is a comprehensive medical institute bringing together clinical research, scientific education, and scholarly publishing into a unified, evidence-based platform.
           </p>
           <HomeClient />
-          <div className={styles.heroStats}>
-            <div className={styles.heroStat}>
-              <span className={styles.heroStatNum}>9</span>
-              <span className={styles.heroStatLabel}>Divisions</span>
-            </div>
-            <div className={styles.heroStatDivider} />
-            <div className={styles.heroStat}>
-              <span className={styles.heroStatNum}>{researchRecords.length}</span>
-              <span className={styles.heroStatLabel}>Registered studies tracked</span>
-            </div>
-            <div className={styles.heroStatDivider} />
-            <div className={styles.heroStat}>
-              <span className={styles.heroStatNum}>{upcomingResearch}</span>
-              <span className={styles.heroStatLabel}>Upcoming studies</span>
-            </div>
-          </div>
+
         </div>
       </section>
 

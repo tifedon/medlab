@@ -89,7 +89,7 @@ export default async function BooksPage({ searchParams }: { searchParams: Promis
       <Section>
         <SectionHeader kicker="Authorship" title="Authorship and imprint model" />
         <Notice>
-          Real doctors, researchers, editors and qualified subject experts are named as authors or editors. Sterling IMRES is the institutional affiliation and {siteConfig.press} the publisher. Sterling IMRES is used as a corporate author mainly for official reports, standards, consensus documents and evidence summaries. Contributors need not be physicians — respiratory therapists, nurses, pharmacists, biomedical scientists, statisticians, illustrators, methodologists and medical editors all contribute where qualified, and clinically sensitive material receives clinical review.
+          Real doctors, researchers, editors and qualified subject experts are named as authors or editors. Sterling IMRES is the institutional affiliation and {siteConfig.press} the publisher. Sterling IMRES is used as a corporate author mainly for official reports, standards, consensus documents and evidence summaries. Contributors need not be physicians - respiratory therapists, nurses, pharmacists, biomedical scientists, statisticians, illustrators, methodologists and medical editors all contribute where qualified, and clinically sensitive material receives clinical review.
         </Notice>
       </Section>
 
