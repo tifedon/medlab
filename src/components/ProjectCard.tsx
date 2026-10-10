@@ -17,6 +17,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         </h3>
         <p className={styles.listItemByline}>{project.team}</p>
         <p className={styles.listItemText}>{project.overview}</p>
+        <DivisionTags ids={project.divisions} />
       </div>
       <div className={styles.listItemRight}>
         {project.phase && <span>{project.phase}</span>}

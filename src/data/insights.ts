@@ -1,4 +1,11 @@
 import type { Insight } from '@/lib/insights';
+import { getTeamMemberBySlug } from '@/lib/people';
+
+function teamByline(slug: string) {
+  const member = getTeamMemberBySlug(slug);
+  if (!member) throw new Error(`Unknown Sterling IMRES team member: ${slug}`);
+  return { author: member.name, authorSlug: member.slug };
+}
 
 // Editorial pieces written by Sterling IMRES. Each one discusses works held in
 // the reference library and links to them, so every claim can be traced.
@@ -8,7 +15,7 @@ export const insightRecords: Insight[] = [
     title: 'Introducing the Sterling reference library',
     excerpt: 'Why the institute’s first public content is a verified library of other people’s work, and how each record is checked.',
     category: 'institute-news',
-    author: 'Sterling IMRES Editorial Desk',
+    ...teamByline('marcus-vance'),
     publishedDate: '2026-10-06',
     readTime: 4,
     divisions: ['editorial-publications', 'evidence-review-integrity'],
@@ -20,8 +27,8 @@ export const insightRecords: Insight[] = [
       'Articles are checked against Crossref using their DOI, which gives us the title, author list, journal, volume, pages and licence exactly as the publisher deposited them. PubMed and PMC identifiers come from NCBI. Books are checked against the publisher’s page or a library catalogue, and studies come directly from ClinicalTrials.gov, including the date the registry entry was last updated.',
       'Summaries are written by our editors in their own words. Original abstracts and full texts stay with the publisher, and every record links back to it.',
       '## What a listing means - and what it does not',
-      'Listing a work means we consider it useful for study and citation. It does not mean the authors are affiliated with Sterling IMRES, and every library page says so. Authors and editors appear in the people directory only as people credited on those works, with affiliations as published.',
-      'Verified Sterling IMRES team profiles, and titles from the proposed Sterling IMRES Press, will be added as they are confirmed.',
+      'Listing a work means we consider it useful for study and citation. It does not mean the authors are affiliated with Sterling IMRES, and every library page says so. Authors and editors are credited exactly as the source records them, but are not presented as members of the Sterling IMRES team.',
+      'The team directory lists the physicians, researchers, healthcare professionals, editors, educators and medical illustrators who work across Sterling IMRES.',
     ],
     references: [
       { kind: 'project', slug: 'sterling-reference-library' },
@@ -33,7 +40,7 @@ export const insightRecords: Insight[] = [
     title: 'What PRISMA 2020 asks of systematic review authors',
     excerpt: 'The updated PRISMA statement is the reporting standard our Evidence Review unit works to. Here is what changed and why it matters.',
     category: 'scientific-integrity',
-    author: 'Sterling IMRES Editorial Desk',
+    ...teamByline('mei-lin'),
     publishedDate: '2026-10-06',
     readTime: 5,
     divisions: ['evidence-review-integrity', 'research'],
@@ -59,7 +66,7 @@ export const insightRecords: Insight[] = [
     title: 'Platform trials: lessons from RECOVERY and STAMPEDE',
     excerpt: 'Two of the trials in our research watch show how one infrastructure can answer many questions - and why trial design is a research topic in its own right.',
     category: 'research-methods',
-    author: 'Sterling IMRES Editorial Desk',
+    ...teamByline('lars-johansen'),
     publishedDate: '2026-10-05',
     readTime: 5,
     divisions: ['research', 'clinical-medicine'],
@@ -85,7 +92,7 @@ export const insightRecords: Insight[] = [
     title: 'Periodontitis staging and grading, in brief',
     excerpt: 'The 2017 World Workshop classification changed how periodontitis is described. A short guide for clinicians and students.',
     category: 'medical-education',
-    author: 'Sterling IMRES Editorial Desk',
+    ...teamByline('chloe-bennett'),
     publishedDate: '2026-10-05',
     readTime: 4,
     divisions: ['dentistry-oral-sciences'],
@@ -111,7 +118,7 @@ export const insightRecords: Insight[] = [
     title: 'Designing figures readers can trust',
     excerpt: 'Bar charts that hide data, rainbow colour maps that distort it, and palettes some readers cannot see. What the evidence says about scientific figures.',
     category: 'commentary',
-    author: 'Sterling IMRES Editorial Desk',
+    ...teamByline('sophia-rossi'),
     publishedDate: '2026-10-04',
     readTime: 4,
     divisions: ['medical-illustration-visualization', 'editorial-publications'],
@@ -136,7 +143,7 @@ export const insightRecords: Insight[] = [
     title: 'Recognising predatory journals',
     excerpt: 'A consensus definition, and what it means for authors choosing where to publish.',
     category: 'publications',
-    author: 'Sterling IMRES Editorial Desk',
+    ...teamByline('sarah-chen'),
     publishedDate: '2026-10-04',
     readTime: 3,
     divisions: ['editorial-publications'],

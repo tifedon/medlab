@@ -13,7 +13,9 @@ export default function ArticleCard({ insight }: { insight: Insight }) {
         <h3 className={styles.listItemTitle}>
           <Link href={`/insights/${insight.slug}`}>{insight.title}</Link>
         </h3>
-        <p className={styles.listItemByline}>{insight.author}</p>
+        <p className={styles.listItemByline}>
+          {insight.authorSlug ? <Link href={`/people/${insight.authorSlug}`}>{insight.author}</Link> : insight.author}
+        </p>
         <p className={styles.listItemText}>{insight.excerpt}</p>
       </div>
       <div className={styles.listItemRight}>

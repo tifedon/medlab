@@ -60,7 +60,7 @@ export default function EditorialStandardsPage() {
       <Section>
         <SectionHeader kicker="Workflow" title="Content states" />
         <ol className={ui.tagRow}>{contentStates.map((s, i) => <li key={s} className={ui.tag}>{i + 1}. {s}</li>)}</ol>
-        <p className={ui.sectionLead}>Read the full <Link href="/corrections">corrections policy</Link> and <Link href="/about/governance">governance roles</Link>.</p>
+        <p className={ui.sectionLead}>Read the full <Link href="/corrections">corrections policy</Link> and <Link href="/about#governance">governance roles</Link>.</p>
       </Section>
       <Section last>
         <SectionHeader kicker="Evidence" title="Research on peer review and publishing" />

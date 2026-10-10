@@ -10,13 +10,16 @@ export interface FilterGroup {
   param: string;
   label: string;
   options: FilterOption[];
+  clears?: string[];
 }
 
 type Params = Record<string, string | undefined>;
 
-function hrefFor(basePath: string, current: Params, param: string, value?: string) {
+function hrefFor(basePath: string, current: Params, param: string, value?: string, clears: string[] = []) {
   const next = new URLSearchParams();
-  Object.entries({ ...current, [param]: value }).forEach(([k, v]) => v && next.set(k, v));
+  const values = { ...current, [param]: value };
+  clears.forEach(key => delete values[key]);
+  Object.entries(values).forEach(([k, v]) => v && next.set(k, v));
   const qs = next.toString();
   return qs ? `${basePath}?${qs}` : basePath;
 }
@@ -31,7 +34,7 @@ export default function FilterBar({ basePath, groups, current }: { basePath: str
           <div key={group.param} className={styles.filterGroup} role="group" aria-label={group.label}>
             <span className={styles.filterLabel}>{group.label}</span>
             <Link
-              href={hrefFor(basePath, current, group.param)}
+              href={hrefFor(basePath, current, group.param, undefined, group.clears)}
               className={`${styles.filterChip} ${!current[group.param] ? styles.filterChipActive : ''}`}
               aria-current={!current[group.param] ? 'true' : undefined}
             >
@@ -42,7 +45,7 @@ export default function FilterBar({ basePath, groups, current }: { basePath: str
               return (
                 <Link
                   key={option.value}
-                  href={hrefFor(basePath, current, group.param, option.value)}
+                  href={hrefFor(basePath, current, group.param, option.value, group.clears)}
                   className={`${styles.filterChip} ${active ? styles.filterChipActive : ''}`}
                   aria-current={active ? 'true' : undefined}
                 >

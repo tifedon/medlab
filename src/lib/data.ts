@@ -10,7 +10,7 @@ export * from './illustrations';
 
 import { divisions } from './divisions';
 import { researchRecords } from './research';
-import { libraryContributors } from './people';
+import { teamMembers } from './people';
 import { projects } from './projects';
 import { publications } from './publications';
 import { books } from './books';
@@ -26,7 +26,9 @@ export function searchResources(query: string) {
     research: researchRecords.filter(r =>
       matches(q, r.title, r.officialTitle, r.nctId, r.summary, r.sponsor, r.status, r.conditions, r.divisions, r.investigators?.map(i => i.name)),
     ),
-    people: libraryContributors.filter(c => matches(q, c.name, c.affiliations, c.orcid, c.divisions, c.roles)),
+    people: teamMembers.filter(member =>
+      matches(q, member.name, member.title, member.specialty, member.degrees, member.divisions, member.expertise, member.researchInterests, member.biography),
+    ),
     projects: projects.filter(p => matches(q, p.title, p.overview, p.type, p.status, p.divisions)),
     publications: publications.filter(p =>
       matches(q, p.title, p.summary, p.journal, p.publisher, p.type, p.doi, p.pmid, p.keywords, p.divisions, p.corporateAuthor, p.authors.map(a => a.name)),

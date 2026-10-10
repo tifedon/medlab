@@ -21,10 +21,10 @@ export const primaryNav: NavGroup[] = [
         title: 'About',
         links: [
           { href: '/about', label: 'About Sterling IMRES' },
-          { href: '/about/mission', label: 'Mission and vision' },
-          { href: '/about/values', label: 'Values' },
-          { href: '/about/leadership', label: 'Leadership' },
-          { href: '/about/governance', label: 'Governance' },
+          { href: '/about#mission', label: 'Mission and vision' },
+          { href: '/about#values', label: 'Values' },
+          { href: '/about#leadership', label: 'Leadership' },
+          { href: '/about#governance', label: 'Governance' },
         ],
       },
       {
@@ -47,11 +47,11 @@ export const primaryNav: NavGroup[] = [
         title: 'Research',
         links: [
           { href: '/research', label: 'Research hub' },
-          { href: '/research/current', label: 'Current research' },
-          { href: '/research/upcoming', label: 'Upcoming research' },
-          { href: '/research/completed', label: 'Completed research' },
-          { href: '/research/themes', label: 'Research themes' },
-          { href: '/research/methodology', label: 'Methodology' },
+          { href: '/research?stage=current', label: 'Current research' },
+          { href: '/research?stage=upcoming', label: 'Upcoming research' },
+          { href: '/research?stage=completed', label: 'Completed research' },
+          { href: '/research#themes', label: 'Research themes' },
+          { href: '/research#methodology', label: 'Methodology' },
         ],
       },
       {
@@ -74,10 +74,10 @@ export const primaryNav: NavGroup[] = [
         title: 'Publications',
         links: [
           { href: '/publications', label: 'All publications' },
-          { href: '/publications/articles', label: 'Articles' },
-          { href: '/publications/reviews', label: 'Reviews' },
-          { href: '/publications/evidence-reviews', label: 'Evidence reviews' },
-          { href: '/publications/reports', label: 'Reports' },
+          { href: '/publications?category=articles', label: 'Articles' },
+          { href: '/publications?category=reviews', label: 'Reviews' },
+          { href: '/publications?category=evidence-reviews', label: 'Evidence reviews' },
+          { href: '/publications?category=reports', label: 'Reports' },
         ],
       },
       {

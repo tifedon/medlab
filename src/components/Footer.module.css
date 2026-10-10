@@ -39,7 +39,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--teal-500), var(--teal-400));
+  background: var(--teal-600);
   color: var(--white);
   border-radius: var(--radius-md);
 }

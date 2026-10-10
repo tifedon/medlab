@@ -27,8 +27,8 @@ export default function Footer() {
             <div className={styles.column}>
               <h2 className={styles.columnTitle}>Institute</h2>
               <Link href="/about" className={styles.footerLink}>About</Link>
-              <Link href="/about/mission" className={styles.footerLink}>Mission and vision</Link>
-              <Link href="/about/governance" className={styles.footerLink}>Governance</Link>
+              <Link href="/about#mission" className={styles.footerLink}>Mission and vision</Link>
+              <Link href="/about#governance" className={styles.footerLink}>Governance</Link>
               <Link href="/people" className={styles.footerLink}>People</Link>
               <Link href="/projects" className={styles.footerLink}>Projects</Link>
             </div>
@@ -58,9 +58,19 @@ export default function Footer() {
           </div>
         </div>
 
-
-
-
+        <p className={styles.disclaimer}>{MEDICAL_DISCLAIMER}</p>
+        <div className={styles.bottom}>
+          <p className={styles.copyright}>
+            <span>© {new Date().getFullYear()} {siteConfig.name}</span>
+            <span className={styles.separator} aria-hidden="true">·</span>
+            <span>{siteConfig.status}</span>
+          </p>
+          <nav className={styles.bottomLinks} aria-label="Legal">
+            {legalLinks.map(link => (
+              <Link key={link.href} href={link.href} className={styles.bottomLink}>{link.label}</Link>
+            ))}
+          </nav>
+        </div>
       </div>
     </footer>
   );

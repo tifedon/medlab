@@ -1,81 +1,55 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import Section from '@/components/Section';
 import SectionHeader from '@/components/SectionHeader';
 import ProfileCard from '@/components/ProfileCard';
 import EmptyState from '@/components/EmptyState';
 import FilterBar, { param } from '@/components/FilterBar';
-import Notice from '@/components/Notice';
 import { divisions } from '@/lib/divisions';
-import { libraryContributors, teamMembers } from '@/lib/people';
+import { teamMembers } from '@/lib/people';
 import ui from '@/components/ui.module.css';
 
 export const metadata: Metadata = {
-  title: 'People',
-  description: 'The Sterling IMRES people directory: verified team profiles and the authors, editors and investigators credited on works in the reference library.',
+  title: 'Our team',
+  description: 'Meet the Sterling IMRES physicians, researchers, healthcare professionals, editors, educators and medical illustrators.',
   alternates: { canonical: '/people' },
 };
 
-const roles = ['Author', 'Editor', 'Investigator'];
-
 export default async function PeoplePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const sp = await searchParams;
-  const current = { division: param(sp.division), role: param(sp.role), letter: param(sp.letter) };
-  const familyInitial = (name: string) => (name.split(/\s+/).pop() ?? name).charAt(0).toUpperCase();
-
-  const filtered = libraryContributors.filter(
-    c =>
-      (!current.division || c.divisions.includes(current.division)) &&
-      (!current.role || c.roles.includes(current.role as never)) &&
-      (!current.letter || familyInitial(c.name) === current.letter),
+  const current = { division: param(sp.division), specialty: param(sp.specialty) };
+  const specialties = [...new Set(teamMembers.map(member => member.specialty))].sort();
+  const usedDivisions = divisions.filter(division => teamMembers.some(member => member.divisions.includes(division.id)));
+  const filtered = teamMembers.filter(member =>
+    (!current.division || member.divisions.includes(current.division as (typeof member.divisions)[number])) &&
+    (!current.specialty || member.specialty === current.specialty),
   );
-  const letters = [...new Set(libraryContributors.map(c => familyInitial(c.name)))].filter(l => /[A-Z]/.test(l)).sort();
 
   return (
     <div>
       <PageHero
         kicker="People"
-        title="People directory"
-        lead="Doctors, dentists, nurses, pharmacologists, biomedical scientists, methodologists, illustrators and editors - linked to the work they actually contributed to."
+        title="Meet the Sterling IMRES team"
+        lead="Our multidisciplinary team brings together clinical practice, research, evidence review, education, publishing and medical visualization."
         breadcrumbs={[{ label: 'People' }]}
-        stats={[
-          { value: teamMembers.length, label: 'verified team profiles' },
-          { value: libraryContributors.length, label: 'credited authors, editors and investigators' },
-        ]}
+        stats={[{ value: teamMembers.length, label: 'team members' }]}
       />
 
-      <Section>
-        <SectionHeader kicker="Sterling IMRES team" title="Founding team and contributors" />
-        {teamMembers.length === 0 && (
-          <EmptyState title="Team profiles are being verified" actions={<Link href="/collaborate" className="btn btn--secondary">Become a contributor</Link>}>
-            Profiles of Sterling IMRES staff and contributors - with degrees, specialties, memberships, ORCID and linked research - are published only after the details are verified.
-          </EmptyState>
-        )}
-      </Section>
-
       <Section last>
-        <SectionHeader
-          kicker="Reference library"
-          title="Authors, editors and investigators"
-          lead="People credited on the published works and registered studies in the Sterling reference library, with affiliations as they appear in the source record."
-        />
-        <Notice>These people are listed because they are credited on works in the library. They are not Sterling IMRES staff, and a listing does not imply any affiliation with the institute.</Notice>
-        <div style={{ height: '1.5rem' }} />
+        <SectionHeader kicker="Our team" title="People across the institute" lead="Open a profile to learn about each team member’s role, specialty and areas of expertise." />
         <FilterBar
           basePath="/people"
           current={current}
           groups={[
-            { param: 'division', label: 'Division', options: divisions.map(d => ({ value: d.id, label: d.shortName })) },
-            { param: 'role', label: 'Role', options: roles.map(r => ({ value: r, label: r })) },
-            { param: 'letter', label: 'Surname', options: letters.map(l => ({ value: l, label: l })) },
+            { param: 'division', label: 'Division', options: usedDivisions.map(division => ({ value: division.id, label: division.shortName })) },
+            { param: 'specialty', label: 'Specialty', options: specialties.map(specialty => ({ value: specialty, label: specialty })) },
           ]}
         />
-        <p className={ui.resultCount} aria-live="polite">{filtered.length} people</p>
+        <p className={ui.resultCount} aria-live="polite">{filtered.length} {filtered.length === 1 ? 'team member' : 'team members'}</p>
         {filtered.length ? (
-          <div className={ui.flatList}>{filtered.map(person => <ProfileCard key={person.slug} person={person} />)}</div>
+          <div className={ui.grid3}>{filtered.map(person => <ProfileCard key={person.slug} person={person} />)}</div>
         ) : (
-          <EmptyState title="No people match these filters">Try another division, role or letter.</EmptyState>
+          <EmptyState title="No team members match these filters">Clear a filter to see the full team.</EmptyState>
         )}
       </Section>
     </div>

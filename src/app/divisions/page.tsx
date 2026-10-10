@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
 import Section from '@/components/Section';
 import DivisionCard from '@/components/DivisionCard';
-import { divisions, getBooksByDivision, getPublicationsByDivision, getResearchByDivision, getContributorsByDivision } from '@/lib/data';
+import { divisions, getBooksByDivision, getPublicationsByDivision, getResearchByDivision, getTeamMembersByDivision } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Divisions and units',
@@ -33,7 +33,7 @@ export default function DivisionsPage() {
                 { label: 'publications', value: getPublicationsByDivision(division.id).length },
                 { label: 'books', value: getBooksByDivision(division.id).length },
                 { label: 'studies', value: getResearchByDivision(division.id).length },
-                { label: 'people', value: getContributorsByDivision(division.id).length },
+                { label: 'team', value: getTeamMembersByDivision(division.id).length },
               ]}
             />
           ))}

@@ -4,13 +4,11 @@ import {
   ArrowRightIcon,
   BookmarkIcon,
   FileTextIcon,
-  ShieldCheckIcon,
   UserIcon,
 } from '@/components/Icons';
 import { publications, researchRecords, divisions } from '@/lib/data';
 import { publicationTypeLabels } from '@/lib/publications';
 import { requireRole } from '@/lib/auth';
-import { signOut } from '@/app/auth/actions';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {

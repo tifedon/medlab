@@ -5,14 +5,12 @@ import {
   getResearchByStatuses,
   currentStatuses,
   upcomingStatuses,
-  researchRecords,
 } from '@/lib/data';
 import DivisionCard from '@/components/DivisionCard';
 import ResearchCard from '@/components/ResearchCard';
 import SectionHeader from '@/components/SectionHeader';
 import CTASection from '@/components/CTASection';
 import ui from '@/components/ui.module.css';
-import { siteConfig } from '@/lib/site';
 import HomeClient from './HomeClient';
 import styles from './page.module.css';
 
@@ -26,7 +24,7 @@ export default function HomePage() {
         <div className={styles.heroInner}>
 
           <h1 className={styles.heroTitle}>
-            Medical research, education{' '}<br />and publishing in one institute
+            Medical research, education and publishing in one institute
           </h1>
           <p className={styles.heroSubtitle}>
             Sterling IMRES is a comprehensive medical institute bringing together clinical research, scientific education, and scholarly publishing into a unified, evidence-based platform.
@@ -59,7 +57,7 @@ export default function HomePage() {
             kicker="Research watch"
             title="Current research"
             lead={`Registered studies that are recruiting or in progress, with ${upcomingResearch} more due to start.`}
-            link={{ href: '/research/current', label: 'All current research' }}
+            link={{ href: '/research?stage=current', label: 'All current research' }}
           />
           <div className={ui.flatList}>
             {featuredResearch.map(study => <ResearchCard key={study.slug} study={study} />)}
@@ -94,11 +92,11 @@ export default function HomePage() {
       <section className={ui.section}>
         <div className="container">
           <SectionHeader kicker="Account & Privacy" title="Why we ask you to sign in" />
-          <div style={{ maxWidth: '800px', fontSize: '1.125rem', lineHeight: 1.6, color: 'var(--navy-800)', marginBottom: '3rem' }}>
-            <p style={{ marginBottom: '1.25rem' }}>
+          <div className={styles.accountCopy}>
+            <p>
               Sterling IMRES provides open access to our research directory and publications. However, we offer verified accounts for researchers, clinicians, and institutional partners who need to collaborate on active studies, submit publications to Sterling IMRES Press, or access restricted educational resources.
             </p>
-            <p style={{ marginBottom: '1.25rem' }}>
+            <p>
               When you sign in using your Google account, we request access to your basic profile information (such as your name and email address). This data is strictly used to authenticate your identity, determine your upload access permissions within our workspaces, and ensure scientific integrity across all contributions to the institute.
             </p>
             <p>

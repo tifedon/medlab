@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import DivisionTags from '@/components/DivisionTags';
@@ -10,7 +9,7 @@ import PublicationCard from '@/components/PublicationCard';
 import ResearchCard from '@/components/ResearchCard';
 import JsonLd from '@/components/JsonLd';
 import { ExternalLinkIcon } from '@/components/Icons';
-import { formatPhase, getPublicationBySlug, getResearchBySlug, personSlug, registryStatusLabels, researchRecords, researchStatusLabel } from '@/lib/data';
+import { formatPhase, getPublicationBySlug, getResearchBySlug, registryStatusLabels, researchRecords, researchStatusLabel } from '@/lib/data';
 import { formatDate } from '@/lib/format';
 import { siteConfig } from '@/lib/site';
 import ui from '@/components/ui.module.css';
@@ -91,11 +90,11 @@ export default async function ResearchRecordPage({ params }: { params: Promise<{
             </section>
             {study.investigators?.length ? (
               <section>
-                <h2>Team</h2>
+                <h2>Registered investigators</h2>
                 <ul className={ui.authorList} style={{ listStyle: 'none', padding: 0 }}>
                   {study.investigators.map(inv => (
                     <li key={inv.name} className={ui.authorItem} style={{ marginTop: 0 }}>
-                      <Link href={`/people/${personSlug(inv.name.split(',')[0].trim())}`}>{inv.name}</Link>
+                      <span>{inv.name}</span>
                       <span>{roleLabel(inv.role)}</span>
                       {inv.affiliation && <span>{inv.affiliation}</span>}
                     </li>

@@ -8,6 +8,9 @@ export default function PublicationCard({ publication: p }: { publication: Publi
   return (
     <article className={styles.listItem}>
       <div className={styles.listItemMain}>
+        <div className={styles.listItemTop}>
+          <span className={styles.label}>{publicationTypeLabels[p.type]}</span>
+        </div>
         <h3 className={styles.listItemTitle}>
           <Link href={`/publications/${p.slug}`}>{p.title}</Link>
           {p.openAccess && <span className={styles.listItemBadge}>OPEN ACCESS</span>}
@@ -16,6 +19,7 @@ export default function PublicationCard({ publication: p }: { publication: Publi
         <p className={styles.listItemText}>
           <em>{p.journal}</em> {p.doi && <span> · DOI: {p.doi}</span>}
         </p>
+        <DivisionTags ids={p.divisions} />
       </div>
       <div className={styles.listItemRight}>
         {publicationYear(p)}

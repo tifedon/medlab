@@ -1,9 +1,8 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { SearchIcon, MenuIcon, XIcon, UserIcon, ChevronDownIcon, BrandLogo } from './Icons';
-import { primaryNav } from '@/lib/navigation';
+import { SearchIcon, MenuIcon, XIcon, UserIcon, BrandLogo } from './Icons';
 import { signOut } from '@/app/auth/actions';
 import styles from './Header.module.css';
 
@@ -11,14 +10,11 @@ export default function Header({ isSignedIn = false, profileLink }: { isSignedIn
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [openMenu, setOpenMenu] = useState<string | null>(null);
-  const navRef = useRef<HTMLElement>(null);
   const [lastPath, setLastPath] = useState(pathname);
 
   // Close menus on navigation (state reset during render), outside click and Escape.
   if (pathname !== lastPath) {
     setLastPath(pathname);
-    setOpenMenu(null);
     setMobileMenuOpen(false);
     setSearchOpen(false);
   }
@@ -26,25 +22,17 @@ export default function Header({ isSignedIn = false, profileLink }: { isSignedIn
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        setOpenMenu(null);
         setSearchOpen(false);
         setMobileMenuOpen(false);
       }
     };
-    const onClick = (e: MouseEvent) => {
-      if (navRef.current && !navRef.current.contains(e.target as Node)) setOpenMenu(null);
-    };
     document.addEventListener('keydown', onKey);
-    document.addEventListener('mousedown', onClick);
     return () => {
       document.removeEventListener('keydown', onKey);
-      document.removeEventListener('mousedown', onClick);
     };
   }, []);
 
   const isActive = (href: string) => pathname === href || pathname?.startsWith(href + '/');
-  const groupActive = (group: (typeof primaryNav)[number]) =>
-    group.columns.some(col => col.links.some(link => isActive(link.href)));
 
   return (
     <header className={styles.header}>
@@ -54,7 +42,7 @@ export default function Header({ isSignedIn = false, profileLink }: { isSignedIn
             <BrandLogo size="lg" />
           </Link>
 
-          <nav className={styles.nav} aria-label="Primary navigation" ref={navRef}>
+          <nav className={styles.nav} aria-label="Primary navigation">
             <Link href="/" className={`${styles.navLink} ${pathname === '/' ? styles.navLinkActive : ''}`}>
               Home
             </Link>

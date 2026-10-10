@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { FileTextIcon, ShieldCheckIcon, UserIcon } from '@/components/Icons';
 import { requireRole } from '@/lib/auth';
 import { createClient } from '@/lib/supabase/server';
 import { inquiryTypes } from '@/lib/institute';
@@ -15,7 +14,7 @@ export const metadata: Metadata = {
 export const dynamic = 'force-dynamic';
 
 export default async function AdminPage() {
-  const identity = await requireRole('admin');
+  await requireRole('admin');
   const supabase = await createClient();
   // Readable only by administrators (row-level security on public.inquiries).
   const { data: inquiries, error: inquiriesError } = await supabase

@@ -42,7 +42,13 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
 
   const rawResults = q ? searchResources(q) : null;
   
-  type UnifiedItem = { kind: keyof SearchResults; item: any; year: number | null };
+  type UnifiedItem = {
+    [Kind in keyof SearchResults]: {
+      kind: Kind;
+      item: SearchResults[Kind][number];
+      year: number | null;
+    }
+  }[keyof SearchResults];
   let unified: UnifiedItem[] = [];
 
   if (rawResults) {

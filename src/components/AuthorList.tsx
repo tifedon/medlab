@@ -1,17 +1,14 @@
-import Link from 'next/link';
 import type { Contributor } from '@/lib/publications';
-import { personSlug } from '@/lib/people';
 import styles from './ui.module.css';
 
-/** Contributors with links to their library index pages and ORCID records. */
+/** External contributors are credited exactly as supplied by the source record. */
 export default function AuthorList({ people }: { people: Contributor[] }) {
   return (
     <ul className={styles.authorList}>
       {people.map((person, i) => {
-        const name = person.name.split(',')[0].trim();
         return (
           <li key={`${person.name}-${i}`} className={styles.authorItem}>
-            <Link href={`/people/${personSlug(name)}`}>{person.name}</Link>
+            <span>{person.name}</span>
             {person.role && <span>{person.role}</span>}
             {person.affiliation && <span>{person.affiliation}</span>}
             {person.orcid && (

@@ -21,6 +21,7 @@ export interface Insight {
   excerpt: string;
   category: InsightCategory;
   author: string;
+  authorSlug?: string;
   publishedDate: string;
   readTime: number;
   divisions: string[];

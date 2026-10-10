@@ -45,7 +45,10 @@ export default async function InsightPage({ params }: { params: Promise<{ slug: 
             <span className={ui.kicker}>{insightCategoryLabels[insight.category]}</span>
             <h1 className={ui.heroTitle}>{insight.title}</h1>
             <p className={ui.heroLead}>{insight.excerpt}</p>
-            <p className={ui.cardByline} style={{ marginTop: '1rem' }}>{insight.author} · {formatDate(insight.publishedDate)} · {insight.readTime} min read</p>
+            <p className={ui.cardByline} style={{ marginTop: '1rem' }}>
+              {insight.authorSlug ? <Link href={`/people/${insight.authorSlug}`}>{insight.author}</Link> : insight.author}
+              {' · '}{formatDate(insight.publishedDate)} · {insight.readTime} min read
+            </p>
           </div>
         </div>
       </header>
@@ -90,7 +93,9 @@ export default async function InsightPage({ params }: { params: Promise<{ slug: 
           headline: insight.title,
           description: insight.excerpt,
           datePublished: insight.publishedDate,
-          author: { '@type': 'Organization', name: siteConfig.fullName },
+          author: insight.authorSlug
+            ? { '@type': 'Person', name: insight.author, url: `${siteConfig.url}/people/${insight.authorSlug}` }
+            : { '@type': 'Organization', name: siteConfig.fullName },
           url: `${siteConfig.url}/insights/${insight.slug}`,
         }}
       />

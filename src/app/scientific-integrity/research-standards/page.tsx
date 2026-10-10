@@ -38,7 +38,7 @@ export default function ResearchStandardsPage() {
             <tbody>{standards.map(([s, r]) => <tr key={s}><td>{s}</td><td>{r}</td></tr>)}</tbody>
           </table>
         </div>
-        <p className={ui.sectionLead} style={{ marginTop: '1rem' }}>See also <Link href="/research/methodology">research methodology</Link>.</p>
+        <p className={ui.sectionLead} style={{ marginTop: '1rem' }}>See also <Link href="/research#methodology">research methodology</Link>.</p>
       </Section>
       <Section>
         <SectionHeader kicker="Sources" title="Where the standards come from" />

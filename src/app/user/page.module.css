@@ -20,7 +20,7 @@
 .eyebrow, .sectionKicker { color: var(--teal-300); font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; }
 .verifiedBadge { display: inline-flex; align-items: center; gap: var(--space-2); padding: 5px var(--space-3); color: var(--teal-100); border: 1px solid rgba(93, 213, 207, 0.25); border-radius: var(--radius-full); font-size: var(--text-xs); }
 .heroGrid { justify-content: space-between; gap: var(--space-8); }
-.hero h1 { color: var(--navy-900); font-family: var(--font-serif); font-size: clamp(2.4rem, 4vw, 4.1rem); letter-spacing: -0.04em; margin-bottom: var(--space-3); }
+.hero h1 { color: var(--navy-900); font-family: var(--font-serif); font-size: clamp(2.1rem, 3.5vw, 3rem); letter-spacing: -0.03em; margin-bottom: var(--space-3); }
 .hero p { max-width: 720px; color: var(--gray-500); font-size: var(--text-lg); line-height: var(--leading-relaxed); }
 
 .signOutButton { padding: var(--space-3) var(--space-5); color: var(--navy-900); border: 1px solid var(--gray-200); border-radius: var(--radius-md); font-weight: 700; white-space: nowrap; }

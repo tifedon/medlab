@@ -16,7 +16,7 @@ const glyphs: Record<string, React.ReactNode> = {
 
 export default function DivisionIcon({ division, size = 44 }: { division: Division; size?: number }) {
   return (
-    <span className={styles.divisionIcon} style={{ width: size, height: size, background: division.colorLight, color: division.color }} aria-hidden="true">
+    <span className={styles.divisionIcon} style={{ width: size, height: size, color: 'var(--teal-700)' }} aria-hidden="true">
       <svg width={size * 0.5} height={size * 0.5} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         {glyphs[division.id]}
       </svg>

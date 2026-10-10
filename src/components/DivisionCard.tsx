@@ -21,7 +21,6 @@ export default function DivisionCard({ division, counts }: { division: Division;
           </div>
         )}
       </div>
-      <div className={styles.accent} style={{ background: division.color }} />
     </Link>
   );
 }

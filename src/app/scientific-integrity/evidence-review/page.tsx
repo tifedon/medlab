@@ -47,7 +47,7 @@ export default function EvidenceReviewPage() {
         <div className={ui.grid2}>{handbooks.map(b => <BookCard key={b.slug} book={b} />)}</div>
       </Section>
       <Section last>
-        <SectionHeader kicker="Examples" title="Systematic reviews and meta-analyses in the library" link={{ href: '/publications/evidence-reviews', label: 'All evidence reviews' }} />
+        <SectionHeader kicker="Examples" title="Systematic reviews and meta-analyses in the library" link={{ href: '/publications?category=evidence-reviews', label: 'All evidence reviews' }} />
         <div className={ui.grid2}>{reviews.slice(0, 4).map(p => <PublicationCard key={p.slug} publication={p} />)}</div>
         <p className={ui.sectionLead} style={{ marginTop: '1.5rem' }}>Need a review conducted or appraised? <Link href="/contact?topic=scientific-review">Contact the Evidence Review unit</Link>.</p>
       </Section>

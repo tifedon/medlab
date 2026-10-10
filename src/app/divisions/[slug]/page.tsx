@@ -19,7 +19,7 @@ import {
   completedStatuses,
   divisions,
   getBooksByDivision,
-  getContributorsByDivision,
+  getTeamMembersByDivision,
   getDivisionById,
   getIllustrationsByDivision,
   getProgrammesByDivision,
@@ -51,7 +51,7 @@ export default async function DivisionPage({ params }: { params: Promise<{ slug:
   const completed = research.filter(r => completedStatuses.includes(r.status));
   const pubs = getPublicationsByDivision(division.id);
   const books = getBooksByDivision(division.id);
-  const people = getContributorsByDivision(division.id).sort((a, b) => b.works.length - a.works.length);
+  const people = getTeamMembersByDivision(division.id).sort((a, b) => a.name.localeCompare(b.name));
   const projects = getProjectsByDivision(division.id);
   const programmes = getProgrammesByDivision(division.id);
   const resources = getResourcesByDivision(division.id);
@@ -82,7 +82,7 @@ export default async function DivisionPage({ params }: { params: Promise<{ slug:
               <div className={ui.heroStat}><strong>{pubs.length}</strong><span>publications</span></div>
               <div className={ui.heroStat}><strong>{books.length}</strong><span>books</span></div>
               <div className={ui.heroStat}><strong>{research.length}</strong><span>registered studies</span></div>
-              <div className={ui.heroStat}><strong>{people.length}</strong><span>credited people</span></div>
+              <div className={ui.heroStat}><strong>{people.length}</strong><span>team members</span></div>
             </div>
           </div>
         </div>
@@ -109,13 +109,13 @@ export default async function DivisionPage({ params }: { params: Promise<{ slug:
         <SectionHeader
           kicker="Staff and contributors"
           title="People"
-          lead="Verified Sterling IMRES staff will be listed here. Until then, these are the people credited on this division’s library works (not institute staff)."
+          lead="Sterling IMRES team members working across this division’s subject areas."
           link={{ href: `/people?division=${division.id}`, label: 'All people in this division' }}
         />
         {people.length ? (
           <div className={ui.grid4}>{people.slice(0, 8).map(p => <ProfileCard key={p.slug} person={p} />)}</div>
         ) : (
-          <EmptyState title="No people listed yet">Contributors will appear here once their work is in the library.</EmptyState>
+          <EmptyState title="No team members assigned">Team members will appear here when they are assigned to this division.</EmptyState>
         )}
       </Section>
 

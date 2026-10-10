@@ -1,30 +1,15 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { teamMembers } from '@/lib/people';
 
 const bannerImages = [
   '/Characters/Group Photo/Group photo 1.png',
   '/Characters/Group Photo/Group Photo 2.png',
   '/Characters/Group Photo/Group photo 3.png',
   '/Characters/Group Photo/Group photo 4.png'
-];
-
-const team = [
-  { name: 'Robert H. Glassman, MD, MACP, FCCP', image: '/Characters/Headshot/Robert Glassman.png' },
-  { name: 'Elias R. Thorne, MD, PhD, FCCP', image: '/Characters/Headshot/Dr Elias Thorne.png' },
-  { name: 'Sarah Chen, MD, FCCP, ATSF', image: '/Characters/Headshot/Dr Sarah Chen.png' },
-  { name: 'Marcus Vance, MD, FACP, FAASM', image: '/Characters/Headshot/Marcus Vance.png' },
-  { name: 'Amina K. Yusuf, MD, PhD, FACP', image: '/Characters/Headshot/Dr Amina K Yusuf.png' },
-  { name: 'David O. Ojo, MD, FCCM', image: '/Characters/Headshot/Dr David Ojo.jpg' },
-  { name: 'Michael T. Davies, RRT-ACCS', image: '/Characters/Headshot/Micheal T Davis.png' },
-  { name: 'Emily N. Rostova, PharmD, BCPS', image: '/Characters/Headshot/Dr Emily Rostove.png' },
-  { name: 'Elena R. Gomez, APRN, AGACNP-BC', image: '/Characters/Headshot/Elena Gomez.png' },
-  { name: 'Lars Johansen, MD, MPH', image: '/Characters/Headshot/Dr Lars Johansen.png' },
-  { name: 'Mei Lin, MD', image: '/Characters/Headshot/Mei lin.png' },
-  { name: 'Jason Reynolds, CPFT, RPFT', image: '/Characters/Headshot/Jason reynolds.png' },
-  { name: 'Sophia V. Rossi, CMI', image: '/Characters/Headshot/Sophia v rossi.ng' },
-  { name: 'Chloe M. Bennett, MD, MSc', image: '/Characters/Headshot/Dr Chloe Bennett.png' },
 ];
 
 export default function MeetTheTeam() {
@@ -98,7 +83,7 @@ export default function MeetTheTeam() {
               backgroundColor: 'rgba(255, 255, 255, 0.8)',
               color: 'var(--navy-900)',
               border: 'none',
-              borderRadius: '50%',
+              borderRadius: 0,
               width: '48px',
               height: '48px',
               cursor: 'pointer',
@@ -106,7 +91,7 @@ export default function MeetTheTeam() {
               alignItems: 'center',
               justifyContent: 'center',
               zIndex: 10,
-              boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+              boxShadow: 'none'
             }}
             aria-label="Previous slide"
           >
@@ -123,7 +108,7 @@ export default function MeetTheTeam() {
               backgroundColor: 'rgba(255, 255, 255, 0.8)',
               color: 'var(--navy-900)',
               border: 'none',
-              borderRadius: '50%',
+              borderRadius: 0,
               width: '48px',
               height: '48px',
               cursor: 'pointer',
@@ -131,7 +116,7 @@ export default function MeetTheTeam() {
               alignItems: 'center',
               justifyContent: 'center',
               zIndex: 10,
-              boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+              boxShadow: 'none'
             }}
             aria-label="Next slide"
           >
@@ -140,8 +125,8 @@ export default function MeetTheTeam() {
         </div>
       </div>
       
-      <div style={{ maxWidth: '1200px', margin: '3rem auto 4rem auto', padding: '0 1.5rem' }}>
-        <p style={{ fontSize: '1.25rem', lineHeight: 1.6, color: 'var(--navy-700)' }}>
+      <div style={{ maxWidth: '1040px', margin: '3rem auto 4rem', padding: '0 1.5rem' }}>
+        <p style={{ fontSize: 'var(--text-base)', lineHeight: 'var(--leading-relaxed)', color: 'var(--navy-700)', textAlign: 'center' }}>
           We are a multidisciplinary team of physicians, researchers, scientists, healthcare professionals, editors, and medical communication specialists working together to advance medical knowledge through rigorous research, evidence review, education, and scholarly publication. Our team brings expertise from across the health sciences, enabling Sterling IMRES to approach complex medical questions and research challenges from multiple professional perspectives while maintaining a strong focus on scientific integrity, collaboration, and practical impact.
         </p>
       </div>
@@ -154,21 +139,23 @@ export default function MeetTheTeam() {
         margin: '0 auto',
         padding: '0 1.5rem'
       }}>
-        {team.map((member, i) => (
-          <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        {teamMembers.map(member => (
+          <Link key={member.slug} href={`/people/${member.slug}`} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <div style={{
               width: '180px',
               height: '180px',
-              borderRadius: '50%',
+              borderRadius: 0,
               position: 'relative',
               overflow: 'hidden',
               marginBottom: '1.5rem',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+              boxShadow: 'none',
+              border: '1px solid var(--gray-300)'
             }}>
               <Image 
                 src={member.image} 
-                alt={member.name} 
+                alt="" 
                 fill 
+                sizes="180px"
                 style={{ objectFit: 'cover', objectPosition: 'top' }} 
               />
             </div>
@@ -180,9 +167,9 @@ export default function MeetTheTeam() {
               lineHeight: 1.4,
               margin: 0
             }}>
-              {member.name}
+              {member.name}, {member.degrees.join(', ')}
             </h3>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

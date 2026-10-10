@@ -2,12 +2,11 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import Section from '@/components/Section';
+import SectionHeader from '@/components/SectionHeader';
 import CTASection from '@/components/CTASection';
-import { libraryContributors } from '@/lib/people';
 import { siteConfig } from '@/lib/site';
-import { mission, vision, values } from '@/lib/institute';
+import { governanceRoles, leadershipRoles, mission, vision, values } from '@/lib/institute';
 import ui from '@/components/ui.module.css';
-import ProfileCard from '@/components/ProfileCard';
 import MeetTheTeam from '@/components/MeetTheTeam';
 
 export const metadata: Metadata = {
@@ -27,61 +26,65 @@ export default function AboutPage() {
       />
 
       <Section>
-        <div style={{ maxWidth: '800px', marginBottom: 'var(--space-12)' }}>
-          <div style={{ marginBottom: '3rem' }}>
-            <h2 style={{ fontSize: '1.875rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--teal-700)' }}>
-              What happens at Sterling IMRES
-            </h2>
-            <p style={{ fontSize: '1.25rem', lineHeight: 1.6, color: 'var(--navy-900)', marginBottom: '1.5rem' }}>
-              Sterling IMRES is a comprehensive hub for medical research, education, and sciences. We bridge the gap between clinical practice and rigorous scientific inquiry, fostering an environment where groundbreaking discoveries are made and shared with the world.
-            </p>
-            <p style={{ fontSize: '1.25rem', lineHeight: 1.6, color: 'var(--navy-900)', marginBottom: '1.5rem' }}>
-              Every day, our cross-disciplinary teams work across nine specialized divisions to run clinical trials, review evidence, and publish peer-reviewed studies. From parasitology and virology to cutting-edge medical illustration, our goal is to maintain the highest standards of scientific integrity while making knowledge accessible.
-            </p>
-            <p style={{ fontSize: '1.25rem', lineHeight: 1.6, color: 'var(--navy-900)' }}>
-              Beyond research, we are deeply committed to education. We provide robust training programs, workshops, and reference materials that empower the next generation of healthcare professionals to lead with evidence-based practice.
-            </p>
+        <div className={ui.editorialFeature}>
+          <h2>What happens at Sterling IMRES</h2>
+          <div className={ui.editorialCopy}>
+            <p>Sterling IMRES is a comprehensive hub for medical research, education, and sciences. We bridge the gap between clinical practice and rigorous scientific inquiry, fostering an environment where discoveries are made and shared responsibly.</p>
+            <p>Every day, our cross-disciplinary teams work across nine specialized divisions to run clinical trials, review evidence, and publish peer-reviewed studies. From parasitology and virology to medical illustration, our goal is to maintain high standards of scientific integrity while making knowledge accessible.</p>
+            <p>Beyond research, we are committed to education. We provide training programs, workshops, and reference materials that help healthcare professionals lead with evidence-based practice.</p>
           </div>
+        </div>
 
-          <div style={{ marginBottom: '3rem' }}>
-            <h2 style={{ fontSize: '1.875rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--teal-700)' }}>
-              Mission
-            </h2>
-            <p style={{ fontSize: '1.25rem', lineHeight: 1.6, color: 'var(--navy-900)' }}>
-              {mission}
-            </p>
-          </div>
+        <div className={ui.editorialColumns}>
+          <section id="mission" className={ui.editorialBlock} style={{ scrollMarginTop: 'var(--header-height)' }}>
+            <h2>Mission</h2>
+            <p>{mission}</p>
+          </section>
+          <section className={ui.editorialBlock}>
+            <h2>Vision</h2>
+            <p>{vision}</p>
+          </section>
+        </div>
 
-          <div style={{ marginBottom: '3rem' }}>
-            <h2 style={{ fontSize: '1.875rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--teal-700)' }}>
-              Vision
-            </h2>
-            <p style={{ fontSize: '1.25rem', lineHeight: 1.6, color: 'var(--navy-900)' }}>
-              {vision}
-            </p>
-          </div>
+        <section id="values" style={{ scrollMarginTop: 'var(--header-height)' }}>
+          <ol className={ui.valuesGrid}>
+            {values.map((value, index) => (
+              <li key={value.title}>
+                <h3>{String(index + 1).padStart(2, '0')} · {value.title}</h3>
+                <p>{value.practice}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+      </Section>
 
-          <div>
-            <h2 style={{ fontSize: '1.875rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--teal-700)' }}>
-              Values
-            </h2>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-              {values.map((v, i) => (
-                <li key={v.title} style={{ marginBottom: '1.5rem' }}>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--navy-900)', marginBottom: '0.25rem' }}>
-                    {i + 1}. {v.title}
-                  </h3>
-                  <p style={{ fontSize: '1.125rem', lineHeight: 1.5, color: 'var(--navy-700)', margin: 0 }}>
-                    {v.practice}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
+      <Section id="leadership">
+        <SectionHeader kicker="Leadership" title="Leadership responsibilities" lead="Named appointments are published only after the role and credentials have been verified." />
+        <div className={ui.grid3}>
+          {leadershipRoles.map(item => (
+            <article key={item.role} className={ui.card}>
+              <h3 className={ui.cardTitle}>{item.role}</h3>
+              <p className={ui.cardText}>{item.remit}</p>
+            </article>
+          ))}
         </div>
       </Section>
 
-      <MeetTheTeam />
+      <Section id="governance">
+        <SectionHeader kicker="Governance" title="How work is reviewed" lead="Clear ownership and review roles keep scientific, editorial and visual decisions accountable." />
+        <div className={ui.grid2}>
+          {governanceRoles.map(item => (
+            <article key={item.role} className={ui.card}>
+              <h3 className={ui.cardTitle}>{item.role}</h3>
+              <p className={ui.cardText}>{item.responsibility}</p>
+            </article>
+          ))}
+        </div>
+      </Section>
+
+      <div id="team" style={{ scrollMarginTop: 'var(--header-height)' }}>
+        <MeetTheTeam />
+      </div>
 
       <Section last>
         <CTASection

@@ -19,6 +19,7 @@ export default function ResearchCard({ study }: { study: ResearchRecord }) {
         </h3>
         <p className={styles.listItemByline}>{study.sponsor}</p>
         <p className={styles.listItemText}>{study.summary}</p>
+        <DivisionTags ids={study.divisions} />
       </div>
       <div className={styles.listItemRight}>
         {study.startDate && <span>{study.startDate.slice(0, 4)}</span>}

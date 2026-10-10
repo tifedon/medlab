@@ -147,7 +147,7 @@ export const projects: Project[] = [
     team: 'Partners and founding team',
     divisions: ['editorial-publications'],
     updates: [],
-    related: [{ label: 'Leadership', href: '/about/leadership' }],
+    related: [{ label: 'Leadership', href: '/about#leadership' }],
   },
   {
     slug: 'launch-infrastructure',

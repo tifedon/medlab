@@ -21,7 +21,7 @@ export default function CorrectionsPage() {
       <h2>Our own publications</h2>
       <p>For Sterling IMRES Press titles and institutional reports, corrections and new editions follow a documented update process, and errata are published with the work.</p>
       <h2>Who decides</h2>
-      <p>The Evidence Review and Scientific Integrity Unit reviews each report, and the Editorial and Publications Division approves and publishes the correction. See <Link href="/about/governance">governance</Link>.</p>
+      <p>The Evidence Review and Scientific Integrity Unit reviews each report, and the Editorial and Publications Division approves and publishes the correction. See <Link href="/about#governance">governance</Link>.</p>
     </PolicyPage>
   );
 }

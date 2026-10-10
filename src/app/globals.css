@@ -5,10 +5,15 @@
   --navy-800: #163A5F; /* Primary: Research Navy */
   --navy-700: #1b4570;
   --navy-600: #245b91;
+  --navy-400: #6d89a3;
+  --navy-300: #91a8bd;
+  --navy-200: #c4d2df;
   
   --teal-700: #116b67;
   --teal-600: #168C88; /* Accent: Scientific Teal */
   --teal-500: #1baea9;
+  --teal-400: #36bdb7;
+  --teal-300: #5cc8c3;
   --teal-100: #E8F5F4; /* Subtle Highlights: Pale Teal */
   --teal-50: #f2faf9;
   
@@ -24,37 +29,43 @@
   
   /* Status Colors */
   --amber-600: #b8860b;
+  --amber-200: #f3d889;
+  --amber-100: #faedbd;
   --amber-50: #fef9e7;
   --red-600: #dc2626;
+  --red-100: #fecaca;
   --red-50: #fee2e2;
   --green-700: #15703a;
+  --green-100: #bbf0d2;
   --green-50: #e8f8f0;
   --blue-600: #2563eb;
+  --blue-100: #dbeafe;
   --blue-50: #eff6ff;
   --purple-600: #7c3aed;
   --purple-50: #f5f3ff;
+  --warm-white: #fbfcfd;
 
   /* 2. Typography */
-  --font-sans: var(--font-ibm), "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-  --font-serif: var(--font-ibm), "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-sans: var(--font-dm-sans), "DM Sans", "Segoe UI", system-ui, sans-serif;
+  --font-serif: var(--font-dm-sans), "DM Sans", "Segoe UI", system-ui, sans-serif;
   
   /* 3. Typography Scale (Restored original variable names to prevent layout breaking, updated values to match system) */
   --text-xs: 0.75rem;     /* 12px */
   --text-sm: 0.875rem;    /* 14px */
-  --text-base: 1.125rem;  /* 18px (Body) */
-  --text-md: 1.25rem;     /* 20px */
-  --text-lg: 1.4375rem;   /* 23px */
-  --text-xl: 1.75rem;     /* 28px */
-  --text-2xl: 2.125rem;   /* 34px */
-  --text-3xl: 2.625rem;   /* 42px */
-  --text-4xl: 3.25rem;    /* 52px */
-  --text-5xl: 3.75rem;    /* 60px */
-  --text-6xl: 4.5rem;     /* 72px */
+  --text-base: 1rem;       /* 16px */
+  --text-md: 1.0625rem;    /* 17px */
+  --text-lg: 1.1875rem;    /* 19px */
+  --text-xl: 1.375rem;     /* 22px */
+  --text-2xl: 1.6875rem;   /* 27px */
+  --text-3xl: 2.125rem;    /* 34px */
+  --text-4xl: 2.625rem;    /* 42px */
+  --text-5xl: 3.125rem;    /* 50px */
+  --text-6xl: 3.625rem;    /* 58px */
 
   --leading-tight: 1.2;
   --leading-snug: 1.4;
-  --leading-normal: 1.75;
-  --leading-relaxed: 1.8;
+  --leading-normal: 1.65;
+  --leading-relaxed: 1.72;
 
   /* 4. Layout & Spacing */
   --space-1: 0.25rem;  /* 4px */
@@ -70,31 +81,35 @@
   --space-20: 5rem;    /* 80px */
   --space-24: 6rem;    /* 96px */
 
-  --max-width: 1280px;
-  --max-width-narrow: 960px;
-  --max-width-wide: 1440px;
+  --max-width: 1360px;
+  --max-width-narrow: 1040px;
+  --max-width-wide: 1520px;
   --header-height: 80px;
 
   /* Borders & Shadows */
-  --radius-sm: 4px;
-  --radius-md: 6px;
-  --radius-lg: 8px;
-  --radius-xl: 12px;
-  --radius-2xl: 24px;
-  --radius-full: 9999px;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-2xl: 0;
+  --radius-full: 0;
   
-  --shadow-sm: 0 1px 2px rgba(22, 58, 95, 0.05);
-  --shadow-md: 0 4px 12px rgba(22, 58, 95, 0.05), 0 2px 4px rgba(22, 58, 95, 0.02);
-  --shadow-lg: 0 12px 24px rgba(22, 58, 95, 0.08), 0 4px 8px rgba(22, 58, 95, 0.03);
+  --shadow-sm: none;
+  --shadow-xs: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-xl: none;
+  --shadow-2xl: none;
 
   --transition-fast: 0.15s ease;
   --transition-base: 0.25s ease;
+  --transition-spring: 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 /* CSS Reset and Base Styles */
 *, :before, :after { box-sizing: border-box; margin: 0; padding: 0; }
 html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; font-size: 16px; }
-body { font-family: var(--font-sans); font-size: var(--text-base); line-height: var(--leading-normal); color: var(--navy-900); background-color: var(--white); min-height: 100vh; font-weight: 400; }
+body { font-family: var(--font-sans); font-size: var(--text-base); line-height: var(--leading-normal); color: var(--navy-900); background-color: var(--white); min-height: 100vh; font-weight: 400; font-optical-sizing: auto; }
 main { scroll-margin-top: var(--header-height); }
 
 /* 5. UI Styling */
@@ -105,7 +120,7 @@ button { cursor: pointer; font-family: inherit; font-size: inherit; background: 
 input, select, textarea { font-family: inherit; font-size: inherit; }
 ul, ol { list-style: none; }
 
-.container { max-width: var(--max-width); padding: 0 var(--space-4); margin: 0 auto; }
+.container { max-width: var(--max-width); padding: 0 var(--space-6); margin: 0 auto; }
 .container--narrow { max-width: var(--max-width-narrow); }
 .container--wide { max-width: var(--max-width-wide); }
 .sr-only { clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; width: 1px; height: 1px; margin: -1px; padding: 0; position: absolute; overflow: hidden; }
@@ -115,7 +130,7 @@ ul, ol { list-style: none; }
 .skip-link:focus { transform: translateY(0); }
 
 /* Sections */
-.section { padding: var(--space-20) 0; }
+.section { padding: var(--space-16) 0; }
 .section--alt { background-color: var(--gray-50); }
 .section--dark { background-color: var(--navy-800); color: var(--white); }
 
@@ -126,10 +141,11 @@ ul, ol { list-style: none; }
 .section-link:hover { gap: var(--space-2); color: var(--teal-700); }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: var(--leading-tight); color: var(--navy-900); letter-spacing: -0.01em; }
-h1 { font-size: var(--text-5xl); }
-h2 { font-size: var(--text-3xl); }
-h3 { font-size: var(--text-2xl); }
+h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: var(--leading-tight); color: var(--navy-900); letter-spacing: -0.01em; text-wrap: balance; }
+p { text-wrap: pretty; }
+h1 { font-size: var(--text-4xl); }
+h2 { font-size: var(--text-2xl); }
+h3 { font-size: var(--text-xl); }
 h4 { font-size: var(--text-xl); }
 h5 { font-size: var(--text-lg); }
 h6 { font-size: var(--text-md); }
@@ -151,8 +167,8 @@ h6 { font-size: var(--text-md); }
 .btn--lg { padding: var(--space-3) var(--space-5); font-size: var(--text-md); border-radius: var(--radius-md); }
 
 /* Components */
-.card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); transition: all var(--transition-base); overflow: hidden; box-shadow: var(--shadow-sm); }
-.card:hover { border-color: var(--gray-300); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.card { background: transparent; border-top: 1px solid var(--gray-200); border-radius: 0; transition: border-color var(--transition-base); overflow: hidden; box-shadow: none; }
+.card:hover { border-color: var(--teal-600); box-shadow: none; transform: none; }
 .card-body { padding: var(--space-6); }
 
 .input { width: 100%; padding: var(--space-2) var(--space-3); font-size: var(--text-base); color: var(--navy-900); background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-sm); transition: all var(--transition-fast); outline: none; }
@@ -172,7 +188,7 @@ h6 { font-size: var(--text-md); }
 .badge--neutral { background-color: var(--gray-50); color: var(--gray-500); border: 1px solid var(--gray-200); }
 
 /* Grids */
-.division-grid { gap: var(--space-4); grid-template-columns: repeat(3, 1fr); display: grid; }
+.division-grid { gap: var(--space-8); grid-template-columns: repeat(3, 1fr); display: grid; }
 .news-grid { gap: var(--space-4); grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); display: grid; }
 .feature-grid { gap: var(--space-4); grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); display: grid; }
 
@@ -201,4 +217,5 @@ a:focus-visible, button:focus-visible { border-radius: var(--radius-sm); }
   .section { padding: var(--space-8) 0; }
   h1 { font-size: var(--text-3xl); }
   h2 { font-size: var(--text-2xl); }
+  .container { padding: 0 var(--space-5); }
 }
