@@ -5,18 +5,106 @@ import {
   getResearchByStatuses,
   currentStatuses,
   upcomingStatuses,
+  publications,
+  researchRecords,
+  teamMembers,
 } from '@/lib/data';
+import { bookCategoryLabels } from '@/lib/books';
+import { publicationTypeLabels } from '@/lib/publications';
+import { researchStatusLabel } from '@/lib/research';
+import { getCatalogueBooks } from '@/lib/press-catalogue';
 import DivisionCard from '@/components/DivisionCard';
 import ResearchCard from '@/components/ResearchCard';
 import SectionHeader from '@/components/SectionHeader';
 import CTASection from '@/components/CTASection';
 import ui from '@/components/ui.module.css';
-import HomeClient from './HomeClient';
+import HomeClient, { type HomeSearchSuggestion } from './HomeClient';
 import styles from './page.module.css';
 
-export default function HomePage() {
+const searchText = (...fields: (string | undefined | string[])[]) => fields.flat().filter(Boolean).join(' ');
+
+export default async function HomePage() {
+  const books = await getCatalogueBooks();
   const featuredResearch = getResearchByStatuses(currentStatuses).slice(0, 3);
   const upcomingResearch = getResearchByStatuses(upcomingStatuses).length;
+  const searchSuggestions: HomeSearchSuggestion[] = [
+    ...researchRecords.map(record => ({
+      id: `research-${record.slug}`,
+      title: record.title,
+      description: `${researchStatusLabel(record.status)} · ${record.nctId}`,
+      kind: 'Research' as const,
+      href: `/research/${record.slug}`,
+      searchText: searchText(
+        record.title,
+        record.officialTitle,
+        record.nctId,
+        record.summary,
+        record.sponsor,
+        record.status,
+        record.conditions,
+        record.interventions,
+        record.divisions,
+        record.investigators?.map(investigator => investigator.name),
+      ),
+    })),
+    ...publications.map(publication => ({
+      id: `publication-${publication.slug}`,
+      title: publication.title,
+      description: `${publicationTypeLabels[publication.type]} · ${publication.journal}`,
+      kind: 'Publications' as const,
+      href: `/research/publications/${publication.slug}`,
+      searchText: searchText(
+        publication.title,
+        publication.summary,
+        publication.journal,
+        publication.publisher,
+        publication.type,
+        publication.doi,
+        publication.pmid,
+        publication.pmcid,
+        publication.keywords,
+        publication.divisions,
+        publication.corporateAuthor,
+        publication.authors.map(author => author.name),
+      ),
+    })),
+    ...books.map(book => ({
+      id: `book-${book.slug}`,
+      title: book.title,
+      description: `${bookCategoryLabels[book.category]} · ${book.publisher}`,
+      kind: 'Books' as const,
+      href: `/books/${book.slug}`,
+      searchText: searchText(
+        book.title,
+        book.subtitle,
+        book.summary,
+        book.publisher,
+        book.category,
+        book.isbn13,
+        book.keywords,
+        book.divisions,
+        book.authors.map(author => author.name),
+        book.editors.map(editor => editor.name),
+      ),
+    })),
+    ...teamMembers.map(member => ({
+      id: `person-${member.slug}`,
+      title: member.name,
+      description: `${member.title} · ${member.specialty}`,
+      kind: 'People' as const,
+      href: `/people/${member.slug}`,
+      searchText: searchText(
+        member.name,
+        member.title,
+        member.specialty,
+        member.degrees,
+        member.biography,
+        member.expertise,
+        member.researchInterests,
+        member.divisions,
+      ),
+    })),
+  ];
 
   return (
     <div className={styles.page}>
@@ -29,7 +117,7 @@ export default function HomePage() {
           <p className={styles.heroSubtitle}>
             Sterling IMRES is a comprehensive medical institute bringing together clinical research, scientific education, and scholarly publishing into a unified, evidence-based platform.
           </p>
-          <HomeClient />
+          <HomeClient suggestions={searchSuggestions} />
 
         </div>
       </section>

@@ -6,9 +6,11 @@ import {
   FileTextIcon,
   UserIcon,
 } from '@/components/Icons';
+import { byline } from '@/components/AuthorList';
 import { publications, researchRecords, divisions } from '@/lib/data';
-import { publicationTypeLabels } from '@/lib/publications';
 import { requireRole } from '@/lib/auth';
+import { bookCategoryLabels, getBookStatusLabel } from '@/lib/books';
+import { getCatalogueBooks } from '@/lib/press-catalogue';
 import styles from './page.module.css';
 
 export const metadata: Metadata = {
@@ -20,7 +22,9 @@ export const dynamic = 'force-dynamic';
 
 export default async function UserPage() {
   const identity = await requireRole('user');
-  const recommendedPapers = publications.slice(0, 3);
+  const recommendedWorks = (await getCatalogueBooks())
+    .filter(book => book.isPressTitle)
+    .slice(0, 3);
   const displayName = identity.fullName || identity.email.split('@')[0] || 'Research reader';
 
   return (
@@ -78,21 +82,24 @@ export default async function UserPage() {
 
           <section className={styles.section}>
             <div className={styles.sectionHeader}>
-              <div><span className={styles.sectionKicker}>Evidence briefing</span><h2>Recommended research</h2></div>
-              <Link href="/research">View full library</Link>
+              <div><span className={styles.sectionKicker}>Sterling IMRES Press</span><h2>Recommended works</h2></div>
+              <Link href="/press">View Press catalogue</Link>
             </div>
             <div className={styles.paperList}>
-              {recommendedPapers.map((paper, index) => (
-                <Link href={`/research/publications/${paper.slug}`} className={styles.paperCard} key={paper.slug}>
-                  <span className={styles.paperIndex}>0{index + 1}</span>
-                  <div>
-                    <span className={styles.paperMeta}>{publicationTypeLabels[paper.type]} · {paper.openAccess ? 'Open access' : 'Subscription'}</span>
-                    <h3>{paper.title}</h3>
-                    <p>{paper.journal} · {paper.publishedDate.slice(0, 4)}</p>
-                  </div>
-                  <ArrowRightIcon size={18} />
-                </Link>
-              ))}
+              {recommendedWorks.map((book, index) => {
+                const credit = book.authors.length ? byline(book.authors) : byline(book.editors);
+                return (
+                  <Link href={`/books/${book.slug}`} className={styles.paperCard} key={book.slug}>
+                    <span className={styles.paperIndex}>0{index + 1}</span>
+                    <div>
+                      <span className={styles.paperMeta}>{bookCategoryLabels[book.category]} · {getBookStatusLabel(book)}</span>
+                      <h3>{book.title}</h3>
+                      <p>{[credit, book.publisher, book.year].filter(Boolean).join(' · ')}</p>
+                    </div>
+                    <ArrowRightIcon size={18} />
+                  </Link>
+                );
+              })}
             </div>
           </section>
         </main>

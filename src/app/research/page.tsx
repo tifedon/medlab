@@ -20,6 +20,8 @@ export const metadata: Metadata = {
 export default async function ResearchPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const [sp, books] = await Promise.all([searchParams, getCatalogueBooks()]);
   const current = { division: param(sp.division), q: param(sp.q) };
+  const pressBooks = books.filter(book => book.isPressTitle);
+  const otherBooks = books.filter(book => !book.isPressTitle);
 
   return (
     <div>
@@ -27,6 +29,16 @@ export default async function ResearchPage({ searchParams }: { searchParams: Pro
         title="Research and Publications"
         breadcrumbs={[{ label: 'Research and Publications' }]}
       />
+      <Section id="press">
+        <SectionHeader
+          kicker="Sterling IMRES Press"
+          title="Works from the Press"
+          link={{ href: '/press', label: 'Visit Sterling IMRES Press' }}
+        />
+        <div className={ui.grid2}>
+          {pressBooks.map(book => <BookCard key={book.slug} book={book} />)}
+        </div>
+      </Section>
       <Section>
         <SectionHeader title="Research records" />
         <ResearchListing records={researchRecords} basePath="/research" current={current} />
@@ -40,7 +52,7 @@ export default async function ResearchPage({ searchParams }: { searchParams: Pro
       <Section id="books" last>
         <SectionHeader kicker="Research library" title="Books" />
         <div className={ui.grid2}>
-          {books.map(book => <BookCard key={book.slug} book={book} />)}
+          {otherBooks.map(book => <BookCard key={book.slug} book={book} />)}
         </div>
       </Section>
     </div>
