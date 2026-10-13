@@ -9,7 +9,7 @@ import Notice from '@/components/Notice';
 import { getInsightBySlug, insightCategoryLabels, insights, type InsightRef } from '@/lib/insights';
 import { recordTitle } from '@/lib/data';
 import { formatDate } from '@/lib/format';
-import { MEDICAL_DISCLAIMER, siteConfig } from '@/lib/site';
+import { siteConfig } from '@/lib/site';
 import ui from '@/components/ui.module.css';
 
 export function generateStaticParams() {
@@ -60,7 +60,7 @@ export default async function InsightPage({ params }: { params: Promise<{ slug: 
                 block.startsWith('## ') ? <h2 key={i}>{block.slice(3)}</h2> : <p key={i}>{block}</p>,
               )}
             </div>
-            {['clinical-medicine', 'dentistry-oral-sciences', 'nursing-allied-health', 'pharmacology-natural-products'].some(d => insight.divisions.includes(d)) && <Notice tone="caution">{MEDICAL_DISCLAIMER}</Notice>}
+
             <section>
               <h2>Sources in the library</h2>
               <ul className={ui.linkList}>

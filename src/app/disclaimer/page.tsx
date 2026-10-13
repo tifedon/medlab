@@ -1,14 +1,15 @@
 import type { Metadata } from 'next';
 import PolicyPage from '@/components/PolicyPage';
-import { MEDICAL_DISCLAIMER } from '@/lib/site';
 
-export const metadata: Metadata = { title: 'Medical disclaimer', description: MEDICAL_DISCLAIMER, alternates: { canonical: '/disclaimer' } };
+const pageDescription = 'Medical disclaimer for Sterling IMRES.';
+
+export const metadata: Metadata = { title: 'Medical disclaimer', description: pageDescription, alternates: { canonical: '/disclaimer' } };
 
 export default function DisclaimerPage() {
   return (
-    <PolicyPage title="Medical disclaimer" lead={MEDICAL_DISCLAIMER} updated="October 2026">
+    <PolicyPage title="Medical disclaimer" lead={pageDescription} updated="October 2026">
       <h2>Education, not advice</h2>
-      <p>Articles, summaries, course material and illustrations on this website explain research and clinical science in general terms. They do not take account of any individual’s circumstances and must not be used to diagnose or treat anyone.</p>
+      <p>Articles, summaries, course material and illustrations on this website explain research and clinical science in general terms. They do not take account of any individual's circumstances and must not be used to diagnose or treat anyone.</p>
       <h2>Evidence changes</h2>
       <p>Medical evidence and guidelines change. Clinical material carries publication or review dates; check that you are using current guidance from a qualified professional or an official guideline body.</p>
       <h2>Registered studies</h2>

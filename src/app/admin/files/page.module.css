@@ -1,0 +1,223 @@
+.page {
+  min-height: 72vh;
+  padding: clamp(3rem, 8vw, 7rem) var(--space-6);
+  background: var(--white);
+}
+
+.shell {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+}
+
+.breadcrumbs {
+  display: flex;
+  gap: var(--space-2);
+  color: var(--gray-500);
+  font-size: var(--text-sm);
+}
+
+.breadcrumbs a {
+  color: var(--teal-700);
+}
+
+.heading {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.85fr) minmax(320px, 1.15fr);
+  gap: var(--space-10);
+  align-items: end;
+  margin: var(--space-8) 0 var(--space-12);
+  padding-bottom: var(--space-8);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.kicker {
+  margin-bottom: var(--space-2);
+  color: var(--teal-700);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.heading h1 {
+  font-size: var(--text-4xl);
+  letter-spacing: -0.03em;
+}
+
+.heading > p {
+  color: var(--gray-600);
+  line-height: var(--leading-relaxed);
+}
+
+.upload {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.8fr) minmax(320px, 1.2fr);
+  gap: var(--space-10);
+  padding-top: var(--space-5);
+  border-top: 2px solid var(--navy-900);
+}
+
+.upload h2,
+.files h2 {
+  margin-bottom: var(--space-2);
+  font-size: var(--text-xl);
+}
+
+.upload p {
+  max-width: 48ch;
+  color: var(--gray-500);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+}
+
+.uploadForm {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.uploadForm label {
+  color: var(--navy-900);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.uploadForm input {
+  min-height: 46px;
+  width: 100%;
+  padding: var(--space-2);
+  color: var(--gray-700);
+  border: 1px solid var(--gray-300);
+  background: var(--white);
+}
+
+.uploadForm input::file-selector-button {
+  min-height: 32px;
+  margin-right: var(--space-3);
+  padding: 0 var(--space-3);
+  color: var(--navy-800);
+  border: 1px solid var(--navy-800);
+  background: var(--white);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.uploadForm button {
+  justify-self: start;
+  min-height: 44px;
+  padding: 0 var(--space-5);
+  color: var(--white);
+  border: 1px solid var(--navy-800);
+  background: var(--navy-800);
+  font-weight: 700;
+}
+
+.uploadForm button:disabled,
+.fileActions button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+.message {
+  min-height: 1.5rem;
+  margin: var(--space-8) 0;
+  color: var(--teal-700);
+  font-size: var(--text-sm);
+}
+
+.messageError {
+  color: var(--red-600);
+}
+
+.files {
+  margin-top: var(--space-8);
+}
+
+.listHeading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: var(--space-3);
+  border-bottom: 2px solid var(--navy-900);
+}
+
+.listHeading span {
+  color: var(--gray-500);
+  font-size: var(--text-sm);
+}
+
+.fileList li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-6);
+  align-items: center;
+  padding: var(--space-5) 0;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.fileDetails {
+  min-width: 0;
+  display: grid;
+  gap: var(--space-1);
+}
+
+.fileDetails a {
+  overflow-wrap: anywhere;
+  color: var(--navy-900);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--gray-300);
+  text-underline-offset: 3px;
+}
+
+.fileDetails span {
+  color: var(--gray-500);
+  font-size: var(--text-sm);
+}
+
+.fileActions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.fileActions button {
+  min-height: 38px;
+  padding: 0 var(--space-3);
+  color: var(--navy-800);
+  border: 1px solid var(--gray-300);
+  background: var(--white);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.fileActions .remove {
+  color: var(--red-600);
+  border-color: currentColor;
+}
+
+.empty {
+  padding: var(--space-8) 0;
+  color: var(--gray-500);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+@media (max-width: 720px) {
+  .page {
+    padding-inline: var(--space-5);
+  }
+
+  .heading,
+  .upload {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .fileList li {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .fileActions {
+    justify-content: flex-start;
+  }
+}

@@ -12,6 +12,47 @@ export type Database = {
   };
   public: {
     Tables: {
+      book_purchase_links: {
+        Row: {
+          book_id: string;
+          created_at: string;
+          format: string | null;
+          id: string;
+          price_label: string | null;
+          retailer_name: string;
+          sort_order: number;
+          url: string;
+        };
+        Insert: {
+          book_id: string;
+          created_at?: string;
+          format?: string | null;
+          id?: string;
+          price_label?: string | null;
+          retailer_name: string;
+          sort_order?: number;
+          url: string;
+        };
+        Update: {
+          book_id?: string;
+          created_at?: string;
+          format?: string | null;
+          id?: string;
+          price_label?: string | null;
+          retailer_name?: string;
+          sort_order?: number;
+          url?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'book_purchase_links_book_id_fkey';
+            columns: ['book_id'];
+            isOneToOne: false;
+            referencedRelation: 'press_books';
+            referencedColumns: ['id'];
+          },
+        ];
+      };
       inquiries: {
         Row: {
           consent: boolean;
@@ -77,6 +118,78 @@ export type Database = {
           full_name?: string | null;
           id?: string;
           role?: Database['public']['Enums']['app_role'];
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      press_books: {
+        Row: {
+          author_names: string[];
+          back_cover_image_url: string | null;
+          category: string;
+          cover_image_url: string | null;
+          created_at: string;
+          created_by: string | null;
+          division_ids: string[];
+          editor_names: string[];
+          id: string;
+          is_visible: boolean;
+          isbn13: string | null;
+          keywords: string[];
+          page_count: number | null;
+          publication_year: number | null;
+          publisher: string;
+          slug: string;
+          status: string;
+          subtitle: string | null;
+          summary: string;
+          title: string;
+          updated_at: string;
+        };
+        Insert: {
+          author_names?: string[];
+          back_cover_image_url?: string | null;
+          category: string;
+          cover_image_url?: string | null;
+          created_at?: string;
+          created_by?: string | null;
+          division_ids?: string[];
+          editor_names?: string[];
+          id?: string;
+          is_visible?: boolean;
+          isbn13?: string | null;
+          keywords?: string[];
+          page_count?: number | null;
+          publication_year?: number | null;
+          publisher?: string;
+          slug: string;
+          status?: string;
+          subtitle?: string | null;
+          summary: string;
+          title: string;
+          updated_at?: string;
+        };
+        Update: {
+          author_names?: string[];
+          back_cover_image_url?: string | null;
+          category?: string;
+          cover_image_url?: string | null;
+          created_at?: string;
+          created_by?: string | null;
+          division_ids?: string[];
+          editor_names?: string[];
+          id?: string;
+          is_visible?: boolean;
+          isbn13?: string | null;
+          keywords?: string[];
+          page_count?: number | null;
+          publication_year?: number | null;
+          publisher?: string;
+          slug?: string;
+          status?: string;
+          subtitle?: string | null;
+          summary?: string;
+          title?: string;
           updated_at?: string;
         };
         Relationships: [];

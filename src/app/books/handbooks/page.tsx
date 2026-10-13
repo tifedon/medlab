@@ -4,7 +4,8 @@ import Section from '@/components/Section';
 import BookCard from '@/components/BookCard';
 import EmptyState from '@/components/EmptyState';
 import LibraryNotice from '@/components/LibraryNotice';
-import { bookShelves, getBooksByShelf } from '@/lib/books';
+import { bookShelves } from '@/lib/books';
+import { getCatalogueBooks } from '@/lib/press-catalogue';
 import ui from '@/components/ui.module.css';
 
 const shelf = bookShelves['handbooks'];
@@ -15,8 +16,8 @@ export const metadata: Metadata = {
   alternates: { canonical: '/books/handbooks' },
 };
 
-export default function Page() {
-  const records = getBooksByShelf('handbooks');
+export default async function Page() {
+  const records = (await getCatalogueBooks()).filter(book => shelf.categories.includes(book.category));
   return (
     <div>
       <PageHero kicker="Books" title={shelf.label} lead={shelf.description} breadcrumbs={[{ label: 'Books', href: '/books' }, { label: shelf.label }]} stats={[{ value: records.length, label: 'books' }]} />

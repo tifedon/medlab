@@ -26,9 +26,9 @@ export default function AboutPage() {
       />
 
       <Section>
-        <div className={ui.editorialFeature}>
+        <div className={`${ui.editorialFeature} ${ui.editorialFeatureUnified}`}>
           <h2>What happens at Sterling IMRES</h2>
-          <div className={ui.editorialCopy}>
+          <div className={`${ui.editorialCopy} ${ui.editorialCopyUnified}`}>
             <p>Sterling IMRES is a comprehensive hub for medical research, education, and sciences. We bridge the gap between clinical practice and rigorous scientific inquiry, fostering an environment where discoveries are made and shared responsibly.</p>
             <p>Every day, our cross-disciplinary teams work across nine specialized divisions to run clinical trials, review evidence, and publish peer-reviewed studies. From parasitology and virology to medical illustration, our goal is to maintain high standards of scientific integrity while making knowledge accessible.</p>
             <p>Beyond research, we are committed to education. We provide training programs, workshops, and reference materials that help healthcare professionals lead with evidence-based practice.</p>
@@ -48,9 +48,9 @@ export default function AboutPage() {
 
         <section id="values" style={{ scrollMarginTop: 'var(--header-height)' }}>
           <ol className={ui.valuesGrid}>
-            {values.map((value, index) => (
+            {values.map((value) => (
               <li key={value.title}>
-                <h3>{String(index + 1).padStart(2, '0')} · {value.title}</h3>
+                <h3>{value.title}</h3>
                 <p>{value.practice}</p>
               </li>
             ))}

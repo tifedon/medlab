@@ -91,6 +91,7 @@
 }
 
 .breadcrumbs li {
+  min-width: 0;
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
@@ -110,6 +111,7 @@
 }
 
 .breadcrumbs [aria-current] {
+  display: block;
   color: var(--navy-800);
   font-weight: 500;
   max-width: 48ch;
@@ -160,6 +162,13 @@
   color: var(--teal-700);
   font-size: var(--text-sm);
   font-weight: 600;
+}
+
+.sectionActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
 }
 
 /* ---------- Grids ---------- */
@@ -506,12 +515,23 @@ a.tag:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  aspect-ratio: 2 / 3;
+  aspect-ratio: 17 / 22;
   padding: 10px 9px;
   overflow: hidden;
   color: var(--white);
   border-radius: 0;
   box-shadow: inset 3px 0 0 rgba(0, 0, 0, 0.18);
+}
+
+.coverArtwork {
+  padding: 0;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  box-shadow: none;
+}
+
+.coverImage {
+  object-fit: contain;
 }
 
 .coverLarge {
@@ -552,6 +572,19 @@ a.tag:hover {
   width: 30%;
   margin: 6px 0;
   background: rgba(255, 255, 255, 0.6);
+}
+
+.bookHeroGrid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 180px) 1fr;
+  gap: var(--space-10);
+  align-items: center;
+}
+
+.bookHeroGrid > div {
+  min-width: 0;
 }
 
 /* ---------- Profile ---------- */
@@ -847,6 +880,33 @@ a.tag:hover {
   text-transform: uppercase;
 }
 
+.purchaseLinks {
+  display: grid;
+  border-top: 1px solid var(--gray-200);
+}
+
+.purchaseLinks li {
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.purchaseLinks a {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-3) 0;
+  color: var(--navy-900);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.purchaseLinks small {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--gray-500);
+  font-size: var(--text-xs);
+  font-weight: 500;
+}
+
 .metaList {
   display: flex;
   flex-direction: column;
@@ -1004,6 +1064,11 @@ a.tag:hover {
   border-top: 2px solid var(--navy-900);
 }
 
+.editorialFeatureUnified {
+  grid-template-columns: minmax(220px, 0.42fr) minmax(0, 1.58fr);
+  gap: var(--space-8);
+}
+
 .editorialFeature h2,
 .editorialBlock h2 {
   font-size: var(--text-2xl);
@@ -1023,6 +1088,15 @@ a.tag:hover {
   text-justify: inter-word;
   hyphens: auto;
   break-inside: avoid;
+}
+
+.editorialCopyUnified {
+  columns: 1;
+}
+
+.editorialCopyUnified p {
+  text-align: left;
+  hyphens: none;
 }
 
 .editorialColumns {
@@ -1124,6 +1198,17 @@ a.tag:hover {
   .grid3,
   .grid4 {
     grid-template-columns: 1fr;
+  }
+
+  .bookHeroGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    text-align: center;
+  }
+
+  .bookHeroGrid .coverLarge {
+    width: 140px;
+    justify-self: center;
   }
 
   .sectionHeader {

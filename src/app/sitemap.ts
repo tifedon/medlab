@@ -1,9 +1,11 @@
 import type { MetadataRoute } from 'next';
-import { books, divisions, illustrations, insights, projects, publications, researchRecords, teamMembers } from '@/lib/data';
+import { divisions, illustrations, insights, projects, publications, researchRecords, teamMembers } from '@/lib/data';
 import { primaryNav, legalLinks } from '@/lib/navigation';
 import { siteConfig } from '@/lib/site';
+import { getCatalogueBooks } from '@/lib/press-catalogue';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const books = await getCatalogueBooks();
   const staticPaths = new Set<string>(['/', '/insights', '/collaborate', '/contact', '/education']);
   primaryNav.forEach(g => g.columns.forEach(c => c.links.forEach(l => staticPaths.add(l.href.split(/[?#]/)[0]))));
   legalLinks.forEach(l => staticPaths.add(l.href));

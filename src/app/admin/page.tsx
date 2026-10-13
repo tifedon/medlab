@@ -32,10 +32,12 @@ export default async function AdminPage() {
     <div className={styles.page}>
       <div className={styles.shell}>
         <h1>Welcome, Administrator</h1>
-        <p className={styles.lead}>Your account has administrator access. Contact enquiries arrive below. Paper uploads, publication review and contributor approval will be added here next.</p>
+        <p className={styles.lead}>Your account has administrator access. Manage the book catalogue, public website files, member permissions and contact enquiries from this workspace.</p>
 
 
         <div className={styles.actions}>
+          <Link href="/admin/books">Manage books</Link>
+          <Link href="/admin/files">Manage website files</Link>
           <Link href="/publications">Review the reference library</Link>
         </div>
         <section className={styles.inbox} aria-labelledby="members-heading">

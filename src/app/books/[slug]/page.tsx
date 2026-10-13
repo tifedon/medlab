@@ -10,26 +10,39 @@ import LibraryNotice from '@/components/LibraryNotice';
 import MetaList from '@/components/MetaList';
 import PublicationCard from '@/components/PublicationCard';
 import JsonLd from '@/components/JsonLd';
+import LockedBookPreview from '@/components/LockedBookPreview';
 import { ExternalLinkIcon } from '@/components/Icons';
-import { bookCategoryLabels, bookContributors, books, getBookBySlug } from '@/lib/books';
+import { bookCategoryLabels, bookContributors, books as staticBooks, getBookStatusLabel } from '@/lib/books';
+import { getCatalogueBooks } from '@/lib/press-catalogue';
 import { publications } from '@/lib/publications';
 import { siteConfig } from '@/lib/site';
 import ui from '@/components/ui.module.css';
 
 export function generateStaticParams() {
-  return books.map(b => ({ slug: b.slug }));
+  return staticBooks.map(b => ({ slug: b.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const book = getBookBySlug(slug);
+  const book = (await getCatalogueBooks()).find(item => item.slug === slug);
   if (!book) return { title: 'Book not found' };
-  return { title: book.title, description: book.summary, alternates: { canonical: `/books/${slug}` }, openGraph: { title: book.title, description: book.summary, type: 'book' } };
+  return {
+    title: book.title,
+    description: book.summary,
+    alternates: { canonical: `/books/${slug}` },
+    openGraph: {
+      title: book.title,
+      description: book.summary,
+      type: 'book',
+      images: book.coverImage ? [{ url: book.coverImage, width: 2550, height: 3300, alt: `${book.title} front cover` }] : undefined,
+    },
+  };
 }
 
 export default async function BookPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const book = getBookBySlug(slug);
+  const books = await getCatalogueBooks();
+  const book = books.find(item => item.slug === slug);
   if (!book) notFound();
 
   const relatedBooks = books.filter(b => b.slug !== book.slug && b.divisions.some(d => book.divisions.includes(d))).slice(0, 2);
@@ -40,7 +53,7 @@ export default async function BookPage({ params }: { params: Promise<{ slug: str
       <header className={ui.hero}>
         <div className="container">
           <Breadcrumbs items={[{ label: 'Books', href: '/books' }, { label: book.title }]} />
-          <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 180px) 1fr', gap: '2.5rem', alignItems: 'center', position: 'relative', zIndex: 1 }}>
+          <div className={ui.bookHeroGrid}>
             <BookCover book={book} large />
             <div>
               <div className={ui.cardTop}>
@@ -49,9 +62,13 @@ export default async function BookPage({ params }: { params: Promise<{ slug: str
               </div>
               <h1 className={ui.heroTitle}>{book.title}</h1>
               {book.subtitle && <p className={ui.heroLead}>{book.subtitle}</p>}
-              <p className={ui.heroLead}>{book.publisher} · {book.year}</p>
+              <p className={ui.heroLead}>{book.publisher}{book.year ? ` · ${book.year}` : ''}</p>
               <div className={ui.heroActions}>
-                <a href={book.url} className="btn btn--primary" target="_blank" rel="noopener noreferrer">View at publisher or catalogue <ExternalLinkIcon size={14} /></a>
+                {book.purchaseLinks?.length ? (
+                  <a href={book.purchaseLinks[0].url} className="btn btn--primary" target="_blank" rel="noopener noreferrer">Buy this book <ExternalLinkIcon size={14} /></a>
+                ) : book.url ? (
+                  <a href={book.url} className="btn btn--primary" target="_blank" rel="noopener noreferrer">View at publisher or catalogue <ExternalLinkIcon size={14} /></a>
+                ) : null}
               </div>
             </div>
           </div>
@@ -64,6 +81,14 @@ export default async function BookPage({ params }: { params: Promise<{ slug: str
             <section>
               <h2>About this book</h2>
               <p>{book.summary}</p>
+              {book.coverImage && book.backCoverImage ? (
+                <LockedBookPreview
+                  title={book.title}
+                  frontCover={book.coverImage}
+                  backCover={book.backCoverImage}
+                  purchaseLinks={book.purchaseLinks ?? []}
+                />
+              ) : null}
             </section>
             <section>
               <h2>Authors and editors</h2>
@@ -83,6 +108,21 @@ export default async function BookPage({ params }: { params: Promise<{ slug: str
             )}
           </div>
           <aside className={ui.aside}>
+            {book.purchaseLinks?.length ? (
+              <div className={ui.panel}>
+                <h3>Where to buy</h3>
+                <ul className={ui.purchaseLinks}>
+                  {book.purchaseLinks.map(link => (
+                    <li key={link.id ?? link.url}>
+                      <a href={link.url} target="_blank" rel="noopener noreferrer">
+                        <span>{link.retailerName}</span>
+                        <small>{[link.format, link.priceLabel].filter(Boolean).join(' · ') || 'Open retailer'} <ExternalLinkIcon size={12} /></small>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
             <div className={ui.panel}>
               <h3>Book details</h3>
               <MetaList
@@ -92,7 +132,7 @@ export default async function BookPage({ params }: { params: Promise<{ slug: str
                   ['Year', book.year],
                   ['ISBN-13', book.isbn13],
                   ['Pages', book.pages?.toLocaleString('en-GB')],
-                  ['Status', 'Published (external publisher)'],
+                  ['Status', book.isPressTitle ? getBookStatusLabel(book) : 'Published (external publisher)'],
                   ['Metadata source', book.verifiedVia],
                 ]}
               />
@@ -114,10 +154,12 @@ export default async function BookPage({ params }: { params: Promise<{ slug: str
           name: book.title,
           bookEdition: book.edition,
           isbn: book.isbn13,
-          datePublished: String(book.year),
+          datePublished: book.year ? String(book.year) : undefined,
           publisher: { '@type': 'Organization', name: book.publisher },
           author: book.authors.map(a => ({ '@type': 'Person', name: a.name })),
           editor: book.editors.map(e => ({ '@type': 'Person', name: e.name })),
+          image: book.coverImage ? (book.coverImage.startsWith('http') ? book.coverImage : `${siteConfig.url}${book.coverImage}`) : undefined,
+          offers: book.purchaseLinks?.map(link => ({ '@type': 'Offer', url: link.url, seller: { '@type': 'Organization', name: link.retailerName } })),
           url: `${siteConfig.url}/books/${book.slug}`,
         }}
       />

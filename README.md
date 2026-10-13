@@ -13,10 +13,14 @@ npm run build && npm start   # production check
 
 ## Supabase
 
-Apply both migrations in `supabase/migrations/` to your project:
+Apply the migrations in `supabase/migrations/` to your project. They include:
 
 - `…_medlab_auth_roles.sql` — `profiles` table mapping logins to `user` / `admin` roles.
 - `…_contact_inquiries.sql` — `inquiries` table for the contact form. Anyone can insert; only admins can read (shown on `/admin`).
+- `…_website_file_storage.sql` — public website assets with administrator-only listing, upload, replacement and deletion (managed at `/admin/files`).
+- `…_press_book_catalogue.sql` — editable Sterling IMRES Press titles, cover artwork and retailer purchase links (managed at `/admin/books`).
+
+The book catalogue and file manager rely on the same Supabase project configured in `.env.local`. Apply both migrations after connecting the current project, then sign in with an account whose `profiles.role` is `admin`.
 
 ## Content
 

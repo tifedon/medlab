@@ -1,7 +1,8 @@
 import Link from 'next/link';
-import { bookCategoryLabels, type Book } from '@/lib/books';
+import { bookCategoryLabels, getBookStatus, getBookStatusLabel, type Book } from '@/lib/books';
 import { byline } from './AuthorList';
 import BookCover from './BookCover';
+import StatusBadge from './StatusBadge';
 import styles from './ui.module.css';
 
 export default function BookCard({ book }: { book: Book }) {
@@ -12,6 +13,7 @@ export default function BookCard({ book }: { book: Book }) {
       <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0 }}>
         <div className={styles.cardTop}>
           <span className={styles.label}>{bookCategoryLabels[book.category]}</span>
+          {book.isPressTitle ? <StatusBadge status={getBookStatus(book)} label={getBookStatusLabel(book)} /> : null}
         </div>
         <h3 className={styles.cardTitle}>
           <Link href={`/books/${book.slug}`}>{book.title}</Link>
@@ -20,7 +22,7 @@ export default function BookCard({ book }: { book: Book }) {
         <div className={styles.cardMeta}>
           {book.edition && <span>{book.edition}</span>}
           <span>{book.publisher}</span>
-          <span>{book.year}</span>
+          {book.year ? <span>{book.year}</span> : null}
         </div>
       </div>
     </article>

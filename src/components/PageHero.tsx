@@ -3,7 +3,7 @@ import Breadcrumbs, { type Crumb } from './Breadcrumbs';
 import styles from './ui.module.css';
 
 interface PageHeroProps {
-  kicker: string;
+  kicker?: string;
   title: string;
   lead?: ReactNode;
   breadcrumbs?: Crumb[];
@@ -18,7 +18,7 @@ export default function PageHero({ kicker, title, lead, breadcrumbs, stats, acti
       <div className="container">
         <div className={styles.heroInner}>
           {breadcrumbs && <Breadcrumbs items={breadcrumbs} />}
-          <span className={styles.kicker}>{kicker}</span>
+          {kicker ? <span className={styles.kicker}>{kicker}</span> : null}
           <h1 className={styles.heroTitle}>{title}</h1>
           {lead && <p className={styles.heroLead}>{lead}</p>}
           {actions && <div className={styles.heroActions}>{actions}</div>}

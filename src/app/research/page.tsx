@@ -22,11 +22,10 @@ export default async function ResearchPage({ searchParams }: { searchParams: Pro
       <PageHero
         kicker="Research"
         title="Research hub"
-        lead="Not only published results: the full lifecycle, so visitors can see what is upcoming, underway, completed and published."
         breadcrumbs={[{ label: 'Research' }]}
       />
       <Section id="themes">
-        <SectionHeader kicker="Themes" title="Research themes" lead="The questions and methods that connect studies across the institute." />
+        <SectionHeader kicker="Themes" title="Research themes" />
         <div className={ui.grid3}>
           {researchThemes.map(theme => (
             <article key={theme.id} className={ui.card}>

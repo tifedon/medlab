@@ -1,9 +1,24 @@
+import Image from 'next/image';
 import type { Book } from '@/lib/books';
 import { getDivisionById } from '@/lib/divisions';
 import styles from './ui.module.css';
 
-/** Typographic cover so no publisher cover art is reproduced. */
+/** Uses institute-owned cover art when supplied; external titles retain a typographic cover. */
 export default function BookCover({ book, large }: { book: Book; large?: boolean }) {
+  if (book.coverImage) {
+    return (
+      <div className={`${styles.cover} ${styles.coverArtwork} ${large ? styles.coverLarge : ''}`} aria-hidden="true">
+        <Image
+          src={book.coverImage}
+          alt=""
+          fill
+          sizes={large ? '(max-width: 720px) 42vw, 220px' : '96px'}
+          className={styles.coverImage}
+        />
+      </div>
+    );
+  }
+
   const color = getDivisionById(book.divisions[0])?.color ?? '#112240';
   return (
     <div className={`${styles.cover} ${large ? styles.coverLarge : ''}`} style={{ background: `linear-gradient(160deg, ${color}, #0a1628)` }} aria-hidden="true">

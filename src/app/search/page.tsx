@@ -13,6 +13,7 @@ import DivisionCard from '@/components/DivisionCard';
 import { SearchIcon } from '@/components/Icons';
 import { param } from '@/components/FilterBar';
 import { searchResources, type SearchResults } from '@/lib/data';
+import { getCatalogueBooks } from '@/lib/press-catalogue';
 import ui from '@/components/ui.module.css';
 
 export const metadata: Metadata = {
@@ -41,6 +42,22 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
   const since = sinceStr ? parseInt(sinceStr, 10) : undefined;
 
   const rawResults = q ? searchResources(q) : null;
+  if (rawResults) {
+    const normalizedQuery = q.toLowerCase();
+    const catalogueBooks = await getCatalogueBooks();
+    rawResults.books = catalogueBooks.filter(book => [
+      book.title,
+      book.subtitle,
+      book.summary,
+      book.publisher,
+      book.category,
+      book.isbn13,
+      ...book.keywords,
+      ...book.divisions,
+      ...book.authors.map(author => author.name),
+      ...book.editors.map(editor => editor.name),
+    ].some(value => value?.toLowerCase().includes(normalizedQuery)));
+  }
   
   type UnifiedItem = {
     [Kind in keyof SearchResults]: {
@@ -53,7 +70,7 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
 
   if (rawResults) {
     if (type === 'all' || type === 'publications') unified.push(...rawResults.publications.map(p => ({ kind: 'publications' as const, item: p, year: Number(p.publishedDate.slice(0, 4)) })));
-    if (type === 'all' || type === 'books') unified.push(...rawResults.books.map(b => ({ kind: 'books' as const, item: b, year: b.year })));
+    if (type === 'all' || type === 'books') unified.push(...rawResults.books.map(b => ({ kind: 'books' as const, item: b, year: b.year ?? null })));
     if (type === 'all' || type === 'research') unified.push(...rawResults.research.map(r => ({ kind: 'research' as const, item: r, year: r.startDate ? Number(r.startDate.slice(0, 4)) : null })));
     if (type === 'all' || type === 'projects') unified.push(...rawResults.projects.map(p => ({ kind: 'projects' as const, item: p, year: null })));
     if (type === 'all' || type === 'insights') unified.push(...rawResults.insights.map(i => ({ kind: 'insights' as const, item: i, year: Number(i.publishedDate.slice(0, 4)) })));

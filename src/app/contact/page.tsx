@@ -7,7 +7,7 @@ import { param } from '@/components/FilterBar';
 import { divisions } from '@/lib/divisions';
 import { inquiryTypes } from '@/lib/institute';
 import { isSupabaseConfigured } from '@/lib/supabase/config';
-import { MEDICAL_DISCLAIMER } from '@/lib/site';
+
 import ContactForm from './ContactForm';
 import styles from './page.module.css';
 import ui from '@/components/ui.module.css';
@@ -35,9 +35,7 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
   return (
     <div>
       <PageHero kicker="Contact" title="Contact Sterling IMRES" lead="Choose the type of enquiry so it reaches the right team. Include a DOI, ISBN, trial number or record title where it helps." breadcrumbs={[{ label: 'Contact' }]} />
-      <Section>
-        <Notice tone="caution">{MEDICAL_DISCLAIMER} Please do not send personal medical information through this form.</Notice>
-      </Section>
+
       <Section last>
         <div className={styles.layout}>
           <ContactForm configured={isSupabaseConfigured()} defaultType={defaultType} divisions={divisions.map(d => ({ id: d.id, name: d.name }))} />

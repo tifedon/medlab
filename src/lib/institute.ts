@@ -28,7 +28,7 @@ export const brandHierarchy = [
   { level: 'Level 1', name: 'Sterling IMRES', text: 'The master institutional brand.' },
   { level: 'Level 2', name: 'Nine divisions and units', text: 'Each presented as part of Sterling IMRES.' },
   { level: 'Level 3', name: 'Programmes and outputs', text: 'Research initiatives, publications, books, courses and projects.' },
-  { level: 'Publishing', name: 'Sterling IMRES Press', text: 'The proposed imprint, while named experts remain authors or editors where appropriate.' },
+  { level: 'Publishing', name: 'Sterling IMRES Press', text: 'The institute’s publishing imprint, while named experts remain authors or editors where appropriate.' },
 ];
 
 export const audiences = [

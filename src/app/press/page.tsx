@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
+import BookCard from '@/components/BookCard';
 import PageHero from '@/components/PageHero';
 import Section from '@/components/Section';
+import SectionHeader from '@/components/SectionHeader';
+import { getCatalogueBooks } from '@/lib/press-catalogue';
 import ui from '@/components/ui.module.css';
 
 export const metadata: Metadata = {
@@ -9,7 +12,8 @@ export const metadata: Metadata = {
   alternates: { canonical: '/press' },
 };
 
-export default function PressPage() {
+export default async function PressPage() {
+  const pressBooks = (await getCatalogueBooks()).filter(book => book.isPressTitle);
   return (
     <div>
       <PageHero
@@ -18,7 +22,19 @@ export default function PressPage() {
         lead="The scholarly publishing arm of the Sterling Institute for Medical Research, Education and Sciences."
         breadcrumbs={[{ label: 'Sterling IMRES Press' }]}
       />
-      
+
+      <Section>
+        <SectionHeader
+          kicker="Catalogue"
+          title="Books from Sterling IMRES Press"
+          lead="Institute-produced clinical and scientific titles with approved cover previews and publication details."
+          link={{ href: '/books#press', label: 'View the publishing programme' }}
+        />
+        <div className={ui.grid2}>
+          {pressBooks.map(book => <BookCard key={book.slug} book={book} />)}
+        </div>
+      </Section>
+
       <Section last>
         <div className={ui.editorialFeature}>
           <h2>Publishing with purpose</h2>

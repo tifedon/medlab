@@ -1,0 +1,212 @@
+.preview {
+  margin-top: var(--space-6);
+}
+
+.trigger {
+  min-height: 44px;
+  padding: 0 var(--space-5);
+  color: var(--white);
+  border: 1px solid var(--navy-900);
+  border-radius: 0;
+  background: var(--navy-900);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.trigger:hover,
+.trigger:focus-visible {
+  color: var(--navy-900);
+  background: var(--white);
+}
+
+.trigger:focus-visible,
+.cover:focus-visible {
+  outline: 3px solid var(--teal-300);
+  outline-offset: 3px;
+}
+
+.reveal {
+  margin-top: var(--space-7);
+  animation: reveal 420ms ease-out both;
+}
+
+.stage {
+  display: grid;
+  grid-template-columns: minmax(150px, 1fr) minmax(150px, .7fr) minmax(150px, 1fr);
+  align-items: center;
+  gap: clamp(1rem, 4vw, 3.5rem);
+  padding: clamp(2rem, 6vw, 4.5rem) 0;
+  border-block: 1px solid var(--gray-200);
+  perspective: 1200px;
+  overflow: hidden;
+}
+
+.front,
+.back {
+  display: grid;
+  justify-items: center;
+}
+
+.front {
+  animation: frontReveal 700ms cubic-bezier(.2, .75, .25, 1) both;
+}
+
+.back {
+  animation: backReveal 700ms cubic-bezier(.2, .75, .25, 1) both;
+}
+
+.cover {
+  display: block;
+  width: min(100%, 230px);
+  color: inherit;
+  transition: transform 220ms ease, filter 220ms ease;
+}
+
+a.cover:hover {
+  transform: translateY(-6px);
+  filter: drop-shadow(0 14px 12px rgb(17 34 64 / 16%));
+}
+
+.coverImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--gray-200);
+  object-fit: cover;
+  box-shadow: 10px 12px 0 rgb(17 34 64 / 8%);
+}
+
+.lockColumn {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  text-align: center;
+}
+
+.lockColumn strong {
+  margin-top: var(--space-2);
+  color: var(--navy-900);
+  font-size: var(--text-sm);
+}
+
+.lockColumn > span {
+  max-width: 18ch;
+  color: var(--gray-500);
+  font-size: var(--text-xs);
+  line-height: 1.5;
+}
+
+.lock {
+  position: relative;
+  width: clamp(84px, 10vw, 116px);
+  height: clamp(112px, 13vw, 148px);
+  animation: lockSettle 900ms cubic-bezier(.2, .85, .3, 1) both;
+}
+
+.shackle {
+  position: absolute;
+  top: 0;
+  left: 17%;
+  width: 66%;
+  height: 56%;
+  border: clamp(8px, 1vw, 12px) solid var(--navy-900);
+  border-bottom: 0;
+  border-radius: 50% 50% 0 0;
+}
+
+.lockBody {
+  position: absolute;
+  inset: 40% 0 0;
+  display: grid;
+  place-items: center;
+  background: var(--navy-900);
+  border: 1px solid var(--navy-900);
+}
+
+.keyhole {
+  position: relative;
+  width: 18%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--white);
+}
+
+.keyhole::after {
+  content: '';
+  position: absolute;
+  top: 70%;
+  left: 31%;
+  width: 38%;
+  height: 95%;
+  background: var(--white);
+}
+
+.note {
+  margin-top: var(--space-4) !important;
+  color: var(--gray-500) !important;
+  font-size: var(--text-sm) !important;
+  text-align: center;
+}
+
+@keyframes reveal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes frontReveal {
+  from { opacity: 0; transform: translateX(54%) rotateY(18deg) scale(.88); }
+  to { opacity: 1; transform: translateX(0) rotateY(0) scale(1); }
+}
+
+@keyframes backReveal {
+  from { opacity: 0; transform: translateX(-54%) rotateY(-18deg) scale(.88); }
+  to { opacity: 1; transform: translateX(0) rotateY(0) scale(1); }
+}
+
+@keyframes lockSettle {
+  0%, 35% { opacity: 0; transform: translateY(-18px) scale(.82); }
+  70% { opacity: 1; transform: translateY(3px) scale(1.04); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 640px) {
+  .stage {
+    grid-template-columns: 1fr 82px 1fr;
+    gap: var(--space-3);
+    padding-block: var(--space-8);
+  }
+
+  .lock {
+    width: 62px;
+    height: 84px;
+  }
+
+  .lockColumn strong {
+    font-size: .72rem;
+  }
+
+  .lockColumn > span {
+    display: none;
+  }
+
+  .coverImage {
+    box-shadow: 5px 7px 0 rgb(17 34 64 / 8%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .front,
+  .back,
+  .lock {
+    animation: none;
+  }
+
+  .cover {
+    transition: none;
+  }
+}

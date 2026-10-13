@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { BrandLogo } from './Icons';
 import { divisions } from '@/lib/divisions';
 import { legalLinks } from '@/lib/navigation';
-import { MEDICAL_DISCLAIMER, siteConfig } from '@/lib/site';
+import { siteConfig } from '@/lib/site';
 import styles from './Footer.module.css';
 
 export default function Footer() {
@@ -58,12 +58,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <p className={styles.disclaimer}>{MEDICAL_DISCLAIMER}</p>
         <div className={styles.bottom}>
           <p className={styles.copyright}>
             <span>© {new Date().getFullYear()} {siteConfig.name}</span>
-            <span className={styles.separator} aria-hidden="true">·</span>
-            <span>{siteConfig.status}</span>
           </p>
           <nav className={styles.bottomLinks} aria-label="Legal">
             {legalLinks.map(link => (

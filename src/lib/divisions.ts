@@ -145,7 +145,7 @@ export const divisions: Division[] = [
     colorLight: '#f0f3e4',
     role: 'Books, journals, reports, editorial standards, peer review and publishing operations.',
     overview:
-      'The Editorial and Publications Division runs the publishing arm of the institute, including the proposed Sterling IMRES Press. It manages editorial standards, peer review, authorship policy, metadata and distribution.',
+      'The Editorial and Publications Division runs the publishing arm of the institute, including Sterling IMRES Press. It manages editorial standards, peer review, authorship policy, metadata and distribution.',
     keyAreas: ['Book publishing (Sterling IMRES Press)', 'Peer review', 'Editorial standards', 'Authorship and contributorship', 'Publication ethics', 'Metadata and distribution'],
     educationFocus: ['Scientific writing', 'Peer review practice', 'Publishing ethics'],
     collaboration: ['Authoring or editing a book or monograph', 'Peer review and copyediting', 'Institutional reports and standards'],

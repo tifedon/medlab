@@ -1,8 +1,17 @@
 import { bookRecords } from '@/data/books';
+import { pressBookRecords } from '@/data/press-books';
 import type { Contributor } from './publications';
 
 export type BookCategory = 'reference' | 'textbook' | 'handbook' | 'monograph' | 'atlas';
 export type BookStatus = 'upcoming' | 'in-development' | 'in-editing' | 'published' | 'archived';
+
+export interface BookPurchaseLink {
+  id?: string;
+  retailerName: string;
+  url: string;
+  format?: string;
+  priceLabel?: string;
+}
 
 export interface Book {
   slug: string;
@@ -13,14 +22,20 @@ export interface Book {
   authors: Contributor[];
   editors: Contributor[];
   publisher: string;
-  year: number;
+  year?: number;
   isbn13?: string;
   pages?: number;
-  url: string;
+  url?: string;
   summary: string;
   keywords: string[];
   divisions: string[];
   verifiedVia: string;
+  status?: BookStatus;
+  isPressTitle?: boolean;
+  coverImage?: string;
+  backCoverImage?: string;
+  databaseId?: string;
+  purchaseLinks?: BookPurchaseLink[];
 }
 
 export const bookCategoryLabels: Record<BookCategory, string> = {
@@ -64,7 +79,17 @@ export const bookStatusModel: { status: BookStatus; label: string; use: string }
   { status: 'archived', label: 'Archived', use: 'Retained in catalogue but no longer actively promoted.' },
 ];
 
-export const books: Book[] = [...bookRecords].sort((a, b) => a.title.localeCompare(b.title));
+export const books: Book[] = [...pressBookRecords, ...bookRecords].sort((a, b) => a.title.localeCompare(b.title));
+
+export const pressBooks = books.filter(book => book.isPressTitle);
+
+export function getBookStatus(book: Book): BookStatus {
+  return book.status ?? 'published';
+}
+
+export function getBookStatusLabel(book: Book) {
+  return bookStatusModel.find(item => item.status === getBookStatus(book))?.label ?? 'Published';
+}
 
 export function getBookBySlug(slug: string) {
   return books.find(b => b.slug === slug);
