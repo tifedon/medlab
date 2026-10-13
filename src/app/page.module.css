@@ -60,11 +60,6 @@
   position: relative;
   max-width: 900px;
   margin: 0 auto;
-  padding: var(--space-5) var(--space-6);
-  background: var(--white);
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-sm);
 }
 
 .searchTabs {
@@ -103,17 +98,18 @@
   display: flex;
   align-items: center;
   background: var(--white);
-  border: 1px solid var(--gray-300);
-  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-200);
+  border-radius: 999px;
   padding: var(--space-1);
-  box-shadow: none;
-  transition: all var(--transition-base);
+  box-shadow: 0 1px 5px rgba(17, 39, 57, 0.12);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
 }
 
+.searchForm:hover,
 .searchForm:focus-within {
   background: var(--white);
-  border-color: var(--teal-400);
-  box-shadow: 0 0 0 3px var(--teal-50);
+  border-color: var(--gray-300);
+  box-shadow: 0 2px 9px rgba(17, 39, 57, 0.16);
 }
 
 .searchInput {
@@ -137,8 +133,8 @@
   display: grid;
   place-items: center;
   padding: 0;
-  background: var(--teal-600);
-  color: var(--white);
+  background: transparent;
+  color: var(--teal-700);
   border-radius: 50%;
   transition: all var(--transition-fast);
   flex-shrink: 0;
@@ -146,7 +142,8 @@
 }
 
 .searchBtn:hover {
-  background: var(--teal-700);
+  background: var(--teal-50);
+  color: var(--teal-800);
   box-shadow: none;
 }
 
@@ -647,10 +644,6 @@
   .searchBtn {
     width: 40px;
     height: 40px;
-  }
-
-  .searchWrapper {
-    padding: var(--space-4);
   }
 
   .searchTabs {
