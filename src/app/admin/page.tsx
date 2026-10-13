@@ -38,7 +38,7 @@ export default async function AdminPage() {
         <div className={styles.actions}>
           <Link href="/admin/books">Manage books</Link>
           <Link href="/admin/files">Manage website files</Link>
-          <Link href="/publications">Review the reference library</Link>
+          <Link href="/research#publications">Review the reference library</Link>
         </div>
         <section className={styles.inbox} aria-labelledby="members-heading">
           <h2 id="members-heading">Member access</h2>

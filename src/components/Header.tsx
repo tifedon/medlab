@@ -33,6 +33,7 @@ export default function Header({ isSignedIn = false, profileLink }: { isSignedIn
   }, []);
 
   const isActive = (href: string) => pathname === href || pathname?.startsWith(href + '/');
+  const researchSectionActive = isActive('/research') || isActive('/books');
 
   return (
     <header className={styles.header}>
@@ -49,16 +50,12 @@ export default function Header({ isSignedIn = false, profileLink }: { isSignedIn
             <Link href="/about" className={`${styles.navLink} ${isActive('/about') ? styles.navLinkActive : ''}`}>
               Institute
             </Link>
-            <Link href="/research" className={`${styles.navLink} ${isActive('/research') ? styles.navLinkActive : ''}`}>
-              Research
-            </Link>
-            <Link href="/publications" className={`${styles.navLink} ${isActive('/publications') ? styles.navLinkActive : ''}`}>
-              Publishing
+            <Link href="/research" className={`${styles.navLink} ${researchSectionActive ? styles.navLinkActive : ''}`}>
+              Research &amp; Publications
             </Link>
             <Link href="/press" className={`${styles.navLink} ${isActive('/press') ? styles.navLinkActive : ''}`}>
               Press
             </Link>
-
             <Link href="/insights" className={`${styles.navLink} ${isActive('/insights') ? styles.navLinkActive : ''}`}>
               Insights
             </Link>
@@ -141,10 +138,8 @@ export default function Header({ isSignedIn = false, profileLink }: { isSignedIn
           <nav className={styles.mobileNav} aria-label="Mobile navigation">
             <Link href="/" className={`${styles.mobileNavLink} ${pathname === '/' ? styles.mobileNavLinkActive : ''}`}>Home</Link>
             <Link href="/about" className={`${styles.mobileNavLink} ${isActive('/about') ? styles.mobileNavLinkActive : ''}`}>Institute</Link>
-            <Link href="/research" className={`${styles.mobileNavLink} ${isActive('/research') ? styles.mobileNavLinkActive : ''}`}>Research</Link>
-            <Link href="/publications" className={`${styles.mobileNavLink} ${isActive('/publications') ? styles.mobileNavLinkActive : ''}`}>Publishing</Link>
+            <Link href="/research" className={`${styles.mobileNavLink} ${researchSectionActive ? styles.mobileNavLinkActive : ''}`}>Research &amp; Publications</Link>
             <Link href="/press" className={`${styles.mobileNavLink} ${isActive('/press') ? styles.mobileNavLinkActive : ''}`}>Press</Link>
-
             <Link href="/insights" className={`${styles.mobileNavLink} ${isActive('/insights') ? styles.mobileNavLinkActive : ''}`}>Insights</Link>
             <Link href="/search" className={`${styles.mobileNavLink} ${isActive('/search') ? styles.mobileNavLinkActive : ''}`}>Search</Link>
             <Link href="/sign-in" className={`${styles.mobileNavLink} ${isActive('/sign-in') ? styles.mobileNavLinkActive : ''}`}>Sign in</Link>

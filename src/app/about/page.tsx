@@ -59,7 +59,7 @@ export default function AboutPage() {
       </Section>
 
       <Section id="leadership">
-        <SectionHeader kicker="Leadership" title="Leadership responsibilities" lead="Named appointments are published only after the role and credentials have been verified." />
+        <SectionHeader kicker="Leadership" title="Leadership responsibilities" />
         <div className={ui.grid3}>
           {leadershipRoles.map(item => (
             <article key={item.role} className={ui.card}>

@@ -44,7 +44,7 @@ export default async function UserPage() {
           <nav className={styles.accountNav} aria-label="Account navigation">
             <Link href="/user" className={styles.activeNav}><UserIcon size={17} /> Overview</Link>
             <Link href="/research"><BookmarkIcon size={17} /> Research library</Link>
-            <Link href="/publications"><FileTextIcon size={17} /> Publications</Link>
+            <Link href="/research#publications"><FileTextIcon size={17} /> Publications</Link>
           </nav>
         </aside>
 
@@ -70,7 +70,7 @@ export default async function UserPage() {
                   ? 'Your account is approved to submit research records.'
                   : 'Only administrators and approved contributors can upload papers.'}
               </p>
-              <Link href={identity.canUpload ? '/publications' : '/contact'}>
+              <Link href={identity.canUpload ? '/research#publications' : '/contact'}>
                 {identity.canUpload ? 'Open contributor tools' : 'Request contributor access'} <ArrowRightIcon size={15} />
               </Link>
             </div>
@@ -83,7 +83,7 @@ export default async function UserPage() {
             </div>
             <div className={styles.paperList}>
               {recommendedPapers.map((paper, index) => (
-                <Link href={`/publications/${paper.slug}`} className={styles.paperCard} key={paper.slug}>
+                <Link href={`/research/publications/${paper.slug}`} className={styles.paperCard} key={paper.slug}>
                   <span className={styles.paperIndex}>0{index + 1}</span>
                   <div>
                     <span className={styles.paperMeta}>{publicationTypeLabels[paper.type]} · {paper.openAccess ? 'Open access' : 'Subscription'}</span>

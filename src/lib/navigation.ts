@@ -39,19 +39,36 @@ export const primaryNav: NavGroup[] = [
     ],
   },
   {
-    label: 'Research',
+    label: 'Research and Publications',
     href: '/research',
-    intro: 'The research lifecycle from upcoming to published, with methods and integrity standards.',
+    intro: 'Studies, publications and books brought together in one research hub.',
     columns: [
       {
         title: 'Research',
         links: [
-          { href: '/research', label: 'Research hub' },
+          { href: '/research', label: 'Research and publications hub' },
           { href: '/research?stage=current', label: 'Current research' },
           { href: '/research?stage=upcoming', label: 'Upcoming research' },
           { href: '/research?stage=completed', label: 'Completed research' },
           { href: '/research#themes', label: 'Research themes' },
           { href: '/research#methodology', label: 'Methodology' },
+        ],
+      },
+      {
+        title: 'Publications',
+        links: [
+          { href: '/research#publications', label: 'All publications' },
+        ],
+      },
+      {
+        title: 'Books',
+        links: [
+          { href: '/research#books', label: 'Books in the research hub' },
+          { href: '/books', label: 'All books' },
+          { href: '/books/reference', label: 'Reference books' },
+          { href: '/books/textbooks', label: 'Textbooks' },
+          { href: '/books/handbooks', label: 'Handbooks' },
+          { href: '/books/monographs', label: 'Monographs' },
         ],
       },
       {
@@ -65,35 +82,6 @@ export const primaryNav: NavGroup[] = [
       },
     ],
   },
-  {
-    label: 'Publishing',
-    href: '/publications',
-    intro: 'Publications, books and the Sterling IMRES Press publishing programme.',
-    columns: [
-      {
-        title: 'Publications',
-        links: [
-          { href: '/publications', label: 'All publications' },
-          { href: '/publications?category=articles', label: 'Articles' },
-          { href: '/publications?category=reviews', label: 'Reviews' },
-          { href: '/publications?category=evidence-reviews', label: 'Evidence reviews' },
-          { href: '/publications?category=reports', label: 'Reports' },
-        ],
-      },
-      {
-        title: 'Books and Press',
-        links: [
-          { href: '/press', label: 'Sterling IMRES Press' },
-          { href: '/books', label: 'All books' },
-          { href: '/books/reference', label: 'Reference books' },
-          { href: '/books/textbooks', label: 'Textbooks' },
-          { href: '/books/handbooks', label: 'Handbooks' },
-          { href: '/books/monographs', label: 'Monographs' },
-        ],
-      },
-    ],
-  },
-
 ];
 
 export const legalLinks: NavLink[] = [

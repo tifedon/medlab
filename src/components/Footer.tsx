@@ -35,7 +35,7 @@ export default function Footer() {
             <div className={styles.column}>
               <h2 className={styles.columnTitle}>Knowledge</h2>
               <Link href="/research" className={styles.footerLink}>Research</Link>
-              <Link href="/publications" className={styles.footerLink}>Publications</Link>
+              <Link href="/research#publications" className={styles.footerLink}>Publications</Link>
               <Link href="/books" className={styles.footerLink}>Books</Link>
               <Link href="/insights" className={styles.footerLink}>Insights</Link>
             </div>

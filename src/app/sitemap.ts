@@ -6,7 +6,7 @@ import { getCatalogueBooks } from '@/lib/press-catalogue';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const books = await getCatalogueBooks();
-  const staticPaths = new Set<string>(['/', '/insights', '/collaborate', '/contact', '/education']);
+  const staticPaths = new Set<string>(['/', '/insights', '/press', '/collaborate', '/contact', '/education']);
   primaryNav.forEach(g => g.columns.forEach(c => c.links.forEach(l => staticPaths.add(l.href.split(/[?#]/)[0]))));
   legalLinks.forEach(l => staticPaths.add(l.href));
 
@@ -14,7 +14,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...divisions.map(d => `/divisions/${d.id}`),
     ...researchRecords.map(r => `/research/${r.slug}`),
     ...projects.map(p => `/projects/${p.slug}`),
-    ...publications.map(p => `/publications/${p.slug}`),
+    ...publications.map(p => `/research/publications/${p.slug}`),
     ...books.map(b => `/books/${b.slug}`),
     ...illustrations.map(i => `/medical-illustration/${i.slug}`),
     ...insights.map(i => `/insights/${i.slug}`),

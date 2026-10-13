@@ -28,7 +28,7 @@ export interface Project {
   team: string;
   divisions: string[];
   updates: ProjectUpdate[];
-  /** Internal links to related records, e.g. `/publications`, `/books/...`. */
+  /** Internal links to related records, e.g. `/research#publications`, `/books/...`. */
   related: { label: string; href: string }[];
 }
 
@@ -99,7 +99,7 @@ export const projects: Project[] = [
     divisions: ['editorial-publications', 'evidence-review-integrity'],
     updates: [{ date: '2026-10', text: 'First verified set published across all nine divisions.' }],
     related: [
-      { label: 'Publications', href: '/publications' },
+      { label: 'Publications', href: '/research#publications' },
       { label: 'Books', href: '/books' },
       { label: 'Research watch', href: '/research' },
     ],

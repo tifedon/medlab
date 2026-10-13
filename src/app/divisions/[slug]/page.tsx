@@ -142,7 +142,7 @@ export default async function DivisionPage({ params }: { params: Promise<{ slug:
       )}
 
       <Section id="publications">
-        <SectionHeader kicker="Publications and books" title="Reference library" link={{ href: '/publications', label: 'All publications' }} />
+        <SectionHeader kicker="Publications and books" title="Reference library" link={{ href: '/research#publications', label: 'All publications' }} />
         <div className={ui.grid2}>{pubs.map(p => <PublicationCard key={p.slug} publication={p} />)}</div>
         {books.length > 0 && (
           <>

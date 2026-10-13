@@ -12,7 +12,7 @@ export default function PublicationCard({ publication: p }: { publication: Publi
           <span className={styles.label}>{publicationTypeLabels[p.type]}</span>
         </div>
         <h3 className={styles.listItemTitle}>
-          <Link href={`/publications/${p.slug}`}>{p.title}</Link>
+          <Link href={`/research/publications/${p.slug}`}>{p.title}</Link>
           {p.openAccess && <span className={styles.listItemBadge}>OPEN ACCESS</span>}
         </h3>
         <p className={styles.listItemByline}>{byline(p.authors, 3, p.authorsTruncated) || p.corporateAuthor}</p>

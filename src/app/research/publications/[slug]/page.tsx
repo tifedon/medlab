@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: p.title,
     description: p.summary,
-    alternates: { canonical: `/publications/${slug}` },
+    alternates: { canonical: `/research/publications/${slug}` },
     openGraph: { title: p.title, description: p.summary, type: 'article', publishedTime: p.publishedDate, authors: p.authors.map(a => a.name) },
   };
 }
@@ -51,7 +51,7 @@ export default async function PublicationPage({ params }: { params: Promise<{ sl
       <header className={ui.hero}>
         <div className="container">
           <div className={ui.heroInner}>
-            <Breadcrumbs items={[{ label: 'Publications', href: '/publications' }, { label: p.title }]} />
+            <Breadcrumbs items={[{ label: 'Research and Publications', href: '/research' }, { label: 'Publications', href: '/research#publications' }, { label: p.title }]} />
             <div className={ui.cardTop}>
               <span className={ui.label}>{publicationTypeLabels[p.type]}</span>
               {p.openAccess && <span className="access-badge access-badge--open">Open access</span>}
@@ -139,7 +139,7 @@ export default async function PublicationPage({ params }: { params: Promise<{ sl
           isPartOf: { '@type': 'Periodical', name: p.journal },
           publisher: { '@type': 'Organization', name: p.publisher },
           ...(p.doi ? { sameAs: `https://doi.org/${p.doi}` } : {}),
-          url: `${siteConfig.url}/publications/${p.slug}`,
+          url: `${siteConfig.url}/research/publications/${p.slug}`,
         }}
       />
     </div>

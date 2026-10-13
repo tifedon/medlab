@@ -3,52 +3,45 @@ import PageHero from '@/components/PageHero';
 import Section from '@/components/Section';
 import SectionHeader from '@/components/SectionHeader';
 import ResearchListing from '@/components/ResearchListing';
+import PublicationCard from '@/components/PublicationCard';
+import BookCard from '@/components/BookCard';
 import { param } from '@/components/FilterBar';
-import { researchRecords, researchStatusModel, researchThemes } from '@/lib/research';
+import { researchRecords } from '@/lib/research';
+import { publications } from '@/lib/publications';
+import { getCatalogueBooks } from '@/lib/press-catalogue';
 import ui from '@/components/ui.module.css';
 
 export const metadata: Metadata = {
-  title: 'Research',
-  description: 'The research lifecycle at Sterling IMRES: upcoming, recruiting, in-progress, completed and published studies across the nine divisions.',
+  title: 'Research and Publications',
+  description: 'Sterling IMRES research studies, scholarly publications and medical books in one research hub.',
   alternates: { canonical: '/research' },
 };
 
 export default async function ResearchPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
-  const sp = await searchParams;
-  const current = { stage: param(sp.stage), status: param(sp.status), division: param(sp.division), type: param(sp.type) };
+  const [sp, books] = await Promise.all([searchParams, getCatalogueBooks()]);
+  const current = { division: param(sp.division), q: param(sp.q) };
 
   return (
     <div>
       <PageHero
-        kicker="Research"
-        title="Research hub"
-        breadcrumbs={[{ label: 'Research' }]}
+        title="Research and Publications"
+        breadcrumbs={[{ label: 'Research and Publications' }]}
       />
-      <Section id="themes">
-        <SectionHeader kicker="Themes" title="Research themes" />
-        <div className={ui.grid3}>
-          {researchThemes.map(theme => (
-            <article key={theme.id} className={ui.card}>
-              <h2 className={ui.cardTitle}>{theme.title}</h2>
-              <p className={ui.cardText}>{theme.description}</p>
-            </article>
-          ))}
-        </div>
-      </Section>
-      <Section id="methodology">
-        <SectionHeader kicker="Methodology" title="A visible research lifecycle" lead="Every record uses a consistent status so planned, active and completed work is not mixed together." />
-        <div className={ui.tableWrap}>
-          <table className={ui.table}>
-            <thead><tr><th scope="col">Status</th><th scope="col">Meaning</th></tr></thead>
-            <tbody>
-              {researchStatusModel.map(item => <tr key={item.status}><td>{item.label}</td><td>{item.meaning}</td></tr>)}
-            </tbody>
-          </table>
-        </div>
-      </Section>
-      <Section last>
-        <SectionHeader kicker="Catalogue" title="Research records" lead="Filter by lifecycle stage, status, division or study type." />
+      <Section>
+        <SectionHeader title="Research records" />
         <ResearchListing records={researchRecords} basePath="/research" current={current} />
+      </Section>
+      <Section id="publications">
+        <SectionHeader kicker="Research outputs" title="Publications" />
+        <div className={ui.flatList}>
+          {publications.map(publication => <PublicationCard key={publication.slug} publication={publication} />)}
+        </div>
+      </Section>
+      <Section id="books" last>
+        <SectionHeader kicker="Research library" title="Books" />
+        <div className={ui.grid2}>
+          {books.map(book => <BookCard key={book.slug} book={book} />)}
+        </div>
       </Section>
     </div>
   );

@@ -6,10 +6,12 @@ import { useState, useEffect } from 'react';
 import { teamMembers } from '@/lib/people';
 
 const bannerImages = [
-  '/Characters/Group Photo/Group photo 1.png',
-  '/Characters/Group Photo/Group Photo 2.png',
-  '/Characters/Group Photo/Group photo 3.png',
-  '/Characters/Group Photo/Group photo 4.png'
+  { src: '/Characters/Group Photo/Group photo 1.png', alt: 'Sterling IMRES team members working together' },
+  { src: '/Characters/Group Photo/Group Photo 2.png', alt: 'Sterling IMRES multidisciplinary medical team' },
+  { src: '/Characters/Group Photo/Group photo 3.png', alt: 'Sterling IMRES research and clinical collaborators' },
+  { src: '/Characters/Group Photo/Group photo 4.png', alt: 'Sterling IMRES team discussion' },
+  { src: '/images/about-clinical-case-review.jpeg', alt: 'Medical specialists reviewing clinical imaging together' },
+  { src: '/images/about-care-team-review.jpeg', alt: 'Hospital care team reviewing information on a tablet' },
 ];
 
 export default function MeetTheTeam() {
@@ -60,11 +62,11 @@ export default function MeetTheTeam() {
               transition: isTransitioning ? 'transform 3s cubic-bezier(0.25, 1, 0.5, 1)' : 'none'
             }}
           >
-            {slides.map((src, idx) => (
-              <div key={idx} style={{ position: 'relative', flex: '0 0 100%', height: '100%' }}>
+            {slides.map((slide, idx) => (
+              <div key={`${slide.src}-${idx}`} style={{ position: 'relative', flex: '0 0 100%', height: '100%' }}>
                 <Image 
-                  src={src} 
-                  alt={`Team Banner ${idx}`} 
+                  src={slide.src}
+                  alt={slide.alt}
                   fill
                   style={{ objectFit: 'cover' }} 
                   priority={idx === 1}
