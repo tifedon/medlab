@@ -176,7 +176,7 @@ export const teamMembers: TeamMember[] = [
     slug: 'sophia-rossi',
     name: 'Sophia V. Rossi',
     email: 'sophia@sterlingimres.com',
-    image: '/Characters/Headshot/Sophia v rossi.ng',
+    image: '/Characters/Headshot/Sophia v rossi.png',
     title: 'Lead Medical Illustrator',
     degrees: ['CMI'],
     specialty: 'Medical Visualization',
