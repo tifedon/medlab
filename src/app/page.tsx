@@ -112,7 +112,7 @@ export default async function HomePage() {
         <div className={styles.heroInner}>
 
           <h1 className={styles.heroTitle}>
-            Medical research, education and publishing in one institute
+            MEDICAL RESEARCH, EDUCATION AND PUBLISHING IN ONE INSTITUTE
           </h1>
           <p className={styles.heroSubtitle}>
             Sterling IMRES is a comprehensive medical institute bringing together clinical research, scientific education, and scholarly publishing into a unified, evidence-based platform.
