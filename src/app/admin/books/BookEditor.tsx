@@ -6,7 +6,9 @@ import { useState, useTransition, type FormEvent } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import type { AdminPressBook } from '@/lib/press-catalogue';
 import type { BookCategory, BookStatus } from '@/lib/books';
+import type { TeamMember } from '@/lib/people';
 import { deleteBook, saveBook, type BookLinkInput } from './actions';
+import PeoplePicker from './PeoplePicker';
 import styles from './page.module.css';
 
 const imageTypes = new Set(['image/jpeg', 'image/png', 'image/webp']);
@@ -31,11 +33,13 @@ function safeImageName(file: File) {
   return `${Date.now()}-${crypto.randomUUID().slice(0, 8)}-book-cover.${extension}`;
 }
 
-export default function BookEditor({ book }: { book: AdminPressBook | null }) {
+export default function BookEditor({ book, teamMembers }: { book: AdminPressBook | null; teamMembers: TeamMember[] }) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const [coverImageUrl, setCoverImageUrl] = useState(book?.cover_image_url ?? '');
   const [backCoverImageUrl, setBackCoverImageUrl] = useState(book?.back_cover_image_url ?? '');
+  const [authors, setAuthors] = useState<string[]>(book?.author_names ?? []);
+  const [editors, setEditors] = useState<string[]>(book?.editor_names ?? []);
   const [links, setLinks] = useState<BookLinkInput[]>(
     [...(book?.book_purchase_links ?? [])]
       .sort((a, b) => a.sort_order - b.sort_order)
@@ -102,8 +106,8 @@ export default function BookEditor({ book }: { book: AdminPressBook | null }) {
         subtitle: String(form.get('subtitle') ?? ''),
         summary: String(form.get('summary') ?? ''),
         category: String(form.get('category')) as BookCategory,
-        authors: splitList(form.get('authors')),
-        editors: splitList(form.get('editors')),
+        authors,
+        editors,
         publisher: String(form.get('publisher') ?? ''),
         publicationYear,
         isbn13: String(form.get('isbn13') ?? ''),
@@ -156,8 +160,20 @@ export default function BookEditor({ book }: { book: AdminPressBook | null }) {
           <label className={styles.full}>Subtitle<input name="subtitle" defaultValue={book?.subtitle ?? ''} /></label>
           <label>URL slug<input name="slug" pattern="[a-z0-9]+(?:-[a-z0-9]+)*" placeholder="created-from-title" defaultValue={book?.slug ?? ''} /></label>
           <label>Category<select name="category" defaultValue={book?.category ?? 'reference'}><option value="reference">Reference book</option><option value="textbook">Textbook</option><option value="handbook">Handbook</option><option value="monograph">Monograph</option><option value="atlas">Atlas</option></select></label>
-          <label>Authors<textarea name="authors" rows={3} placeholder="One name per line" defaultValue={book?.author_names.join('\n') ?? ''} /></label>
-          <label>Editors<textarea name="editors" rows={3} placeholder="One name per line" defaultValue={book?.editor_names.join('\n') ?? ''} /></label>
+          <PeoplePicker
+            label="Authors"
+            hint="Tick team members, or type a name below to add someone not listed."
+            teamMembers={teamMembers}
+            value={authors}
+            onChange={setAuthors}
+          />
+          <PeoplePicker
+            label="Editors"
+            hint="Tick team members, or type a name below to add someone not listed."
+            teamMembers={teamMembers}
+            value={editors}
+            onChange={setEditors}
+          />
           <label>Publisher<input name="publisher" defaultValue={book?.publisher ?? 'Sterling IMRES Press'} /></label>
           <label>Publication status<select name="status" defaultValue={book?.status ?? 'upcoming'}><option value="upcoming">Upcoming</option><option value="in-development">In development</option><option value="in-editing">In editing</option><option value="published">Published</option><option value="archived">Archived</option></select></label>
           <label>Publication year<input name="publicationYear" type="number" min={1400} max={2100} defaultValue={book?.publication_year ?? ''} /></label>

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { requireRole } from '@/lib/auth';
 import { getAdminPressBook } from '@/lib/press-catalogue';
+import { teamMembers } from '@/lib/people';
 import BookEditor from '../BookEditor';
 import styles from '../page.module.css';
 
@@ -20,7 +21,7 @@ export default async function EditBookPage({ params }: { params: Promise<{ id: s
       <main className={styles.shell}>
         <nav className={styles.breadcrumbs} aria-label="Breadcrumb"><Link href="/admin">Administrator</Link><span>/</span><Link href="/admin/books">Books</Link><span>/</span><span aria-current="page">Edit</span></nav>
         <div className={styles.heading}><div><p className={styles.kicker}>Publishing catalogue</p><h1>Edit book</h1></div><div><p>{book.title}</p><Link className={styles.secondaryLink} href={`/books/${book.slug}`}>View public page</Link></div></div>
-        <BookEditor book={book} />
+        <BookEditor book={book} teamMembers={teamMembers} />
       </main>
     </div>
   );
