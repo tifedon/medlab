@@ -6,14 +6,22 @@ export default function AuthorList({ people }: { people: Contributor[] }) {
   return (
     <ul className={styles.authorList}>
       {people.map((person, i) => {
+        const metaParts = [person.role, person.affiliation].filter(Boolean);
         return (
           <li key={`${person.name}-${i}`} className={styles.authorItem}>
-            <span>{person.name}</span>
-            {person.role && <span>{person.role}</span>}
-            {person.affiliation && <span>{person.affiliation}</span>}
-            {person.orcid && (
-              <span>
-                <a href={`https://orcid.org/${person.orcid}`} target="_blank" rel="noopener noreferrer">ORCID {person.orcid}</a>
+            <span className={styles.authorName}>{person.name}</span>
+            {(metaParts.length > 0 || person.orcid) && (
+              <span className={styles.authorMeta}>
+                {metaParts.map((part, j) => (
+                  <span key={j}>{part}</span>
+                ))}
+                {person.orcid && (
+                  <span>
+                    <a href={`https://orcid.org/${person.orcid}`} target="_blank" rel="noopener noreferrer">
+                      ORCID {person.orcid}
+                    </a>
+                  </span>
+                )}
               </span>
             )}
           </li>
@@ -30,3 +38,4 @@ export function byline(people: { name: string }[], max = 3, truncated = false) {
   const shown = names.slice(0, max).join(', ');
   return names.length > max || truncated ? `${shown} et al.` : shown;
 }
+
